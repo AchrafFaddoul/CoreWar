@@ -14,8 +14,14 @@
 
 int main(int argc, char *argv[])
 {
+	char 	*file;
+	int	fd;
+
 	if (argc > 2)
 		return (0);
 	check_fextension(argv[1]);
+	if ((fd = open(argv[1], O_RDONLY)) == -1)
+		exit(1);
+	file = read_file(fd);
 	return (0);
 }

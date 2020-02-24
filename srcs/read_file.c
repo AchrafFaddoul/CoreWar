@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asm.h                                              :+:      :+:    :+:   */
+/*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,17 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ASM_H
-#define ASM_H
+#include "asm.h"
 
-#include "libft.h"
-#include <stdio.h>
-#include <fcntl.h>
-# define BUFF_SIZE 1000
-# define MAX_SIZE 1000000
+char	*read_file(int fd)
+{
+	char 		*buff;
+	size_t 		buff_size;
+	int		ret;
+	size_t		i;
 
-void			check_fextension(char *str);
-char			*read_file(int fd);
-size_t			ft_vrealloc(char *buff, size_t buff_size);
-
-#endif
+	i = 0;
+	buff_size = BUFF_SIZE;
+	buff = (char*)ft_memalloc(sizeof(char) * buff_size);
+	while (i < MAX_SIZE && (ret = read(fd, buff, 1) > 0))
+	{
+		printf("here |%s|\n", buff);
+		if (i == (buff_size - 1))
+		{
+			buff_size *= 2;
+			buff = ft_vrealloc(buff, buff_size);
+		}
+		i++;
+	}
+	printf("%p", buff);
+	if (ret == -1)
+	{
+		ft_memdel((void**)buff);
+		return (NULL);
+	}
+	printf("%s", buff);
+	return (buff);
+}

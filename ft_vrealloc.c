@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asm.h                                              :+:      :+:    :+:   */
+/*   ft_vrealloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
+/*   Created: 2020/02/24 09:41:11 by afaddoul          #+#    #+#             */
 /*   Updated: 2020/01/12 19:00:51 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ASM_H
-#define ASM_H
+#include "asm.h"
 
-#include "libft.h"
-#include <stdio.h>
-#include <fcntl.h>
-# define BUFF_SIZE 1000
-# define MAX_SIZE 1000000
+size_t		ft_vrealloc(char *buff, size_t buff_size)
+{
+	char 	*new_buff;
+	size_t	coeff;
 
-void			check_fextension(char *str);
-char			*read_file(int fd);
-size_t			ft_vrealloc(char *buff, size_t buff_size);
-
-#endif
+	coeff = 2;
+	new_buff = (char*)ft_memalloc(sizeof(char) * buff_size * coeff);
+	ft_strcpy(new_buff, buff);
+	ft_memdel((void**)buff);
+	buff = new_buff;
+	return (buff_size * coeff);
+}

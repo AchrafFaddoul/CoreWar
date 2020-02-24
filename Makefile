@@ -4,6 +4,8 @@ FLAGS = -Wextra -Wall -Werror
 
 FILES = srcs/main.c \
 	srcs/check_fextension.c \
+	srcs/read_file.c \
+	srcs/ft_vrealloc.c \
 
 OBJ = $(FILES:.c=.o)
 
