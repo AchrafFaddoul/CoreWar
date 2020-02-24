@@ -1,0 +1,35 @@
+NAME = asm
+
+FLAGS = -Wextra -Wall -Werror
+
+FILES = srcs/main.c \
+	srcs/check_fextension.c \
+
+OBJ = $(FILES:.c=.o)
+
+LIBFT = ./libft/libft.a
+
+INCLUDES = includes/
+
+all: $(NAME)
+
+$(NAME) : $(LIBFT) $(OBJ) $(HEADER_FILES)
+	@gcc $(FLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+
+$(OBJ) : %.o : %.c
+	@gcc $(FLAGS)  $< -o $@ -c -I $(INCLUDES) -I $(INCLUDES)
+
+$(LIBFT) :
+	@make -C ./libft/
+
+clean :
+	@rm -rf $(OBJ)
+	@make clean -C ./libft
+
+fclean : clean
+	@rm -rf $(NAME)
+	@make fclean -C ./libft
+
+re : fclean all
+
+.PHONY : clean fclean re $(LIBFT)
