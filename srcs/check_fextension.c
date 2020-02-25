@@ -6,15 +6,15 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/01/12 19:00:51 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/02/25 01:00:22 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void 	check_fextension(char *str)
+void		check_fextension(char *str)
 {
-	int 	i;
+	int		i;
 
 	i = 0;
 	if (str)
@@ -23,9 +23,9 @@ void 	check_fextension(char *str)
 		{
 			if (str[i] == '.')
 			{
-				if (str[i+1] == 's')
+				if (str[i + 1] && str[i + 1] == 's')
 				{
-					if (str[i + 2] == '\0')
+					if (!str[i + 2])
 						return ;
 				}
 				else

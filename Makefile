@@ -1,6 +1,6 @@
 NAME = asm
 
-FLAGS = -Wextra -Wall -Werror
+FLAGS = -Wall -Wextra -Werror
 
 FILES = srcs/main.c \
 	srcs/check_fextension.c \
@@ -16,13 +16,13 @@ INCLUDES = includes/
 all: $(NAME)
 
 $(NAME) : $(LIBFT) $(OBJ) $(HEADER_FILES)
-	@gcc $(FLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+	gcc $(FLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 $(OBJ) : %.o : %.c
-	@gcc $(FLAGS)  $< -o $@ -c -I $(INCLUDES) -I $(INCLUDES)
+	gcc $(FLAGS)  $< -o $@ -c -I $(INCLUDES) -I $(INCLUDES)
 
 $(LIBFT) :
-	@make -C ./libft/
+	make -C ./libft/
 
 clean :
 	@rm -rf $(OBJ)
