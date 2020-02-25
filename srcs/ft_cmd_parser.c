@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_parser.c                                      :+:      :+:    :+:   */
+/*   ft_cmd_parser.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/25 02:14:19 by ada               #+#    #+#             */
-/*   Updated: 2020/02/25 16:38:01 by ada              ###   ########.fr       */
+/*   Created: 2020/02/25 16:04:23 by ada               #+#    #+#             */
+/*   Updated: 2020/02/25 16:08:23 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_env		*ft_line_parser(t_env *env)
+t_env 		*ft_cmd_parser(t_env *env)
 {
 	int 	i;
-	int		j;
+	int 	j;
 
 	i = 0;
 	j = 0;
-	while (env->vect[i])
-	{
-		if (env->vect[i] == '\n')
-		{
-			if (!ft_get_line(env, j, i))
-				return (NULL);
-			printf("%s", ((t_instru*)(env->lines->tail->content))->buff);
-			j = i + 1;
-		}
-		i++;
-	}
-	if (env->vect[i - 1] != '\n')
-		return (NULL);
-	return (env);
+	 
 }

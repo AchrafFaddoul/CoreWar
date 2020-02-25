@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/02/25 03:17:22 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/25 15:57:45 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define ASM_H
 
 #include "libft.h"
+#include "op.h"
 #include <stdio.h>
 #include <fcntl.h>
 # define BUFF_SIZE 1000
