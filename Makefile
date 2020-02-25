@@ -9,6 +9,7 @@ FILES = srcs/main.c \
 	srcs/frontend_analysis.c  \
 	srcs/ft_assembler.c  \
 	srcs/line_parser.c  \
+	srcs/ft_cmd_parser.c  \
 
 OBJ = $(FILES:.c=.o)
 

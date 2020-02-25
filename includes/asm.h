@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/02/25 15:57:45 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/26 00:34:32 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,10 @@ t_env			*ft_fend_analys(t_env *env);
 t_env			*ft_line_parser(t_env *env);
 char			*ft_get_line(t_env *env, int start, int end);
 t_instru		*ft_instru_new(char *line);
+t_env			*get_name(t_env *env, const char *ptr, int max_size);
+t_env			*get_cmt(t_env *env, const char *ptr, int max_size);
+t_env			*ft_get_cmd_dispatcher(t_env *env, const char *ptr);
+t_env			*ft_cmd_parser(t_env *env);
+
 
 #endif
