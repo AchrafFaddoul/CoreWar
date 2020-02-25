@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/02/25 00:34:46 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/25 03:17:22 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,28 @@
 # define BUFF_SIZE 1000
 # define MAX_SIZE 1000000
 
+
+typedef struct 		s_instru
+{
+	char			*buff;
+	int 			index;
+}					t_instru;
+
+typedef struct 		s_env
+{
+	char 			*vect;
+	char 			*name;
+	char 			*comment;
+	t_dlist 		*lines;
+}					t_env;
+
 void			check_fextension(char *str);
 char			*read_file(int fd);
 char 			*ft_vrealloc(char **buff, size_t buff_size);
+void			ft_assembler(t_env *env);
+t_env			*ft_fend_analys(t_env *env);
+t_env			*ft_line_parser(t_env *env);
+char			*ft_get_line(t_env *env, int start, int end);
+t_instru		*ft_instru_new(char *line);
 
 #endif
