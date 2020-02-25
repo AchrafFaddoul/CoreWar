@@ -6,7 +6,6 @@ FILES = srcs/main.c \
 	srcs/check_fextension.c \
 	srcs/read_file.c \
 	srcs/ft_vrealloc.c \
-	srcs/ft_get_line.c  \
 	srcs/frontend_analysis.c  \
 	srcs/ft_assembler.c  \
 	srcs/line_parser.c  \

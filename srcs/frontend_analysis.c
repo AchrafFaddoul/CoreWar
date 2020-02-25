@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:23:34 by ada               #+#    #+#             */
-/*   Updated: 2020/02/25 16:36:54 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/25 16:47:59 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ t_env		*ft_fend_analys(t_env *env)
 		ft_dlstdel(&(env->lines), dummy_del);
 		destroy_cmd(env);
 		return (NULL);
-	}
-	*/
+	}*/
 	//parser;
 	return (env);
 }
