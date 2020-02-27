@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/02/26 00:34:32 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/27 14:25:43 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void			check_fextension(char *str);
 char			*read_file(int fd);
 char 			*ft_vrealloc(char **buff, size_t buff_size);
 void			ft_assembler(t_env *env);
-t_env			*ft_fend_analys(t_env *env);
+t_env			*ft_frontend_analys(t_env *env);
 t_env			*ft_line_parser(t_env *env);
 char			*ft_get_line(t_env *env, int start, int end);
 t_instru		*ft_instru_new(char *line);
