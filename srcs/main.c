@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/02/27 16:52:18 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/27 16:56:01 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int			main(int argc, char *argv[])
 		ft_error();
 	env->vect = file;
 	ft_assembler(env);
-	printf("%s\n%s\n", env->name, env->comment);
 	printf("Done\n");
 	return (0);
 }
