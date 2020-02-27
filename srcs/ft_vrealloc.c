@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 00:50:25 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/02/25 00:50:38 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/27 16:12:47 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ char		*ft_vrealloc(char **buff, size_t buff_size)
 
 	if (!(new_buff = (char*)ft_memalloc(sizeof(char) * buff_size)))
 	{
-		ft_memdel((void**)buff);
+		ft_strdel((char**)&buff);
 		return (NULL);
 	}
 	ft_strcpy(new_buff, *buff);
-	ft_memdel((void**)buff);
+	ft_strdel((char**)(buff));
 	return (new_buff);
 }

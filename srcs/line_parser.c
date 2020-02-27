@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:14:19 by ada               #+#    #+#             */
-/*   Updated: 2020/02/26 00:36:58 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/27 16:52:45 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char 			*ft_get_line(t_env *env, int start, int end)
 		return (NULL);
 	if (!(elm = ft_instru_new(buff)))
 	{
-		ft_strdel((char**)buff);
+		ft_strdel((char**)&buff);
 		return (NULL);
 	}
 	elm->index = index++;
@@ -55,7 +55,7 @@ t_env		*ft_line_parser(t_env *env)
 		{
 			if (!ft_get_line(env, j, i))
 				return (NULL);
-		//	printf("|%s|", ((t_instru*)(env->lines->tail->content))->buff);
+			printf("|%s|", ((t_instru*)(env->lines->tail->content))->buff);
 			j = i + 1;
 		}
 		i++;

@@ -6,11 +6,17 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/02/27 14:24:51 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/27 16:52:18 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+void 		ft_error(void)
+{
+	write(1, "Error\n", 6);
+	exit(1);
+}
 
 int			main(int argc, char *argv[])
 {
@@ -19,14 +25,16 @@ int			main(int argc, char *argv[])
 	int		fd;
 
 	if (argc != 2)
-		exit(1);
+		ft_error();
 	check_fextension(argv[1]);
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
-		exit(1);
+		ft_error();
 	file = read_file(fd);
 	if (!(env = (t_env*)ft_memalloc(sizeof(t_env))))
-		exit(1);
+		ft_error();
 	env->vect = file;
 	ft_assembler(env);
+	printf("%s\n%s\n", env->name, env->comment);
+	printf("Done\n");
 	return (0);
 }
