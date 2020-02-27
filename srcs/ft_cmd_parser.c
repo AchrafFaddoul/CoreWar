@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 16:04:23 by ada               #+#    #+#             */
-/*   Updated: 2020/02/27 16:14:12 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/27 18:25:43 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,17 @@ static t_env	*ft_cmd_dup(t_env *env, char *buff, int flag)
 	if (!(cmd = ft_strdup(buff)))
 		return (NULL);
 	if (flag == PROG_NAME_LENGTH)
+	{
+		if (env->name)
+			return (NULL);
 		env->name = cmd;
+	}
 	else
+	{
+		if (env->comment)
+			return (NULL);
 		env->comment = cmd;
+	}
 	return (env);
 }
 
@@ -130,7 +138,10 @@ t_env 			*ft_cmd_parser(t_env *env)
 	while (elm)
 	{
 		if (env->name && env->comment)
+		{
+			printf("");
 			return (env);
+		}
 		ptr = ((t_instru*)(elm->content))->buff;
 		if (*ptr == COMMENT_CHAR || *ptr == ALT_COMMENT_CHAR || *ptr == '\n')
 			continue ;
