@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/02/27 16:15:23 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/27 19:01:08 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ t_env			*get_cmt(t_env *env, const char *ptr, int max_size);
 t_env			*ft_get_cmd_dispatcher(t_env *env, const char *ptr);
 t_env			*ft_cmd_parser(t_env *env);
 void 			ft_error(void);
+void			dummy_del(void *content);
 
 
 #endif

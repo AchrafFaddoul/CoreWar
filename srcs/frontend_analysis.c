@@ -6,13 +6,13 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:23:34 by ada               #+#    #+#             */
-/*   Updated: 2020/02/27 16:17:27 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/27 19:05:21 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static void dummy_del(void *content)
+void		dummy_del(void *content)
 {
 	if ((((t_instru*)content)->buff))
 		ft_strdel((char**)&(((t_instru*)content)->buff));

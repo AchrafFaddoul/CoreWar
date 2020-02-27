@@ -6,7 +6,7 @@
 /*   By: smouzdah <smouzdah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 11:20:27 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/01/12 12:27:59 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/02/27 19:03:44 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,5 +140,7 @@ t_htentry				*ft_htentrynew(const char *key, const void *content);
 long long				ft_htinsert(t_hashtable *ht, const t_htentry *entry);
 void					ft_htdel(t_hashtable **ht, void (*del)(void*));
 void					ft_htentrydel(t_htentry **entry, void (*del)(void*));
+t_element				*ft_dlstpop(t_dlist **lst, void (*del)(void*),
+		t_element *rear);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 16:04:23 by ada               #+#    #+#             */
-/*   Updated: 2020/02/27 18:32:58 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/27 19:09:12 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,10 @@ t_env 			*ft_cmd_parser(t_env *env)
 	while (elm)
 	{
 		if (env->name && env->comment)
+		{
+			env->lines->head = ft_dlstpop(&(env->lines), dummy_del, elm);
 			return (env);
+		}
 		ptr = ((t_instru*)(elm->content))->buff;
 		if (*ptr == COMMENT_CHAR || *ptr == ALT_COMMENT_CHAR || *ptr == '\n')
 		{
