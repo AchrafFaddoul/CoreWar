@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 16:04:23 by ada               #+#    #+#             */
-/*   Updated: 2020/02/28 16:19:32 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/28 16:36:50 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,28 +125,29 @@ t_env 			*ft_cmd_parser(t_env *env)
 	t_element	*elm;
 	char 		*ptr;
 	int 		i;
-	int 		j;
 
-	i = 0;
-	j = 0;
 	elm = env->lines->head;
 	while (elm)
 	{
+		i = 0;
 		if (env->name && env->comment)
 		{
 			env->lines->head = ft_dlstpop(&(env->lines), dummy_del, elm);
 			return (env);
 		}
 		ptr = ((t_instru*)(elm->content))->buff;
-		if (*ptr == COMMENT_CHAR || *ptr == ALT_COMMENT_CHAR || *ptr == '\n')
+		while (ptr[i] && (ptr[i] == 9 || ptr[i] == 32))
+			i++;
+		if (*(ptr + i) == COMMENT_CHAR ||
+				*(ptr + i) == ALT_COMMENT_CHAR || *(ptr + i) == '\n')
 		{
 			elm = elm->next;
 			continue ;
 		}
-		if (!ft_strncmp(ptr, NAME_CMD_STRING, 5) ||
-				!ft_strncmp(ptr, COMMENT_CMD_STRING, 8))
+		if (!ft_strncmp((ptr + i), NAME_CMD_STRING, 5) ||
+				!ft_strncmp((ptr + i), COMMENT_CMD_STRING, 8))
 		{
-			if (!(ft_get_cmd_dispatcher(env, ptr)))
+			if (!(ft_get_cmd_dispatcher(env, (ptr + i))))
 				return (destroy_cmd(env));
 		}
 		else
