@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 16:04:23 by ada               #+#    #+#             */
-/*   Updated: 2020/02/27 19:09:12 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/28 16:19:32 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +114,6 @@ t_env			*get_cmt(t_env *env, const char *ptr, int max_size)
 
 t_env			*ft_get_cmd_dispatcher(t_env *env, const char *ptr)
 {
-	int 		i;
-	int 		j;
-
-	i = 0;
-	j = 0;
 	if (*(ptr + 1) == 'n')
 		return (get_name(env, (ptr + 5), PROG_NAME_LENGTH));
 	else
