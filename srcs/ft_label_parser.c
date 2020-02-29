@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 15:43:20 by ada               #+#    #+#             */
-/*   Updated: 2020/02/29 04:37:46 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/29 16:06:30 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char 				*ft_label_tokenizer(const char *ptr, int start, int end)
 	int				i;
 
 	i = 0;
-	len = end - start + 1;
+	len = end - start;
 	if (!(token = ft_strsub(ptr, start, len)))
 		return (NULL);
 	while (token[i])
@@ -128,8 +128,9 @@ t_env 				*ft_label_parser(t_env *env)
 		{
 			if (ptr[i] == LABEL_CHAR)
 			{
+				printf("%s\n", ptr + ws_counter);
 				if (!(ft_label_scanner(env, (ptr + ws_counter))))
-					i++;
+					return (NULL);
 					//	return (destroy_labels(env));
 				break ;
 			}
