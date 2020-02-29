@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:14:19 by ada               #+#    #+#             */
-/*   Updated: 2020/02/29 01:41:39 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/29 04:09:49 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,26 @@ t_instru		*ft_instru_new(char *line)
 
 char 			*ft_get_line(t_env *env, int start, int end)
 {
-	static int	index;
-	t_instru 	*elm;
+	t_instru 	*instru;
+	t_element 	*elm;
 	char		*buff;
 	int 		len;
 
 	len = end - start + 1;
 	if (!(buff = ft_strsub(env->vect, start, len)))
 		return (NULL);
-	if (!(elm = ft_instru_new(buff)))
+	if (!(instru = ft_instru_new(buff)))
 	{
 		ft_strdel((char**)&buff);
 		return (NULL);
 	}
-	elm->index = index++;
-	ft_dlstpush(env->lines, ft_elemnew(elm));
+	if (!(elm = ft_elemnew(instru)))
+	{
+		ft_strdel((char**)&buff);
+		ft_memdel((void**)&instru);
+		return (NULL);
+	}
+	ft_dlstpush(env->lines, elm);
 	return (buff);
 }
 
