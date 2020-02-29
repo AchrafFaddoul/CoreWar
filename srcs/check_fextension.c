@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/02/27 16:17:07 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/29 21:50:17 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,13 @@ void		check_fextension(char *str)
 	int		i;
 
 	i = 0;
-	if (str)
+	while (str[i])
+		i++;
+	if (str[i - 1] == 's' && str[i - 2] == '.')
+		return ;
+	else
 	{
-		while (str[i])
-		{
-			if (str[i] == '.')
-			{
-				if (str[i + 1] && str[i + 1] == 's')
-				{
-					if (!str[i + 2])
-						return ;
-				}
-				else
-				{
-					ft_putstr("not a valid file");
-					exit(1);
-				}
-			}
-			i++;
-		}
+		ft_putstr("not a valid file");
+		exit(1);
 	}
-	ft_putstr("not a valid file");
-	exit(1);
 }

@@ -11,7 +11,6 @@ FILES = srcs/main.c \
 	srcs/line_parser.c  \
 	srcs/ft_cmd_parser.c  \
 	srcs/op.c  \
-	srcs/ft_label_parser.c  \
 
 OBJ = $(FILES:.c=.o)
 

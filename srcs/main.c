@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/02/29 14:42:26 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/29 21:33:50 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ int			main(int argc, char *argv[])
 		ft_error();
 	file = read_file(fd);
 	if (!(env = (t_env*)ft_memalloc(sizeof(t_env))))
+	{
+		ft_strdel((char**)&file);
 		ft_error();
+	}
 	env->vect = file;
 	ft_assembler(env);
 	printf("Done\n");

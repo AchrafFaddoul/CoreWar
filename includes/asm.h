@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/02/29 04:25:00 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/29 21:53:54 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,14 @@ typedef struct 		s_instru
 	int 			index;
 }					t_instru;
 
-typedef struct 		s_label
+typedef struct 		s_symbol_tab
 {
 	char			*label;
-	int				pc;
-}					t_label;
+	char 			*op;
+	char 			*arg_1;
+	char 			*arg_2;
+	char 			*arg_3;
+}					t_symbol_tab;
 
 t_op				g_op_tab[17];
 
@@ -71,9 +74,5 @@ t_env			*ft_get_cmd_dispatcher(t_env *env, const char *ptr);
 t_env			*ft_cmd_parser(t_env *env);
 void 			ft_error(void);
 void			dummy_del(void *content);
-t_env			*ft_label_parser(t_env *env);
-t_env			*ft_label_scanner(t_env *env, const char *ptr);
-char			*ft_label_tokenizer(const char *ptr, int start, int end);
-t_element		*ft_labelpush(t_env *env, char **label);
 
 #endif
