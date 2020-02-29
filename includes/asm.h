@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/02/27 19:01:08 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/29 01:44:58 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,17 @@
 # define BUFF_SIZE 1000
 # define MAX_SIZE 1000000
 
+typedef struct s_op
+{
+	char		*op;
+	int			arg_nb;
+	int 		arg[3];
+	int 		op_index;
+	int 		cycle;
+	char 		*op_desc;
+	int			arg_tcode;
+	int 		dir_size;
+}				t_op;
 
 typedef struct 		s_instru
 {
@@ -27,12 +38,17 @@ typedef struct 		s_instru
 	int 			index;
 }					t_instru;
 
+t_op				g_op_tab[17];
+
 typedef struct 		s_env
 {
+	t_op			g_op_tab[17];
+	t_dlist 		*lines;
 	char 			*vect;
 	char 			*name;
 	char 			*comment;
-	t_dlist 		*lines;
+	int				op_flg;
+	size_t			index;
 }					t_env;
 
 void			check_fextension(char *str);
