@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 15:43:20 by ada               #+#    #+#             */
-/*   Updated: 2020/02/29 04:09:47 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/29 04:37:46 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_element 			*ft_labelpush(t_env *env, char **label)
 	return (elm);
 }
 
-char 				*ft_label_tokenizer(char *ptr, int start, int end)
+char 				*ft_label_tokenizer(const char *ptr, int start, int end)
 {
 	char 			*token;
 	int 			len;
@@ -106,7 +106,6 @@ t_env				*ft_label_scanner(t_env *env, const char *ptr)
 t_env 				*ft_label_parser(t_env *env)
 {
 	t_element		*elm;
-	static size_t	index;
 	char 			*ptr;
 	int 			ws_counter;
 	int 			i;
@@ -115,13 +114,13 @@ t_env 				*ft_label_parser(t_env *env)
 	while (elm)
 	{
 		i = 0;
+		ptr = ((t_instru*)(elm->content))->buff;
 		if (*(ptr + i) == COMMENT_CHAR ||
 				*(ptr + i) == ALT_COMMENT_CHAR || *(ptr + i) == '\n')
 		{
 			elm = elm->next;
 			continue ;
 		}
-		elm->index = ++index;
 		while (ptr[i] && (ptr[i] == 9 || ptr[i] == 32))
 			i++;
 		ws_counter = i;
@@ -129,14 +128,16 @@ t_env 				*ft_label_parser(t_env *env)
 		{
 			if (ptr[i] == LABEL_CHAR)
 			{
-				if (!(ft_label_scanner(env, (ptr + ws_counter)))
-						return (destroy_labels(env));
+				if (!(ft_label_scanner(env, (ptr + ws_counter))))
+					i++;
+					//	return (destroy_labels(env));
 				break ;
 			}
 			i++;
 		}
 		if (!ptr[i])
-			elm->op_flg = 1;
+			((t_instru*)elm->content)->op_flg = 1;
 		elm = elm->next;
 	}
+	return (env);
 }

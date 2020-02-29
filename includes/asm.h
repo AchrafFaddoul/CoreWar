@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/02/29 04:06:26 by ada              ###   ########.fr       */
+/*   Updated: 2020/02/29 04:25:00 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void 			ft_error(void);
 void			dummy_del(void *content);
 t_env			*ft_label_parser(t_env *env);
 t_env			*ft_label_scanner(t_env *env, const char *ptr);
-char			*ft_label_tokenizer(char *ptr, int start, int end);
+char			*ft_label_tokenizer(const char *ptr, int start, int end);
 t_element		*ft_labelpush(t_env *env, char **label);
 
 #endif
