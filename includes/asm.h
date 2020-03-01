@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/01 01:48:11 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/01 16:50:35 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # define MAX_SIZE 1000000
 # define SYM_TAB ((t_symbol_tab*)(((t_instru*)(elm->content))->sym_tab))
 
-t_op				g_op_tab[17];
 
 typedef struct s_op
 {
@@ -34,6 +33,8 @@ typedef struct s_op
 	int			arg_tcode;
 	int 		dir_size;
 }				t_op;
+
+t_op				g_op_tab[17];
 
 typedef struct 		s_label
 {

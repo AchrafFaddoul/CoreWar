@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 21:53:42 by ada               #+#    #+#             */
-/*   Updated: 2020/03/01 02:14:21 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/01 19:11:10 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@ static int			ft_islabel(char c)
 {
 	if ((c >= 97 && c <= 122) || (c >= 48 && c <= 57)
 			|| c == '_')
+		return (1);
+	return (0);
+}
+
+static int 			ft_isop(char c)
+{
+	if ((c >= 97 && c <= 122))
 		return (1);
 	return (0);
 }
@@ -98,6 +105,29 @@ int 				ft_lbltokenizer(t_env *env, t_element *elm,
 	return (1);
 }
 
+char 				*ft_getop(char *ptr)
+{
+	int 			i;
+
+	i = 0;
+	while (ptr[i])
+	{
+		if (!ft_isop(ptr[i]))
+		{
+			if (ft_get_instru())
+		}
+			i++;
+	}
+	return (NULL);
+}
+
+int 				ft_intru_tokenizer(t_env *env, t_element *elm, char *ptr,
+		int len)
+{
+	if (!(ft_getop(ptr)))
+		return (0);
+}
+
 int 				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr)
 {
 	int 			i;
@@ -119,6 +149,7 @@ int 				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr)
 		}
 		i++;
 	}
+	//check if comment or \n or op
 	if (((t_instru*)(elm->content))->lbl_flg == 1)
 	{
 		if (ptr[i] == COMMENT_CHAR ||
@@ -138,7 +169,6 @@ int 				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr)
 		//free last cash
 		return (0);
 	}
-	//check if comment or \n or op
 	return (1);
 }
 
