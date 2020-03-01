@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 21:53:42 by ada               #+#    #+#             */
-/*   Updated: 2020/03/01 19:11:10 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/01 23:01:05 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,31 @@ int 				ft_lbltokenizer(t_env *env, t_element *elm,
 	return (1);
 }
 
-char 				*ft_getop(char *ptr)
+t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
+{
+	int 			i;
+	int 			j;
+
+	i = 0;
+	j = 0;
+	while (i < 16)
+	{
+		if ((ft_strstr(str, g_op_tab[i].op)))
+			break ;
+			if (i == 15)
+				return (NULL);
+		i++;
+	}
+	while (g_op_tab[i].op[j])
+	{
+		if (str[j] != g_op_tab[i].op[j])
+			return (NULL);
+		j++;
+	}
+	
+}
+
+char 				*ft_getop(t_env *env, t_element *elm, char *ptr)
 {
 	int 			i;
 
@@ -116,13 +140,12 @@ char 				*ft_getop(char *ptr)
 		{
 			if (ft_get_instru())
 		}
-			i++;
+		i++;
 	}
 	return (NULL);
 }
 
-int 				ft_intru_tokenizer(t_env *env, t_element *elm, char *ptr,
-		int len)
+int 				ft_instru_tokenizer(t_env *env, t_element *elm, char *ptr)
 {
 	if (!(ft_getop(ptr)))
 		return (0);
@@ -157,14 +180,14 @@ int 				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr)
 			return (1);
 		else
 		{
-			if (!(ft_instru_tokenizer(env, elm, ptr, i)))
+			if (!(ft_instru_tokenizer(env, elm, (ptr + i))))
 			{
 				//free last cash
 				return (0);
 			}
 		}
 	}
-	if (!(ft_instru_tokenizer(env, elm, ptr, 0)))
+	if (!(ft_instru_tokenizer(env, elm, ptr)))
 	{
 		//free last cash
 		return (0);
