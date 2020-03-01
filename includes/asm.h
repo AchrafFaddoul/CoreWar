@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/02/29 21:53:54 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/01 01:48:11 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 #include <fcntl.h>
 # define BUFF_SIZE 1000
 # define MAX_SIZE 1000000
+# define SYM_TAB ((t_symbol_tab*)(((t_instru*)(elm->content))->sym_tab))
+
+t_op				g_op_tab[17];
 
 typedef struct s_op
 {
@@ -32,12 +35,11 @@ typedef struct s_op
 	int 		dir_size;
 }				t_op;
 
-typedef struct 		s_instru
+typedef struct 		s_label
 {
-	char			*buff;
-	int				op_flg;
-	int 			index;
-}					t_instru;
+	char			*label;
+	int				pc;
+}					t_label;
 
 typedef struct 		s_symbol_tab
 {
@@ -48,11 +50,18 @@ typedef struct 		s_symbol_tab
 	char 			*arg_3;
 }					t_symbol_tab;
 
-t_op				g_op_tab[17];
+typedef struct 		s_instru
+{
+	char			*buff;
+	int				op_flg;
+	int				lbl_flg;
+	int 			index;
+	t_symbol_tab	*sym_tab;
+}					t_instru;
+
 
 typedef struct 		s_env
 {
-	t_op			g_op_tab[17];
 	t_dlist 		*lines;
 	t_dlist 		*labels;
 	char 			*vect;

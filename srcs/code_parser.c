@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 21:53:42 by ada               #+#    #+#             */
-/*   Updated: 2020/02/29 22:26:34 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/01 02:14:21 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,99 @@ char 				*ft_wsdel(char *str)
 	return (dest);
 }
 
-//t_env				*ft_scanner(t_env)
+static t_label		*ft_labelnew(char *token)
+{
+	t_label 		*elm;
+
+	if (!(elm = (t_label*)ft_memalloc(sizeof(t_label))))
+		return (NULL);
+	elm->label = token;
+	return (elm);
+}
+
+int 				ft_lbltokenizer(t_env *env, t_element *elm,
+		char *ptr, int len)
+{
+	char 			*str;
+	t_label			*element;
+	t_element 		*label;
+
+	if (!(str = (char*)ft_memalloc(sizeof(char) * (len + 1))))
+		return (0);
+	ft_strncpy(str, ptr, len);
+	if (!(element = ft_labelnew(str)))
+	{
+		ft_strdel((char**)&str);
+		return (0);
+	}
+	if (!(label = ft_elemnew(element)))
+	{
+		ft_strdel((char**)&str);
+		ft_memdel((void**)&element);
+		return (0);
+	}
+	ft_dlstpush(env->labels, label);
+	SYM_TAB->label = ft_strdup(str);
+	((t_instru*)(elm->content))->lbl_flg = 1;
+	return (1);
+}
+
+int 				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr)
+{
+	int 			i;
+	//line nature
+	i = 0;
+	while (ptr[i])
+	{
+		if (!ft_islabel(ptr[i]))
+		{
+			if (ptr[i] == LABEL_CHAR)
+			{
+				if (!(ft_lbltokenizer(env, elm, ptr, i)))
+					return (0);
+				i++;
+				break ;
+			}
+			else
+				break ;
+		}
+		i++;
+	}
+	if (((t_instru*)(elm->content))->lbl_flg == 1)
+	{
+		if (ptr[i] == COMMENT_CHAR ||
+				ptr[i] == ALT_COMMENT_CHAR || ptr[i] == '\n')
+			return (1);
+		else
+		{
+			if (!(ft_instru_tokenizer(env, elm, ptr, i)))
+			{
+				//free last cash
+				return (0);
+			}
+		}
+	}
+	if (!(ft_instru_tokenizer(env, elm, ptr, 0)))
+	{
+		//free last cash
+		return (0);
+	}
+	//check if comment or \n or op
+	return (1);
+}
+
+t_env				*ft_scanner(t_env *env, t_element *elm, char *ptr)
+{
+	if (!(ft_syntax_analysis()))
+	{
+		return (NULL);
+	}
+	if (!(ft_line_symmantic_analysis()))
+	{
+		return (NULL);
+	}
+	return (env);
+}
 
 t_env				*parser(t_env *env)
 {
@@ -79,7 +171,7 @@ t_env				*parser(t_env *env)
 			elm = elm->next;
 			continue ;
 		}
-		if (!(ft_scanner(env, ptr)))
+		if (!(ft_scanner(env, , ptr)))
 		{
 			ft_strdel((char**)&ptr);
 			return (NULL);
