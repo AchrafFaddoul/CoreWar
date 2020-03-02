@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 21:53:42 by ada               #+#    #+#             */
-/*   Updated: 2020/03/02 01:25:56 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/02 01:49:52 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int 			ft_isop(char c)
 	return (0);
 }
 
-char				*ft_intrucpy(char *ptr, char *dest)
+char				*ft_instrucpy(char *ptr, char *dest)
 {
 	int 			i;
 	int 			j;
@@ -55,16 +55,16 @@ char 				*ft_wsdel(char *str)
 
 	i = 0;
 	counter = 0;
-	while (ptr[i])
+	while (str[i])
 	{
-		if (ptr[i] == 9 || ptr[i] == 32)
+		if (str[i] == 9 || str[i] == 32)
 			counter++;
 		i++;
 	}
-	len = ft_strlen(ptr) - counter;
+	len = ft_strlen(str) - counter;
 	if (!(dest = (char*)ft_memalloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	dest = ft_instrucpy(ptr, dest);
+	dest = ft_instrucpy(str, dest);
 	return (dest);
 }
 
@@ -106,28 +106,27 @@ int 				ft_lbltokenizer(t_env *env, t_element *elm,
 }
 
 int					ft_argtokenizer(t_element *elm, char *str, int start, 
-		int arg)
+		int arg_nb)
 {
 	int 			i;
 	char 			*arg;
 
 	i = 0;
 	while (str[i] != '\n' && str[i] != COMMENT_CHAR &&
-			ptr[i] != ALT_COMMENT_CHAR && ptr[i] != SEPARATOR_CHAR)
+			str[i] != ALT_COMMENT_CHAR && str[i] != SEPARATOR_CHAR)
 		i++;
 	if (!(arg = ft_strsub(str, start, i)))
 		return (-1);
-	if (arg == 1)
-		SYS_TAB->arg_1 = arg;
-	else if (arg == 2)
-		SYS_TAB->arg_2 = arg;
-	else if (arg == 3)
-		SYS_TAB->arg_3 = arg;
+	if (arg_nb == 1)
+		SYM_TAB->arg_1 = arg;
+	else if (arg_nb == 2)
+		SYM_TAB->arg_2 = arg;
+	else if (arg_nb == 3)
+		SYM_TAB->arg_3 = arg;
 	return (i);
 }
 
-int 				ft_argscanner(t_env *env, t_element *elm, char *str,
-		int index)
+int 				ft_argscanner(t_element *elm, char *str, int index)
 {
 	int				i;
 	int 			calls_nb;
@@ -140,25 +139,26 @@ int 				ft_argscanner(t_env *env, t_element *elm, char *str,
 				ft_isdigit(str[i]) || str[i] == '-')
 		{
 			calls_nb++;
-			if ((index = > g_op_tab[index].arg_nb) ||
+			if ((index >= g_op_tab[index].arg_nb) ||
 					((i = ft_argtokenizer(elm, str, i, calls_nb)) == -1))
 			{
-				ft_strdel((char**)&(SUM_TAB->op));
-				ft_strdel((char**)&(SUM_TAB->arg_1));
-				ft_strdel((char**)&(SUM_TAB->arg_2));
-				ft_strdel((char**)&(SUM_TAB->arg_3));
-				return (NULL);
+				ft_strdel((char**)&(SYM_TAB->op));
+				ft_strdel((char**)&(SYM_TAB->arg_1));
+				ft_strdel((char**)&(SYM_TAB->arg_2));
+				ft_strdel((char**)&(SYM_TAB->arg_3));
+				return (0);
 			}
 			if (str[i] == '\n' || str[i] == COMMENT_CHAR ||
-					ptr[i] == ALT_COMMENT_CHAR)
+					str[i] == ALT_COMMENT_CHAR)
 				break ;
 			else if (str[i] == SEPARATOR_CHAR)
 				continue ;
 			else
-				return (NULL);
+				return (0);
 		}
 		i++;
 	}
+	return (1);
 }	
 
 t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
@@ -182,7 +182,7 @@ t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
 	index = i;
 	i += ft_strlen(g_op_tab[i].op);
 	// one arg 
-	if (!(ft_argscanner(env, elm, str + i, index)));
+	if (!(ft_argscanner(elm, str + i, index)))
 		return (NULL);
 	return (env);
 
@@ -212,6 +212,7 @@ int 				ft_instru_tokenizer(t_env *env, t_element *elm, char *ptr)
 {
 	if (!(ft_getop(env, elm, ptr)))
 		return (0);
+	return (1);
 }
 
 int 				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr)
@@ -260,18 +261,18 @@ int 				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr)
 
 t_env				*ft_scanner(t_env *env, t_element *elm, char *ptr)
 {
-	if (!(ft_syntax_analysis()))
+	if (!(ft_syntax_analysis(env, elm, ptr)))
 	{
 		return (NULL);
 	}
-	if (!(ft_line_symmantic_analysis()))
-	{
-		return (NULL);
-	}
+//	if (!(ft_line_symmantic_analysis()))
+//	{
+//		return (NULL);
+//	}
 	return (env);
 }
 
-t_env				*parser(t_env *env)
+t_env				*ft_instruparser(t_env *env)
 {
 	t_element		*elm;
 	char 			*ptr;
@@ -287,7 +288,7 @@ t_env				*parser(t_env *env)
 			elm = elm->next;
 			continue ;
 		}
-		if (!(ft_scanner(env, , ptr)))
+		if (!(ft_scanner(env, elm, ptr)))
 		{
 			ft_strdel((char**)&ptr);
 			return (NULL);

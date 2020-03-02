@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/01 16:50:35 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/02 01:49:32 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,21 @@ t_env			*ft_get_cmd_dispatcher(t_env *env, const char *ptr);
 t_env			*ft_cmd_parser(t_env *env);
 void 			ft_error(void);
 void			dummy_del(void *content);
+t_env			*ft_instruparser(t_env *env);
+t_env			*ft_scanner(t_env *env, t_element *elm, char *ptr);
+int				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr);
+int				ft_instru_tokenizer(t_env *env, t_element *elm, char *ptr);
+t_env			*ft_getop(t_env *env, t_element *elm, char *ptr);
+t_env			*ft_get_instru(t_env *env, t_element *elm, char *str);
+int				ft_argscanner(t_element *elm, char *str,
+		int index);
+int                 ft_argtokenizer(t_element *elm, char *str, int start,
+		int arg);
+int					ft_lbltokenizer(t_env *env, t_element *elm,char *ptr,
+		int len);
+//static t_label	*ft_labelnew(char *token);
+char			*ft_wsdel(char *str);
+char			*ft_intrucpy(char *ptr, char *dest);
+
 
 #endif
