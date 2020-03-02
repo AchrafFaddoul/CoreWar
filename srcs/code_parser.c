@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 21:53:42 by ada               #+#    #+#             */
-/*   Updated: 2020/03/02 01:49:52 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/02 11:51:19 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,13 @@ int 				ft_argscanner(t_element *elm, char *str, int index)
 					str[i] == ALT_COMMENT_CHAR)
 				break ;
 			else if (str[i] == SEPARATOR_CHAR)
-				continue ;
+			{
+				if (str[i + 1] == 'r' || str[i + 1] == DIRECT_CHAR ||
+					ft_isdigit(str[i + 1]) || str[i + 1] == '-')
+					continue ;
+				else
+					return (0);
+			}
 			else
 				return (0);
 		}
@@ -220,6 +226,7 @@ int 				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr)
 	int 			i;
 	//line nature
 	i = 0;
+	printf("syntax anal in\n");
 	while (ptr[i])
 	{
 		if (!ft_islabel(ptr[i]))
@@ -236,6 +243,9 @@ int 				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr)
 		}
 		i++;
 	}
+	printf("LABEL PARSED\n");
+	int id = 1;
+	printf("labelparsed %d \n", id++);
 	//check if comment or \n or op
 	if (((t_instru*)(elm->content))->lbl_flg == 1)
 	{
@@ -261,6 +271,7 @@ int 				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr)
 
 t_env				*ft_scanner(t_env *env, t_element *elm, char *ptr)
 {
+	printf("SCAN\n");
 	if (!(ft_syntax_analysis(env, elm, ptr)))
 	{
 		return (NULL);
@@ -282,6 +293,7 @@ t_env				*ft_instruparser(t_env *env)
 	{
 		if (!(ptr = ft_wsdel(((t_instru*)(elm->content))->buff)))
 			return (NULL);
+		printf("OPEN THE GATE\n%s\n", ptr);
 		if (*ptr == COMMENT_CHAR ||
 				*ptr == ALT_COMMENT_CHAR || *ptr == '\n')
 		{

@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:20:22 by ada               #+#    #+#             */
-/*   Updated: 2020/02/29 04:34:32 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/02 11:23:03 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void 		ft_assembler(t_env *env)
 {
+	printf("HELLO FROM ASSEMBLER\n");
 	if (!ft_frontend_analys(env))
 		{
 			ft_strdel((char**)&(env->vect));
