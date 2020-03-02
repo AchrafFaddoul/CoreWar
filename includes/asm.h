@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/02 01:49:32 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/02 14:14:00 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ t_op				g_op_tab[17];
 typedef struct 		s_label
 {
 	char			*label;
-	int				pc;
 }					t_label;
 
 typedef struct 		s_symbol_tab

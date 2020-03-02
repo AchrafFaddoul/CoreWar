@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 21:53:42 by ada               #+#    #+#             */
-/*   Updated: 2020/03/02 11:51:19 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/02 14:09:19 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,23 +85,32 @@ int 				ft_lbltokenizer(t_env *env, t_element *elm,
 	t_label			*element;
 	t_element 		*label;
 
+	printf("INSIDE TOKENIZER\n");
 	if (!(str = (char*)ft_memalloc(sizeof(char) * (len + 1))))
 		return (0);
 	ft_strncpy(str, ptr, len);
+	printf("cpy label |%s|\n", str);
 	if (!(element = ft_labelnew(str)))
 	{
 		ft_strdel((char**)&str);
 		return (0);
 	}
+	printf("HERE_1\n");
 	if (!(label = ft_elemnew(element)))
 	{
 		ft_strdel((char**)&str);
 		ft_memdel((void**)&element);
 		return (0);
 	}
+	printf("HERE_2\n");
 	ft_dlstpush(env->labels, label);
+	printf("HERE_3\n");
+	printf("%p\n", SYM_TAB->label);
+	exit(0);
 	SYM_TAB->label = ft_strdup(str);
+	printf("HERE_4\n");
 	((t_instru*)(elm->content))->lbl_flg = 1;
+	printf("HERE_5\n");
 	return (1);
 }
 
@@ -229,12 +238,17 @@ int 				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr)
 	printf("syntax anal in\n");
 	while (ptr[i])
 	{
+		printf("check segflt\n");
 		if (!ft_islabel(ptr[i]))
 		{
+			printf("inside\n");
 			if (ptr[i] == LABEL_CHAR)
 			{
+				printf("inside_sec_if\n");
+				printf("ptr:|%s|\n", ptr);
 				if (!(ft_lbltokenizer(env, elm, ptr, i)))
 					return (0);
+				printf("aft LBL TOKENIZER\n");
 				i++;
 				break ;
 			}
@@ -287,19 +301,23 @@ t_env				*ft_instruparser(t_env *env)
 {
 	t_element		*elm;
 	char 			*ptr;
+	t_symbol_tab	*s_tab;
 
 	elm = env->lines->head;
 	while (elm)
 	{
 		if (!(ptr = ft_wsdel(((t_instru*)(elm->content))->buff)))
 			return (NULL);
-		printf("OPEN THE GATE\n%s\n", ptr);
+		printf("OPEN THE GATE\n|%s|\n", ptr);
 		if (*ptr == COMMENT_CHAR ||
 				*ptr == ALT_COMMENT_CHAR || *ptr == '\n')
 		{
 			elm = elm->next;
 			continue ;
 		}
+		if (!(s_tab = (t_symbol_tab*)ft_memalloc(sizeof(t_symbol_tab))))
+			return (NULL);
+		((t_symbol_tab*)(((t_instru*)(elm->content))->sym_tab)) = s_tab;
 		if (!(ft_scanner(env, elm, ptr)))
 		{
 			ft_strdel((char**)&ptr);
