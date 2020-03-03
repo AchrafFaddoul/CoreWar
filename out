@@ -1,0 +1,64 @@
+Error
+HELLO FROM ASSEMBLER
+HELLO FROM front end anal
+HELLO FROM front end anal LINES PARSED
+HELLO FROM front end anal CMD PARSED
+HELLO FROM front end anal LABEL CREATED
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|entree:live%42#entree
+|
+SCAN
+LABELentree
+LABEL PARSED
+labelparsed 0 
+LABEL FOUND
+OP FOUND
+dakhala houna aydan
+3AFRIIIIT
+live%42#entree
+
+OUT
+INPUT |live%42#entree
+|
+thats what am looking for |%42#entree
+|
+ndex:4
+|%42#entree
+|separator|#|
+SUB|%42|
+INTO ARG
+OUT A SAT A SAT
+*** PARSE ARGS  ***
+entree
+live
+%42
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%0,r5
+|
+SCAN
+LABEL(null)
+LABEL PARSED
+labelparsed 1 
+dakhala houna aydan
+3AFRIIIIT
+ld%0,r5
+
+ld%0,r5
+
+OUT
+INPUT |ld%0,r5
+|
+thats what am looking for |%0,r5
+|
+index:2
+|%0,r5
+|separator|,|
+SUB|%0|
+dakhala min houna 

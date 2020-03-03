@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 21:53:42 by ada               #+#    #+#             */
-/*   Updated: 2020/03/02 14:09:19 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/03 03:24:35 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,32 +85,23 @@ int 				ft_lbltokenizer(t_env *env, t_element *elm,
 	t_label			*element;
 	t_element 		*label;
 
-	printf("INSIDE TOKENIZER\n");
 	if (!(str = (char*)ft_memalloc(sizeof(char) * (len + 1))))
 		return (0);
 	ft_strncpy(str, ptr, len);
-	printf("cpy label |%s|\n", str);
 	if (!(element = ft_labelnew(str)))
 	{
 		ft_strdel((char**)&str);
 		return (0);
 	}
-	printf("HERE_1\n");
 	if (!(label = ft_elemnew(element)))
 	{
 		ft_strdel((char**)&str);
 		ft_memdel((void**)&element);
 		return (0);
 	}
-	printf("HERE_2\n");
 	ft_dlstpush(env->labels, label);
-	printf("HERE_3\n");
-	printf("%p\n", SYM_TAB->label);
-	exit(0);
 	SYM_TAB->label = ft_strdup(str);
-	printf("HERE_4\n");
 	((t_instru*)(elm->content))->lbl_flg = 1;
-	printf("HERE_5\n");
 	return (1);
 }
 
@@ -124,16 +115,25 @@ int					ft_argtokenizer(t_element *elm, char *str, int start,
 	while (str[i] != '\n' && str[i] != COMMENT_CHAR &&
 			str[i] != ALT_COMMENT_CHAR && str[i] != SEPARATOR_CHAR)
 		i++;
+	printf("separator|%c|\n", str[i]);
 	if (!(arg = ft_strsub(str, start, i)))
 		return (-1);
+	printf("SUB|%s|\n", arg);
 	if (arg_nb == 1)
 		SYM_TAB->arg_1 = arg;
 	else if (arg_nb == 2)
 		SYM_TAB->arg_2 = arg;
 	else if (arg_nb == 3)
 		SYM_TAB->arg_3 = arg;
+	if (str[i] == SEPARATOR_CHAR)
+		i++;
 	return (i);
 }
+
+			//	ft_strdel((char**)&(SYM_TAB->op));
+			//	ft_strdel((char**)&(SYM_TAB->arg_1));
+			//	ft_strdel((char**)&(SYM_TAB->arg_2));
+			//	ft_strdel((char**)&(SYM_TAB->arg_3));
 
 int 				ft_argscanner(t_element *elm, char *str, int index)
 {
@@ -142,8 +142,10 @@ int 				ft_argscanner(t_element *elm, char *str, int index)
 
 	i = 0;
 	calls_nb = 0;
+	printf("|%s|", str);
 	while (str[i])
 	{
+	//	printf("LOOP\n");	
 		if (str[i] == 'r' || str[i] == DIRECT_CHAR ||
 				ft_isdigit(str[i]) || str[i] == '-')
 		{
@@ -151,10 +153,6 @@ int 				ft_argscanner(t_element *elm, char *str, int index)
 			if ((index >= g_op_tab[index].arg_nb) ||
 					((i = ft_argtokenizer(elm, str, i, calls_nb)) == -1))
 			{
-				ft_strdel((char**)&(SYM_TAB->op));
-				ft_strdel((char**)&(SYM_TAB->arg_1));
-				ft_strdel((char**)&(SYM_TAB->arg_2));
-				ft_strdel((char**)&(SYM_TAB->arg_3));
 				return (0);
 			}
 			if (str[i] == '\n' || str[i] == COMMENT_CHAR ||
@@ -185,20 +183,36 @@ t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
 	//get op
 	while (i < 16)
 	{
+		printf("%s\n", str);
 		if ((ft_strstr(str, g_op_tab[i].op)))
 			break ;
 			if (i == 15)
 				return (NULL);
 		i++;
 	}
+	printf("OUT\n");
 	if (!(SYM_TAB->op = ft_strdup(g_op_tab[i].op)))
 		return (NULL);
 	//get args
 	index = i;
-	i += ft_strlen(g_op_tab[i].op);
+	i = ft_strlen(g_op_tab[i].op);
+	printf("INPUT |%s|\n", str);
+	printf("thats what am looking for |%s|\n", str + i);
+	printf("index:%d\n", i);
 	// one arg 
 	if (!(ft_argscanner(elm, str + i, index)))
 		return (NULL);
+	printf("INTO ARG\n");
+	printf("OUT A SAT A SAT\n");
+	printf("*** PARSE ARGS  ***\n");
+	printf("%s\n%s\n%s\n%s\n%s\n", 
+	((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->label, 
+	((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->op, 
+	((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->arg_1, 
+	((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->arg_2,
+	((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->arg_3);
+	printf("*** DONE  ***\n");
+	printf("************************\n");
 	return (env);
 
 	// multiple arg
@@ -209,10 +223,12 @@ t_env				*ft_getop(t_env *env, t_element *elm, char *ptr)
 	int 			i;
 
 	i = 0;
+	printf("dakhala houna aydan\n");
 	while (ptr[i])
 	{
 		if (!ft_isop(ptr[i]))
 		{
+			printf("3AFRIIIIT\n")	;
 			if (!ft_get_instru(env, elm, ptr))
 				return (NULL);
 			else
@@ -235,20 +251,14 @@ int 				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr)
 	int 			i;
 	//line nature
 	i = 0;
-	printf("syntax anal in\n");
 	while (ptr[i])
 	{
-		printf("check segflt\n");
 		if (!ft_islabel(ptr[i]))
 		{
-			printf("inside\n");
 			if (ptr[i] == LABEL_CHAR)
 			{
-				printf("inside_sec_if\n");
-				printf("ptr:|%s|\n", ptr);
 				if (!(ft_lbltokenizer(env, elm, ptr, i)))
 					return (0);
-				printf("aft LBL TOKENIZER\n");
 				i++;
 				break ;
 			}
@@ -257,17 +267,21 @@ int 				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr)
 		}
 		i++;
 	}
+	printf("LABEL%s\n",
+			((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->label);
 	printf("LABEL PARSED\n");
-	int id = 1;
+	static int id;
 	printf("labelparsed %d \n", id++);
 	//check if comment or \n or op
 	if (((t_instru*)(elm->content))->lbl_flg == 1)
 	{
+		printf("LABEL FOUND\n");
 		if (ptr[i] == COMMENT_CHAR ||
 				ptr[i] == ALT_COMMENT_CHAR || ptr[i] == '\n')
 			return (1);
 		else
 		{
+			printf("OP FOUND\n");
 			if (!(ft_instru_tokenizer(env, elm, (ptr + i))))
 			{
 				//free last cash
@@ -275,8 +289,9 @@ int 				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr)
 			}
 		}
 	}
-	if (!(ft_instru_tokenizer(env, elm, ptr)))
+	else if (!(ft_instru_tokenizer(env, elm, ptr)))
 	{
+		printf("dakhala min houna \n");
 		//free last cash
 		return (0);
 	}
@@ -317,12 +332,17 @@ t_env				*ft_instruparser(t_env *env)
 		}
 		if (!(s_tab = (t_symbol_tab*)ft_memalloc(sizeof(t_symbol_tab))))
 			return (NULL);
-		((t_symbol_tab*)(((t_instru*)(elm->content))->sym_tab)) = s_tab;
+		((t_instru*)(elm->content))->sym_tab = s_tab;
 		if (!(ft_scanner(env, elm, ptr)))
 		{
 			ft_strdel((char**)&ptr);
 			return (NULL);
 		}
+	//	printf("%s\n%s\n%s\n%s\n", 
+	//	((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->op, 
+	//	((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->arg_1, 
+	//	((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->arg_2,
+	//	((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->arg_3);
 		elm = elm->next;
 	}
 	return (env);
