@@ -6,11 +6,58 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 21:53:42 by ada               #+#    #+#             */
-/*   Updated: 2020/03/03 03:49:24 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/04 00:20:27 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+/*
+			//	ft_strdel((char**)&(SYM_TAB->op));
+			//	ft_strdel((char**)&(SYM_TAB->arg_1));
+			//	ft_strdel((char**)&(SYM_TAB->arg_2));
+			//	ft_strdel((char**)&(SYM_TAB->arg_3));
+
+int 				ft_argscanner(t_element *elm, char *str, int index)
+{
+	int				i;
+	int 			calls_nb;
+
+	i = 0;
+	calls_nb = 0;
+	printf("|%s|", str);
+	while (str[i])
+	{
+	//	printf("LOOP\n");	
+		if (str[i] == 'r' || str[i] == DIRECT_CHAR ||
+				ft_isdigit(str[i]) || str[i] == '-')
+		{
+			calls_nb++;
+			if ((index >= g_op_tab[index].arg_nb) ||
+					((i = ft_argtokenizer(elm, str, i, calls_nb)) == -1))
+			{
+				return (0);
+			}
+			printf("ndiix|%d|-|%c|\n", i, str[i]);
+			if (str[i] == '\n' || str[i] == COMMENT_CHAR ||
+					str[i] == ALT_COMMENT_CHAR)
+				break ;
+			else if (str[i] == SEPARATOR_CHAR)
+			{
+				if (str[i + 1] == 'r' || str[i + 1] == DIRECT_CHAR ||
+					ft_isdigit(str[i + 1]) || str[i + 1] == '-')
+					continue ;
+				else
+					return (0);
+			}
+			//else
+			//	return (0);
+		}
+		i++;
+	}
+	return (1);
+}	
+*/
 
 static int			ft_islabel(char c)
 {
@@ -104,7 +151,7 @@ int 				ft_lbltokenizer(t_env *env, t_element *elm,
 	((t_instru*)(elm->content))->lbl_flg = 1;
 	return (1);
 }
-
+/*
 int					ft_argtokenizer(t_element *elm, char *str, int start, 
 		int arg_nb)
 {
@@ -130,51 +177,88 @@ printf("OP|%s|\n", ((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->op);
 		i++;
 	return (i);
 }
+*/
+int					ft_argtokenizer(t_element *elm, char *str, int start,
+	   int end)
+{
+	int 			i;
+	int				len;
+	char 			*arg;
 
-			//	ft_strdel((char**)&(SYM_TAB->op));
-			//	ft_strdel((char**)&(SYM_TAB->arg_1));
-			//	ft_strdel((char**)&(SYM_TAB->arg_2));
-			//	ft_strdel((char**)&(SYM_TAB->arg_3));
+	i = 0;
+	len  = end - start;
+	printf("start:%d end:%d len:%d\n", start, end, len);
+	if (!(arg = ft_strsub(str, start, len)))
+		return (0);
+	if (!SYM_TAB->arg_1)
+		SYM_TAB->arg_1 = arg;
+	else if (!SYM_TAB->arg_2)
+		SYM_TAB->arg_2 = arg;
+	else if (!SYM_TAB->arg_3)
+		SYM_TAB->arg_3 = arg;
+	else return (0);
+	return (1);
+}	
 
 int 				ft_argscanner(t_element *elm, char *str, int index)
 {
-	int				i;
+	int 			i;
+	int 			j;
 	int 			calls_nb;
 
 	i = 0;
-	calls_nb = 0;
-	printf("|%s|", str);
+	j = 0;
+	calls_nb = 1;
+	printf("ARRIVED TO ARG SCANNER\n");
+	printf("|%s|\n", g_op_tab[index].op);
 	while (str[i])
 	{
-	//	printf("LOOP\n");	
+		printf("inside\n");
 		if (str[i] == 'r' || str[i] == DIRECT_CHAR ||
 				ft_isdigit(str[i]) || str[i] == '-')
 		{
-			calls_nb++;
-			if ((index >= g_op_tab[index].arg_nb) ||
-					((i = ft_argtokenizer(elm, str, i, calls_nb)) == -1))
+			printf("actual char |%c|\n", str[i]);
+			printf("HELLO FROM WHILE LOOP\n");
+			j = i;
+			while (str[i])
 			{
-				return (0);
+				printf("actual char |%c|\n", str[i]);
+				if (str[i] == SEPARATOR_CHAR || str[i] == '\n' ||
+						str[i] == COMMENT_CHAR || str[i] == ALT_COMMENT_CHAR)
+				{
+					printf("SEPARATOR FOUND\n |%s|\n", str + i);
+					if (calls_nb > g_op_tab[index].arg_nb)
+						return (0);
+					if (!ft_argtokenizer(elm, str, j, i))
+						return (0);
+					calls_nb++;
+				//	if (str[i] == SEPARATOR_CHAR)
+				//		i++;
+					printf("check this one|%c|\n", str[i]);
+					break ;
+				}
+				i++;
 			}
-			printf("ndiix|%d|-|%c|\n", i, str[i]);
-			if (str[i] == '\n' || str[i] == COMMENT_CHAR ||
-					str[i] == ALT_COMMENT_CHAR)
-				break ;
-			else if (str[i] == SEPARATOR_CHAR)
-			{
-				if (str[i + 1] == 'r' || str[i + 1] == DIRECT_CHAR ||
-					ft_isdigit(str[i + 1]) || str[i + 1] == '-')
-					continue ;
-				else
-					return (0);
-			}
-			//else
-			//	return (0);
+		printf("arg1:|%s|\n", SYM_TAB->arg_1);
+		printf("arg2:|%s|\n", SYM_TAB->arg_2);
+		printf("arg3:|%s|\n", SYM_TAB->arg_3);
+		printf("actual char |%c|\n", str[i]);
+		}
+		if (str[i] == '\n' || str[i] == COMMENT_CHAR ||
+				str[i] == ALT_COMMENT_CHAR)
+		{
+			printf("OUT FOUND\n");
+			printf("|%c|\n", str[i]);
+			printf("|%s|\n", SYM_TAB->arg_1);
+			break ;
 		}
 		i++;
 	}
+	printf("FINISH SCANNING \n");
+	if (!SYM_TAB->arg_1)
+		return (0);
 	return (1);
-}	
+}
 
 t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
 {
@@ -185,16 +269,21 @@ t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
 	//get op
 	while (i < 16)
 	{
-		printf("%s\n", str);
+	//	printf("%s\n", str);
 		if ((ft_strstr(str, g_op_tab[i].op)))
 			break ;
 			if (i == 15)
 				return (NULL);
 		i++;
 	}
-	printf("OUT\n");
+	printf("yooo\n");
+	printf("|%s|\n|%s|\n", str, g_op_tab[i].op);
+	if (ft_strncmp(str, g_op_tab[i].op, ft_strlen(g_op_tab[i].op)))
+		return (NULL);
+	printf("yooo_2\n");
 	if (!(SYM_TAB->op = ft_strdup(g_op_tab[i].op)))
 		return (NULL);
+	printf("yooo_3\n");
 	//get args
 	index = i;
 	i = ft_strlen(g_op_tab[i].op);
@@ -202,11 +291,9 @@ t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
 	printf("thats what am looking for |%s|\n", str + i);
 	printf("index:%d\n", i);
 	// one arg 
+	printf("*** PARSE ARGS  ***\n");
 	if (!(ft_argscanner(elm, str + i, index)))
 		return (NULL);
-	printf("INTO ARG\n");
-	printf("OUT A SAT A SAT\n");
-	printf("*** PARSE ARGS  ***\n");
 	printf("%s\n%s\n%s\n%s\n%s\n", 
 	((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->label, 
 	((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->op, 
@@ -225,12 +312,10 @@ t_env				*ft_getop(t_env *env, t_element *elm, char *ptr)
 	int 			i;
 
 	i = 0;
-	printf("dakhala houna aydan\n");
 	while (ptr[i])
 	{
 		if (!ft_isop(ptr[i]))
 		{
-			printf("3AFRIIIIT\n")	;
 			if (!ft_get_instru(env, elm, ptr))
 				return (NULL);
 			else
@@ -277,7 +362,7 @@ int 				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr)
 	//check if comment or \n or op
 	if (((t_instru*)(elm->content))->lbl_flg == 1)
 	{
-		printf("LABEL FOUND\n");
+		printf("LABEL\n");
 		if (ptr[i] == COMMENT_CHAR ||
 				ptr[i] == ALT_COMMENT_CHAR || ptr[i] == '\n')
 			return (1);
@@ -293,7 +378,7 @@ int 				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr)
 	}
 	else if (!(ft_instru_tokenizer(env, elm, ptr)))
 	{
-		printf("dakhala min houna \n");
+		printf("ONLY OP \n");
 		//free last cash
 		return (0);
 	}

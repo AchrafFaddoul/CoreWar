@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/02 14:14:00 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/03 23:44:24 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ t_env			*ft_get_instru(t_env *env, t_element *elm, char *str);
 int				ft_argscanner(t_element *elm, char *str,
 		int index);
 int                 ft_argtokenizer(t_element *elm, char *str, int start,
-		int arg);
+		int len);
 int					ft_lbltokenizer(t_env *env, t_element *elm,char *ptr,
 		int len);
 //static t_label	*ft_labelnew(char *token);
