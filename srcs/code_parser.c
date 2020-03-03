@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 21:53:42 by ada               #+#    #+#             */
-/*   Updated: 2020/03/03 03:24:35 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/03 03:49:24 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,8 @@ int					ft_argtokenizer(t_element *elm, char *str, int start,
 	while (str[i] != '\n' && str[i] != COMMENT_CHAR &&
 			str[i] != ALT_COMMENT_CHAR && str[i] != SEPARATOR_CHAR)
 		i++;
-	printf("separator|%c|\n", str[i]);
+printf("separator|%c|\n", str[i]);
+printf("OP|%s|\n", ((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->op);
 	if (!(arg = ft_strsub(str, start, i)))
 		return (-1);
 	printf("SUB|%s|\n", arg);
@@ -155,6 +156,7 @@ int 				ft_argscanner(t_element *elm, char *str, int index)
 			{
 				return (0);
 			}
+			printf("ndiix|%d|-|%c|\n", i, str[i]);
 			if (str[i] == '\n' || str[i] == COMMENT_CHAR ||
 					str[i] == ALT_COMMENT_CHAR)
 				break ;
@@ -166,8 +168,8 @@ int 				ft_argscanner(t_element *elm, char *str, int index)
 				else
 					return (0);
 			}
-			else
-				return (0);
+			//else
+			//	return (0);
 		}
 		i++;
 	}
