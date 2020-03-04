@@ -1,4 +1,3 @@
-Error
 HELLO FROM ASSEMBLER
 HELLO FROM front end anal
 HELLO FROM front end anal LINES PARSED
@@ -10,14 +9,2766 @@ OPEN THE GATE
 OPEN THE GATE
 |entree:live%42#entree
 |
-SCAN
-LABELentree
-LABEL PARSED
-labelparsed 0 
-LABEL FOUND
-OP FOUND
-dakhala houna aydan
-3AFRIIIIT
-live%42#entree
-
-OUT
+INPUT |live%42#entree
+|
+*** PARSE ARGS  ***
+entree
+live
+%42
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%0,r5
+|
+INPUT |ld%0,r5
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%0
+r5
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%0,r5
+|
+INPUT |ld%0,r5
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%0
+r5
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%:bite
+|
+INPUT |zjmp%:bite
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%:bite
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|tir:stir1,%:tirb,%1
+|
+INPUT |stir1,%:tirb,%1
+|
+*** PARSE ARGS  ***
+tir
+sti
+r1
+%:tirb
+%1
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%2304,r10
+|
+INPUT |ld%2304,r10
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%2304
+r10
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%1,r5
+|
+INPUT |ld%1,r5
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%1
+r5
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%0,r11
+|
+INPUT |ld%0,r11
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%0
+r11
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|ld%4,r3
+|
+INPUT |ld%4,r3
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%4
+r3
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|tirf:live%42
+|
+INPUT |live%42
+|
+*** PARSE ARGS  ***
+tirf
+live
+%42
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|fork%:tirop
+|
+INPUT |fork%:tirop
+|
+*** PARSE ARGS  ***
+(null)
+fork
+%:tirop
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|live%742
+|
+INPUT |live%742
+|
+*** PARSE ARGS  ***
+(null)
+live
+%742
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|subr3,r5,r3
+|
+INPUT |subr3,r5,r3
+|
+*** PARSE ARGS  ***
+(null)
+sub
+r3
+r5
+r3
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%:top
+|
+INPUT |zjmp%:top
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%:top
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%0,r11
+|
+INPUT |ld%0,r11
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%0
+r11
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|fork%:tirvd
+|
+INPUT |fork%:tirvd
+|
+*** PARSE ARGS  ***
+(null)
+fork
+%:tirvd
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|live%42
+|
+INPUT |live%42
+|
+*** PARSE ARGS  ***
+(null)
+live
+%42
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir10,%-510,%0
+|
+INPUT |stir10,%-510,%0
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r10
+%-510
+%0
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir10,%-404,%0
+|
+INPUT |stir10,%-404,%0
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r10
+%-404
+%0
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir10,%-303,%0
+|
+INPUT |stir10,%-303,%0
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r10
+%-303
+%0
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir10,%-202,%0
+|
+INPUT |stir10,%-202,%0
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r10
+%-202
+%0
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%0,r11
+|
+INPUT |ld%0,r11
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%0
+r11
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%:tirf
+|
+INPUT |zjmp%:tirf
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%:tirf
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|tirop:ld%368,r2
+|
+INPUT |ld%368,r2
+|
+*** PARSE ARGS  ***
+tirop
+ld
+%368
+r2
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%0,r3
+|
+INPUT |ld%0,r3
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%0
+r3
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%4,r4
+|
+INPUT |ld%4,r4
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%4
+r4
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|tirb:live%1
+|
+INPUT |live%1
+|
+*** PARSE ARGS  ***
+tirb
+live
+%1
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir10,%-510,r2
+|
+INPUT |stir10,%-510,r2
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r10
+%-510
+r2
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir10,%-510,r3
+|
+INPUT |stir10,%-510,r3
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r10
+%-510
+r3
+*** DONE  ***
+************************
+OPEN THE GATE
+|addr4,r5,r4
+|
+INPUT |addr4,r5,r4
+|
+*** PARSE ARGS  ***
+(null)
+add
+r4
+r5
+r4
+*** DONE  ***
+************************
+OPEN THE GATE
+|addr3,r4,r3
+|
+INPUT |addr3,r4,r3
+|
+*** PARSE ARGS  ***
+(null)
+add
+r3
+r4
+r3
+*** DONE  ***
+************************
+OPEN THE GATE
+|subr2,r4,r2
+|
+INPUT |subr2,r4,r2
+|
+*** PARSE ARGS  ***
+(null)
+sub
+r2
+r4
+r2
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%:tirop
+|
+INPUT |zjmp%:tirop
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%:tirop
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%0,r11
+|
+INPUT |ld%0,r11
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%0
+r11
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%:tirb
+|
+INPUT |zjmp%:tirb
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%:tirb
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%:infi
+|
+INPUT |zjmp%:infi
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%:infi
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|p32deb:zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+p32deb
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|p32:subr6,r4,r6
+|
+INPUT |subr6,r4,r6
+|
+*** PARSE ARGS  ***
+p32
+sub
+r6
+r4
+r6
+*** DONE  ***
+************************
+OPEN THE GATE
+|addr6,r6,r11
+|
+INPUT |addr6,r6,r11
+|
+*** PARSE ARGS  ***
+(null)
+add
+r6
+r6
+r11
+*** DONE  ***
+************************
+OPEN THE GATE
+|ldi%:p32deb,r6,r7
+|
+INPUT |ldi%:p32deb,r6,r7
+|
+*** PARSE ARGS  ***
+(null)
+ldi
+%:p32deb
+r6
+r7
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir7,%-510,r11
+|
+INPUT |stir7,%-510,r11
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r7
+%-510
+r11
+*** DONE  ***
+************************
+OPEN THE GATE
+|p32li:live%1
+|
+INPUT |live%1
+|
+*** PARSE ARGS  ***
+p32li
+live
+%1
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%0,r10
+|
+INPUT |ld%0,r10
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%0
+r10
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir7,%-250,r6
+|
+INPUT |stir7,%-250,r6
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r7
+%-250
+r6
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%-192
+|
+INPUT |zjmp%-192
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%-192
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|tirvd:zjmp%:tirvd2
+|
+INPUT |zjmp%:tirvd2
+|
+*** PARSE ARGS  ***
+tirvd
+zjmp
+%:tirvd2
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|bite:stir1,%:copie,%2
+|
+INPUT |stir1,%:copie,%2
+|
+*** PARSE ARGS  ***
+bite
+sti
+r1
+%:copie
+%2
+*** DONE  ***
+************************
+OPEN THE GATE
+|ldi%:copie,%3,r2#metleldal'entree
+|
+INPUT |ldi%:copie,%3,r2#metleldal'entree
+|
+*** PARSE ARGS  ***
+(null)
+ldi
+%:copie
+%3
+r2
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir2,%:entree,%-4
+|
+INPUT |stir2,%:entree,%-4
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r2
+%:entree
+%-4
+*** DONE  ***
+************************
+OPEN THE GATE
+|ldi%:copie,%-1,r2
+|
+INPUT |ldi%:copie,%-1,r2
+|
+*** PARSE ARGS  ***
+(null)
+ldi
+%:copie
+%-1
+r2
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir2,%:entree,%-8
+|
+INPUT |stir2,%:entree,%-8
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r2
+%:entree
+%-8
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|stir1,%:p32li,%1
+|
+INPUT |stir1,%:p32li,%1
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r1
+%:p32li
+%1
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir1,%:b0,%1
+|
+INPUT |stir1,%:b0,%1
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r1
+%:b0
+%1
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|ld%0,r2
+|
+INPUT |ld%0,r2
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%0
+r2
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%8,r3#preparelesfork
+|
+INPUT |ld%8,r3#preparelesfork
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%8
+r3
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%1,r4
+|
+INPUT |ld%1,r4
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%1
+r4
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%0,r6
+|
+INPUT |ld%0,r6
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%0
+r6
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|b0:live%1#bouclefork
+|
+INPUT |live%1#bouclefork
+|
+*** PARSE ARGS  ***
+b0
+live
+%1
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|subr3,r4,r3
+|
+INPUT |subr3,r4,r3
+|
+*** PARSE ARGS  ***
+(null)
+sub
+r3
+r4
+r3
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%:tart
+|
+INPUT |zjmp%:tart
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%:tart
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|fork%:b1
+|
+INPUT |fork%:b1
+|
+*** PARSE ARGS  ***
+(null)
+fork
+%:b1
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|str5,r2
+|
+INPUT |str5,r2
+|
+*** PARSE ARGS  ***
+(null)
+st
+r5
+r2
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|xorr10,r10,r10#pourrien
+|
+INPUT |xorr10,r10,r10#pourrien
+|
+*** PARSE ARGS  ***
+(null)
+xor
+r10
+r10
+r10
+*** DONE  ***
+************************
+OPEN THE GATE
+|addr10,r10,r10#pourrien
+|
+INPUT |addr10,r10,r10#pourrien
+|
+*** PARSE ARGS  ***
+(null)
+add
+r10
+r10
+r10
+*** DONE  ***
+************************
+OPEN THE GATE
+|addr6,r6,r6
+|
+INPUT |addr6,r6,r6
+|
+*** PARSE ARGS  ***
+(null)
+add
+r6
+r6
+r6
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%0,r10
+|
+INPUT |ld%0,r10
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%0
+r10
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%:b0
+|
+INPUT |zjmp%:b0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%:b0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|b1:addr2,r4,r2
+|
+INPUT |addr2,r4,r2
+|
+*** PARSE ARGS  ***
+b1
+add
+r2
+r4
+r2
+*** DONE  ***
+************************
+OPEN THE GATE
+|addr6,r6,r6
+|
+INPUT |addr6,r6,r6
+|
+*** PARSE ARGS  ***
+(null)
+add
+r6
+r6
+r6
+*** DONE  ***
+************************
+OPEN THE GATE
+|addr6,r4,r6
+|
+INPUT |addr6,r4,r6
+|
+*** PARSE ARGS  ***
+(null)
+add
+r6
+r4
+r6
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%0,r10
+|
+INPUT |ld%0,r10
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%0
+r10
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%:b0
+|
+INPUT |zjmp%:b0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%:b0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|top:live%42
+|
+INPUT |live%42
+|
+*** PARSE ARGS  ***
+top
+live
+%42
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%9,r3
+|
+INPUT |ld%9,r3
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%9
+r3
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir3,%:p32deb,%-6
+|
+INPUT |stir3,%:p32deb,%-6
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r3
+%:p32deb
+%-6
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%2,r3
+|
+INPUT |ld%2,r3
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%2
+r3
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir3,%:p32deb,%-16
+|
+INPUT |stir3,%:p32deb,%-16
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r3
+%:p32deb
+%-16
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%0,r3
+|
+INPUT |ld%0,r3
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%0
+r3
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%:topd
+|
+INPUT |zjmp%:topd
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%:topd
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|infi:stir1,%:l0,%1
+|
+INPUT |stir1,%:l0,%1
+|
+*** PARSE ARGS  ***
+infi
+sti
+r1
+%:l0
+%1
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir1,%:l1,%1
+|
+INPUT |stir1,%:l1,%1
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r1
+%:l1
+%1
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir1,%:l2,%1
+|
+INPUT |stir1,%:l2,%1
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r1
+%:l2
+%1
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir1,%:l3,%1
+|
+INPUT |stir1,%:l3,%1
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r1
+%:l3
+%1
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir1,%:l4,%1
+|
+INPUT |stir1,%:l4,%1
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r1
+%:l4
+%1
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir1,%:l5,%1
+|
+INPUT |stir1,%:l5,%1
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r1
+%:l5
+%1
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir1,%:l6,%1
+|
+INPUT |stir1,%:l6,%1
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r1
+%:l6
+%1
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir1,%:l7,%1
+|
+INPUT |stir1,%:l7,%1
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r1
+%:l7
+%1
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir1,%:l8,%1
+|
+INPUT |stir1,%:l8,%1
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r1
+%:l8
+%1
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir1,%:l9,%1
+|
+INPUT |stir1,%:l9,%1
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r1
+%:l9
+%1
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir1,%:l10,%1
+|
+INPUT |stir1,%:l10,%1
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r1
+%:l10
+%1
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|l0:live%1
+|
+INPUT |live%1
+|
+*** PARSE ARGS  ***
+l0
+live
+%1
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|l1:live%1
+|
+INPUT |live%1
+|
+*** PARSE ARGS  ***
+l1
+live
+%1
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|l2:live%1
+|
+INPUT |live%1
+|
+*** PARSE ARGS  ***
+l2
+live
+%1
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|l3:live%1
+|
+INPUT |live%1
+|
+*** PARSE ARGS  ***
+l3
+live
+%1
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|l4:live%1
+|
+INPUT |live%1
+|
+*** PARSE ARGS  ***
+l4
+live
+%1
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|l5:live%1
+|
+INPUT |live%1
+|
+*** PARSE ARGS  ***
+l5
+live
+%1
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|l6:live%1
+|
+INPUT |live%1
+|
+*** PARSE ARGS  ***
+l6
+live
+%1
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|l7:live%1
+|
+INPUT |live%1
+|
+*** PARSE ARGS  ***
+l7
+live
+%1
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|l8:live%1
+|
+INPUT |live%1
+|
+*** PARSE ARGS  ***
+l8
+live
+%1
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|l9:live%1
+|
+INPUT |live%1
+|
+*** PARSE ARGS  ***
+l9
+live
+%1
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|l10:live%1
+|
+INPUT |live%1
+|
+*** PARSE ARGS  ***
+l10
+live
+%1
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%:l0
+|
+INPUT |zjmp%:l0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%:l0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|p1:zjmp%:infi
+|
+INPUT |zjmp%:infi
+|
+*** PARSE ARGS  ***
+p1
+zjmp
+%:infi
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|live%0#pourboucherl'entree
+|
+INPUT |live%0#pourboucherl'entree
+|
+*** PARSE ARGS  ***
+(null)
+live
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|copie:ld%1,r1
+|
+INPUT |ld%1,r1
+|
+*** PARSE ARGS  ***
+copie
+ld
+%1
+r1
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|tart:stir1,%:p64li,%1
+|
+INPUT |stir1,%:p64li,%1
+|
+*** PARSE ARGS  ***
+tart
+sti
+r1
+%:p64li
+%1
+*** DONE  ***
+************************
+OPEN THE GATE
+|orr2,r2,r2#selectionverslesmodules
+|
+INPUT |orr2,r2,r2#selectionverslesmodules
+|
+*** PARSE ARGS  ***
+(null)
+or
+r2
+r2
+r2
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%:p64
+|
+INPUT |zjmp%:p64
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%:p64
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|subr2,r4,r2
+|
+INPUT |subr2,r4,r2
+|
+*** PARSE ARGS  ***
+(null)
+sub
+r2
+r4
+r2
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%:p32
+|
+INPUT |zjmp%:p32
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%:p32
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%0,r2
+|
+INPUT |ld%0,r2
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%0
+r2
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%:infi
+|
+INPUT |zjmp%:infi
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%:infi
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|tirvd2:zjmp%:tirdow
+|
+INPUT |zjmp%:tirdow
+|
+*** PARSE ARGS  ***
+tirvd2
+zjmp
+%:tirdow
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|topd:ld%9,r3
+|
+INPUT |ld%9,r3
+|
+*** PARSE ARGS  ***
+topd
+ld
+%9
+r3
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir3,%:fin,%-6
+|
+INPUT |stir3,%:fin,%-6
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r3
+%:fin
+%-6
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%2,r3
+|
+INPUT |ld%2,r3
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%2
+r3
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir3,%:fin,%-16
+|
+INPUT |stir3,%:fin,%-16
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r3
+%:fin
+%-16
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%0,r3
+|
+INPUT |ld%0,r3
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%0
+r3
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%:infi
+|
+INPUT |zjmp%:infi
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%:infi
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|p64deb:zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+p64deb
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%0
+|
+INPUT |zjmp%0
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%0
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|p64:ld%10,r8
+|
+INPUT |ld%10,r8
+|
+*** PARSE ARGS  ***
+p64
+ld
+%10
+r8
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|subr6,r8,r6
+|
+INPUT |subr6,r8,r6
+|
+*** PARSE ARGS  ***
+(null)
+sub
+r6
+r8
+r6
+*** DONE  ***
+************************
+OPEN THE GATE
+|andr6,%2147483648,r8
+|
+INPUT |andr6,%2147483648,r8
+|
+*** PARSE ARGS  ***
+(null)
+and
+r6
+%2147483648
+r8
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%:cont
+|
+INPUT |zjmp%:cont
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%:cont
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%118,r8
+|
+INPUT |ld%118,r8
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%118
+r8
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|addr6,r8,r6
+|
+INPUT |addr6,r8,r6
+|
+*** PARSE ARGS  ***
+(null)
+add
+r6
+r8
+r6
+*** DONE  ***
+************************
+OPEN THE GATE
+|cont:addr6,r6,r6
+|
+INPUT |addr6,r6,r6
+|
+*** PARSE ARGS  ***
+cont
+add
+r6
+r6
+r6
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%272,r8
+|
+INPUT |ld%272,r8
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%272
+r8
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%29,r9
+|
+INPUT |ld%29,r9
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%29
+r9
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ldi%:p64deb,r6,r7
+|
+INPUT |ldi%:p64deb,r6,r7
+|
+*** PARSE ARGS  ***
+(null)
+ldi
+%:p64deb
+r6
+r7
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir7,r8,r6
+|
+INPUT |stir7,r8,r6
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r7
+r8
+r6
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir7,r9,r6
+|
+INPUT |stir7,r9,r6
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r7
+r9
+r6
+*** DONE  ***
+************************
+OPEN THE GATE
+|p64li:live%1
+|
+INPUT |live%1
+|
+*** PARSE ARGS  ***
+p64li
+live
+%1
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%0,r10
+|
+INPUT |ld%0,r10
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%0
+r10
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%186
+|
+INPUT |zjmp%186
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%186
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|tirdow:ld%425,r2
+|
+INPUT |ld%425,r2
+|
+*** PARSE ARGS  ***
+tirdow
+ld
+%425
+r2
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%0,r3
+|
+INPUT |ld%0,r3
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%0
+r3
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%4,r4
+|
+INPUT |ld%4,r4
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%4
+r4
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|tird:live%42
+|
+INPUT |live%42
+|
+*** PARSE ARGS  ***
+tird
+live
+%42
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir10,%:fin,r2
+|
+INPUT |stir10,%:fin,r2
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r10
+%:fin
+r2
+*** DONE  ***
+************************
+OPEN THE GATE
+|stir10,%:fin,r3
+|
+INPUT |stir10,%:fin,r3
+|
+*** PARSE ARGS  ***
+(null)
+sti
+r10
+%:fin
+r3
+*** DONE  ***
+************************
+OPEN THE GATE
+|addr4,r5,r4
+|
+INPUT |addr4,r5,r4
+|
+*** PARSE ARGS  ***
+(null)
+add
+r4
+r5
+r4
+*** DONE  ***
+************************
+OPEN THE GATE
+|addr3,r4,r3
+|
+INPUT |addr3,r4,r3
+|
+*** PARSE ARGS  ***
+(null)
+add
+r3
+r4
+r3
+*** DONE  ***
+************************
+OPEN THE GATE
+|subr2,r4,r2
+|
+INPUT |subr2,r4,r2
+|
+*** PARSE ARGS  ***
+(null)
+sub
+r2
+r4
+r2
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%:tirdow
+|
+INPUT |zjmp%:tirdow
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%:tirdow
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|ld%0,r11
+|
+INPUT |ld%0,r11
+|
+*** PARSE ARGS  ***
+(null)
+ld
+%0
+r11
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%:tird
+|
+INPUT |zjmp%:tird
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%:tird
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|zjmp%:p1
+|
+INPUT |zjmp%:p1
+|
+*** PARSE ARGS  ***
+(null)
+zjmp
+%:p1
+(null)
+(null)
+*** DONE  ***
+************************
+OPEN THE GATE
+|
+|
+OPEN THE GATE
+|fin:live%633
+|
+INPUT |live%633
+|
+*** PARSE ARGS  ***
+fin
+live
+%633
+(null)
+(null)
+*** DONE  ***
+************************
+HELLO FROM front end anal INSTRU PARSED
+Done

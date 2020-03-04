@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 21:53:42 by ada               #+#    #+#             */
-/*   Updated: 2020/03/04 00:20:27 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/04 02:11:27 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,6 @@ int					ft_argtokenizer(t_element *elm, char *str, int start,
 
 	i = 0;
 	len  = end - start;
-	printf("start:%d end:%d len:%d\n", start, end, len);
 	if (!(arg = ft_strsub(str, start, len)))
 		return (0);
 	if (!SYM_TAB->arg_1)
@@ -209,52 +208,32 @@ int 				ft_argscanner(t_element *elm, char *str, int index)
 	i = 0;
 	j = 0;
 	calls_nb = 1;
-	printf("ARRIVED TO ARG SCANNER\n");
-	printf("|%s|\n", g_op_tab[index].op);
 	while (str[i])
 	{
-		printf("inside\n");
 		if (str[i] == 'r' || str[i] == DIRECT_CHAR ||
 				ft_isdigit(str[i]) || str[i] == '-')
 		{
-			printf("actual char |%c|\n", str[i]);
-			printf("HELLO FROM WHILE LOOP\n");
 			j = i;
 			while (str[i])
 			{
-				printf("actual char |%c|\n", str[i]);
 				if (str[i] == SEPARATOR_CHAR || str[i] == '\n' ||
 						str[i] == COMMENT_CHAR || str[i] == ALT_COMMENT_CHAR)
 				{
-					printf("SEPARATOR FOUND\n |%s|\n", str + i);
 					if (calls_nb > g_op_tab[index].arg_nb)
 						return (0);
 					if (!ft_argtokenizer(elm, str, j, i))
 						return (0);
 					calls_nb++;
-				//	if (str[i] == SEPARATOR_CHAR)
-				//		i++;
-					printf("check this one|%c|\n", str[i]);
 					break ;
 				}
 				i++;
 			}
-		printf("arg1:|%s|\n", SYM_TAB->arg_1);
-		printf("arg2:|%s|\n", SYM_TAB->arg_2);
-		printf("arg3:|%s|\n", SYM_TAB->arg_3);
-		printf("actual char |%c|\n", str[i]);
 		}
 		if (str[i] == '\n' || str[i] == COMMENT_CHAR ||
 				str[i] == ALT_COMMENT_CHAR)
-		{
-			printf("OUT FOUND\n");
-			printf("|%c|\n", str[i]);
-			printf("|%s|\n", SYM_TAB->arg_1);
 			break ;
-		}
 		i++;
 	}
-	printf("FINISH SCANNING \n");
 	if (!SYM_TAB->arg_1)
 		return (0);
 	return (1);
@@ -263,6 +242,7 @@ int 				ft_argscanner(t_element *elm, char *str, int index)
 t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
 {
 	int 			i;
+	int				len;
 	int 			index;
 
 	i = 0;
@@ -271,25 +251,27 @@ t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
 	{
 	//	printf("%s\n", str);
 		if ((ft_strstr(str, g_op_tab[i].op)))
-			break ;
+		{
+			len = ft_strlen(g_op_tab[i].op);
+			if (str[len] == 'r' || str[len] == DIRECT_CHAR ||
+					ft_isdigit(str[len]) || str[len] == '-')
+			{
+				if (!ft_strncmp(str, g_op_tab[i].op, len))
+					break ;
+			}
+		}
 			if (i == 15)
 				return (NULL);
 		i++;
 	}
-	printf("yooo\n");
-	printf("|%s|\n|%s|\n", str, g_op_tab[i].op);
-	if (ft_strncmp(str, g_op_tab[i].op, ft_strlen(g_op_tab[i].op)))
-		return (NULL);
-	printf("yooo_2\n");
+//	if (ft_strncmp(str, g_op_tab[i].op, ft_strlen(g_op_tab[i].op)))
+//		return (NULL);
 	if (!(SYM_TAB->op = ft_strdup(g_op_tab[i].op)))
 		return (NULL);
-	printf("yooo_3\n");
 	//get args
 	index = i;
 	i = ft_strlen(g_op_tab[i].op);
 	printf("INPUT |%s|\n", str);
-	printf("thats what am looking for |%s|\n", str + i);
-	printf("index:%d\n", i);
 	// one arg 
 	printf("*** PARSE ARGS  ***\n");
 	if (!(ft_argscanner(elm, str + i, index)))
@@ -354,21 +336,14 @@ int 				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr)
 		}
 		i++;
 	}
-	printf("LABEL%s\n",
-			((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->label);
-	printf("LABEL PARSED\n");
-	static int id;
-	printf("labelparsed %d \n", id++);
 	//check if comment or \n or op
 	if (((t_instru*)(elm->content))->lbl_flg == 1)
 	{
-		printf("LABEL\n");
 		if (ptr[i] == COMMENT_CHAR ||
 				ptr[i] == ALT_COMMENT_CHAR || ptr[i] == '\n')
 			return (1);
 		else
 		{
-			printf("OP FOUND\n");
 			if (!(ft_instru_tokenizer(env, elm, (ptr + i))))
 			{
 				//free last cash
@@ -378,7 +353,6 @@ int 				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr)
 	}
 	else if (!(ft_instru_tokenizer(env, elm, ptr)))
 	{
-		printf("ONLY OP \n");
 		//free last cash
 		return (0);
 	}
@@ -387,7 +361,6 @@ int 				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr)
 
 t_env				*ft_scanner(t_env *env, t_element *elm, char *ptr)
 {
-	printf("SCAN\n");
 	if (!(ft_syntax_analysis(env, elm, ptr)))
 	{
 		return (NULL);
