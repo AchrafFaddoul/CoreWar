@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:20:22 by ada               #+#    #+#             */
-/*   Updated: 2020/03/05 12:18:17 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/05 14:44:24 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,7 @@ t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
 		return (NULL);
 	index = i;
 	i = ft_strlen(g_op_tab[i].op);
+	((t_instru*)(elm->content))->op_flg = 1;
 	if (!(ft_argscanner(elm, str + i, index)))
 		return (NULL);
 	return (env);

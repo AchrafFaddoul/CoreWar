@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:23:34 by ada               #+#    #+#             */
-/*   Updated: 2020/03/04 02:34:04 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/05 14:34:22 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,10 @@ t_env		*ft_frontend_analys(t_env *env)
 	{
 		return (NULL);
 	}
+/*	if (!(ft_semantic_analysis(env)))
+	{
+		return (NULL);
+	}
+	*/
 	return (env);
 }
