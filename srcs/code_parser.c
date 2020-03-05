@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 21:53:42 by ada               #+#    #+#             */
-/*   Updated: 2020/03/05 14:46:26 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/05 15:20:03 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ t_env				*ft_instruparser(t_env *env)
 			ft_strdel((char**)&ptr);
 			return (NULL);
 		}
-	printf("************************************\n");
-	printf("lbl:%s\nop:%s\narg1:%s\narg2:%s\narg3:%s\n",
+		printf("************************************\n");
+			printf("lbl:%s\nop:%s\narg1:%s\narg2:%s\narg3:%s\n",
 			((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->label,
 			((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->op,
 			((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->arg_1,
@@ -57,7 +57,7 @@ t_env				*ft_instruparser(t_env *env)
 	printf("op_flg:%d\n", ((t_instru*)(elm->content))->op_flg);
 	printf("lbl_flg:%d\n", ((t_instru*)(elm->content))->lbl_flg);
 		elm = elm->next;
-	}
+	}	
 	elm = env->labels->head;
 	while (elm)
    {
@@ -69,15 +69,20 @@ t_env				*ft_instruparser(t_env *env)
 }
 
 /*
-   printf("***********************************\n");
-   printf("op:%s\narg1:->%s\narg2:->%s\narg3:->%s\n",
-   ((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->op, 
-   ((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->arg_1, 
-   ((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->arg_2,
-   ((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->arg_3);
-   while (elm)
+	printf("************************************\n");
+	printf("lbl:%s\nop:%s\narg1:%s\narg2:%s\narg3:%s\n",
+			((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->label,
+			((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->op,
+			((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->arg_1,
+			((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->arg_2,
+			((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->arg_3);
+	printf("op_flg:%d\n", ((t_instru*)(elm->content))->op_flg);
+	printf("lbl_flg:%d\n", ((t_instru*)(elm->content))->lbl_flg);
+	elm = env->labels->head;
+	while (elm)
    {
-   printf("%s\n", ((t_label*)(elm->content))->label);
-   elm = elm->next;
+   		printf("%s\n", ((t_label*)(elm->content))->label);
+		printf("%d\n", ((t_label*)(elm->content))->pc);
+   		elm = elm->next;
    }
    */

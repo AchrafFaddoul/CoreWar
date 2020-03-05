@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/05 14:42:46 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/05 15:08:28 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ typedef struct 		s_symbol_tab
 	char 			*arg_1;
 	char 			*arg_2;
 	char 			*arg_3;
+	int				val_1;
+	int				val_2;
+	int				val_3;
 }					t_symbol_tab;
 
 typedef struct 		s_instru
