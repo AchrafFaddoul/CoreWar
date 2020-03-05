@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:20:22 by ada               #+#    #+#             */
-/*   Updated: 2020/03/05 16:14:14 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/05 23:59:40 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,25 +201,28 @@ t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
 	int 			i;
 	int				len;
 	int 			index;
+	char 			*ptr;
 
 	i = 0;
 	printf("here_2\n");
+	if (!(ptr = ft_wsdel(str)))
+		return (NULL);
 	while (i < 16)
 	{
 			printf("str:%sop:%s\nop_len:%d\n",
-				str, g_op_tab[i].op, (int)ft_strlen(g_op_tab[i].op));
-		if ((ft_strstr(str, g_op_tab[i].op)))
+				ptr, g_op_tab[i].op, (int)ft_strlen(g_op_tab[i].op));
+		if ((ft_strstr(ptr, g_op_tab[i].op)))
 		{
 			printf("lheh\n");
-			printf("str:%sop:%s\nop_len:%d\n",
-				str, g_op_tab[i].op, (int)ft_strlen(g_op_tab[i].op));
-			if (!ft_strncmp(str, g_op_tab[i].op, ft_strlen(g_op_tab[i].op)))
+			printf("str|%sop|%s\nop_len|%d\n",
+				ptr, g_op_tab[i].op, (int)ft_strlen(g_op_tab[i].op));
+			if (!ft_strncmp(ptr, g_op_tab[i].op, ft_strlen(g_op_tab[i].op)))
 				{
 					printf("hena\n");
 					len = ft_strlen(g_op_tab[i].op);
-					if (str[len] == 'r' || str[len] == DIRECT_CHAR ||
-							str[len] == LABEL_CHAR ||
-						ft_isdigit(str[len]) || str[len] == '-')
+					if (ptr[len] == 'r' || ptr[len] == DIRECT_CHAR ||
+							ptr[len] == LABEL_CHAR ||
+						ft_isdigit(ptr[len]) || ptr[len] == '-')
 					{
 						break ;
 					}
@@ -235,7 +238,7 @@ t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
 	index = i;
 	i = ft_strlen(g_op_tab[i].op);
 	((t_instru*)(elm->content))->op_flg = 1;
-	if (!(ft_argscanner(elm, str + i, index)))
+	if (!(ft_argscanner(elm, ptr + i, index)))
 		return (NULL);
 	return (env);
 }

@@ -6,12 +6,11 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 21:53:42 by ada               #+#    #+#             */
-/*   Updated: 2020/03/05 15:20:03 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/05 23:53:35 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-
 
 t_env				*ft_scanner(t_env *env, t_element *elm, char *ptr)
 {
@@ -20,6 +19,20 @@ t_env				*ft_scanner(t_env *env, t_element *elm, char *ptr)
 		return (NULL);
 	}
 	return (env);
+}
+
+char 				*ft_first_ws_del(char *ptr)
+{
+	char 			*dest;
+	int 			i;
+
+	i = 0;
+	while (ptr[i] && (ptr[i] == 9 || ptr[i] == 32))
+		i++;
+	if (!(dest = (char*)ft_memalloc(sizeof(char) * (ft_strlen(ptr + i) + 1))))
+		return (NULL);
+	ft_strcpy(dest, ptr + i);
+	return (dest);
 }
 
 t_env				*ft_instruparser(t_env *env)
@@ -31,8 +44,11 @@ t_env				*ft_instruparser(t_env *env)
 	elm = env->lines->head;
 	while (elm)
 	{
-		if (!(ptr = ft_wsdel(((t_instru*)(elm->content))->buff)))
+	//	if (!(ptr = ft_wsdel(((t_instru*)(elm->content))->buff)))
+	//		return (NULL);
+		if (!(ptr = ft_first_ws_del(((t_instru*)(elm->content))->buff)))
 			return (NULL);
+	
 		if (*ptr == COMMENT_CHAR ||
 				*ptr == ALT_COMMENT_CHAR || *ptr == '\n')
 		{
@@ -69,6 +85,7 @@ t_env				*ft_instruparser(t_env *env)
 }
 
 /*
+
 	printf("************************************\n");
 	printf("lbl:%s\nop:%s\narg1:%s\narg2:%s\narg3:%s\n",
 			((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->label,
@@ -86,3 +103,5 @@ t_env				*ft_instruparser(t_env *env)
    		elm = elm->next;
    }
    */
+
+
