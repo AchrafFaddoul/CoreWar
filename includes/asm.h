@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/03 23:44:24 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/05 12:15:47 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void 			ft_error(void);
 void			dummy_del(void *content);
 t_env			*ft_instruparser(t_env *env);
 t_env			*ft_scanner(t_env *env, t_element *elm, char *ptr);
-int				ft_syntax_analysis(t_env *env, t_element *elm, char *ptr);
+int				ft_syntax_analys(t_env *env, t_element *elm, char *ptr);
 int				ft_instru_tokenizer(t_env *env, t_element *elm, char *ptr);
 t_env			*ft_getop(t_env *env, t_element *elm, char *ptr);
 t_env			*ft_get_instru(t_env *env, t_element *elm, char *str);
@@ -95,9 +95,11 @@ int                 ft_argtokenizer(t_element *elm, char *str, int start,
 		int len);
 int					ft_lbltokenizer(t_env *env, t_element *elm,char *ptr,
 		int len);
-//static t_label	*ft_labelnew(char *token);
+t_label			*ft_labelnew(char *token);
 char			*ft_wsdel(char *str);
 char			*ft_intrucpy(char *ptr, char *dest);
+int				ft_islabel(char c);
+int				ft_isop(char c);
 
 
 #endif
