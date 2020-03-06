@@ -13,6 +13,7 @@ FILES = srcs/main.c \
 	srcs/op.c  \
 	srcs/code_parser.c  \
 	srcs/syntax_analys.c  \
+	srcs/semantic_analys.c  \
 
 OBJ = $(FILES:.c=.o)
 

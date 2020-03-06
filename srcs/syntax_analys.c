@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:20:22 by ada               #+#    #+#             */
-/*   Updated: 2020/03/06 17:23:50 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/06 17:30:19 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,10 +256,6 @@ int 				ft_isindir(t_element *elm, char *arg, int arg_nb)
 	val = 0;
 	if (*arg == LABEL_CHAR)
 	{
-//		if (!(ft_check_label(env, arg + 1)))
-//			return (0);
-//		else
-//		{
 			if (arg_nb == 1)
 				SYM_TAB->val_1.nat = T_IND;
 			else if (arg_nb == 2)
@@ -267,7 +263,6 @@ int 				ft_isindir(t_element *elm, char *arg, int arg_nb)
 			else if (arg_nb == 3)
 				SYM_TAB->val_3.nat = T_IND;
 			return (1);
-//		}
 	}
 	else if (*arg == '-' || ft_isdigit(*arg))
 	{
@@ -302,19 +297,16 @@ int 				ft_check_args(t_element *elm, char *arg, int arg_nb)
 	val = -1;
 	if (*arg == 'r')
 	{
-		printf("here_1\n");
 		if (!(ft_isreg(elm, arg + 1, arg_nb)))
 			return (0);
 	}
 	else if (*arg == DIRECT_CHAR)
 	{
-		printf("here_2\n");
 		if (!(ft_isdir(elm, arg + 1, arg_nb)))
 			return (0);
 	}
 	else if (*arg == LABEL_CHAR || *arg == '-' || ft_isdigit(*arg))
 	{
-		printf("here_3\n");
 		if (!(ft_isindir(elm, arg, arg_nb)))
 			return (0);
 	}
