@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:20:22 by ada               #+#    #+#             */
-/*   Updated: 2020/03/05 23:59:40 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/06 12:15:24 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,28 @@ int 				ft_lbltokenizer(t_env *env, t_element *elm,
 	((t_instru*)(elm->content))->lbl_flg = 1;
 	return (1);
 }
-/*
+
+int 				ft_isreg(t_element *elm, char *arg)
+{
+	int 			i;
+	int 			reg;
+
+	i = 0;
+	reg = 0;
+	while (arg[i])
+	{
+		if (!(ft_isdigit(arg[i])))
+			return (0);
+		i++;
+	}
+	reg = ft_atoi(arg);
+	if (reg < 1 || reg > 16)
+		return  (0);
+	SYM_TAB->val_1->val = reg;
+	SYM_TAB->val_1->nature = T_REG;
+	return (1);
+}
+
 int 				ft_check_args(t_element *elm, char *arg, int arg_nb)
 {
 	int 			val;
@@ -112,15 +133,22 @@ int 				ft_check_args(t_element *elm, char *arg, int arg_nb)
 	val = -1;
 	if (*arg == 'r')
 	{
-		;
+		if (!(ft_isreg(elm, arg + 1)))
+			return (0);
 	}
 	else if (*arg == DIRECT_CHAR)
 	{
-		;
+		if (!(ft_isdir(elm, arg + 1)))
+			return (0)
 	}
-	else if 
+	else if (*arg == LABEL_CHAR || *arg == '-' || ft_isdigit(*arg))
+	{
+		if (!(ft_isindir(elm, arg)))
+			return (0);
+	}
+return (1)
 }
-*/
+
 int					ft_argtokenizer(t_element *elm, char *str, int start,
 		int end)
 {
@@ -135,20 +163,20 @@ int					ft_argtokenizer(t_element *elm, char *str, int start,
 	if (!SYM_TAB->arg_1)
 	{
 		SYM_TAB->arg_1 = arg;
-	//	if (!(ft_check_arg(elm, arg, 1)))
-	//		return (0);
+		if (!(ft_check_arg(elm, arg, 1)))
+			return (0);
 	}
 	else if (!SYM_TAB->arg_2)
 	{
 		SYM_TAB->arg_2 = arg;
-	//	if (!(ft_check_arg(elm, arg, 2)))
-	//		return (0);
+		if (!(ft_check_arg(elm, arg, 2)))
+			return (0);
 	}
 	else if (!SYM_TAB->arg_3)
 	{
 		SYM_TAB->arg_3 = arg;
-	//	if (!(ft_check_arg(elm, arg, 3)))
-	//		return (0);
+		if (!(ft_check_arg(elm, arg, 3)))
+			return (0);
 	}
 	else
 		return (0);
@@ -164,7 +192,6 @@ int 				ft_argscanner(t_element *elm, char *str, int index)
 	i = 0;
 	j = 0;
 	calls_nb = 1;
-	printf("hererererere\n");
 	while (str[i])
 	{
 		if (str[i] == 'r' || str[i] == DIRECT_CHAR || str[i] == LABEL_CHAR ||
@@ -204,21 +231,14 @@ t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
 	char 			*ptr;
 
 	i = 0;
-	printf("here_2\n");
 	if (!(ptr = ft_wsdel(str)))
 		return (NULL);
 	while (i < 16)
 	{
-			printf("str:%sop:%s\nop_len:%d\n",
-				ptr, g_op_tab[i].op, (int)ft_strlen(g_op_tab[i].op));
 		if ((ft_strstr(ptr, g_op_tab[i].op)))
 		{
-			printf("lheh\n");
-			printf("str|%sop|%s\nop_len|%d\n",
-				ptr, g_op_tab[i].op, (int)ft_strlen(g_op_tab[i].op));
 			if (!ft_strncmp(ptr, g_op_tab[i].op, ft_strlen(g_op_tab[i].op)))
 				{
-					printf("hena\n");
 					len = ft_strlen(g_op_tab[i].op);
 					if (ptr[len] == 'r' || ptr[len] == DIRECT_CHAR ||
 							ptr[len] == LABEL_CHAR ||
@@ -232,7 +252,6 @@ t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
 			return (NULL);
 		i++;
 	}
-	printf("HOLA\n");
 	if (!(SYM_TAB->op = ft_strdup(g_op_tab[i].op)))
 		return (NULL);
 	index = i;

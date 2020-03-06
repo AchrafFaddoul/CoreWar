@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 21:53:42 by ada               #+#    #+#             */
-/*   Updated: 2020/03/05 23:53:35 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/06 00:10:28 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ t_env				*ft_instruparser(t_env *env)
 	elm = env->lines->head;
 	while (elm)
 	{
-	//	if (!(ptr = ft_wsdel(((t_instru*)(elm->content))->buff)))
-	//		return (NULL);
 		if (!(ptr = ft_first_ws_del(((t_instru*)(elm->content))->buff)))
 			return (NULL);
 	

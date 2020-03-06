@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/05 15:08:28 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/06 12:09:52 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ typedef struct 		s_label
 	int 			pc;
 }					t_label;
 
+typedef struct 		s_args
+{
+	int 			val;
+	int 			nature;
+}					t_args;
+
 typedef struct 		s_symbol_tab
 {
 	char			*label;
@@ -49,9 +55,9 @@ typedef struct 		s_symbol_tab
 	char 			*arg_1;
 	char 			*arg_2;
 	char 			*arg_3;
-	int				val_1;
-	int				val_2;
-	int				val_3;
+	t_args			val_1;
+	t_args			val_2;
+	t_args			val_3;
 }					t_symbol_tab;
 
 typedef struct 		s_instru
