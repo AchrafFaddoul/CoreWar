@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:20:22 by ada               #+#    #+#             */
-/*   Updated: 2020/03/06 16:32:45 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/06 17:23:50 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int 				ft_isreg(t_element *elm, char *arg, int arg_nb)
 	}
 	return (1);
 }
-
+/*
 
 int 				ft_check_label(t_env *env, char *arg)
 {
@@ -153,17 +153,19 @@ int 				ft_check_label(t_env *env, char *arg)
 		printf("arg->%s\n", arg);
 		printf("lst->%s\n", ((t_label*)(tmp->content))->label);
 		printf("LEN->%d\n", len);
-		if (!(ft_strncmp(arg, ((t_label*)(tmp->content))->label, len)))
+		if (!(ft_strcmp(arg, ((t_label*)(tmp->content))->label)))
 		{
 			printf("**TRUE***\n");
 			return (1);
 		}
+		printf("NEXT\n");
 		tmp = tmp->next;
+		printf("adr%p\n", tmp);
 	}
 	printf("OUT\n");
 	return (0);
 }
-
+*/
 int 				ft_isvalid(char *arg)
 {
 	int				i;
@@ -196,25 +198,19 @@ int 				ft_isnumber(char *arg)
 	return (1);
 }
 
-int 				ft_isdir(t_env *env, t_element *elm, char *arg,
-		int arg_nb)
+int 				ft_isdir(t_element *elm, char *arg, int arg_nb)
 {
 	int 			i;
 	int 			val;
 
 	i = 0;
 	val = 0;
-	printf("is dir _in\nstr->%s\n", arg);
 	if (*arg == LABEL_CHAR)
 	{
-		printf("WAW\n");
-		if (!(ft_check_label(env, arg + 1)))
-		{
-			printf("%s\nerrrrrrrrrrrrrrror\n", arg + 1);
-			return (0);
-		}
-		else
-		{
+	//	if (!(ft_check_label(env, arg + 1)))
+	//		return (0);
+	//	else
+	//	{
 			if (arg_nb == 1)
 				SYM_TAB->val_1.nat = T_DIR;
 			else if (arg_nb == 2)
@@ -222,12 +218,10 @@ int 				ft_isdir(t_env *env, t_element *elm, char *arg,
 			else if (arg_nb == 3)
 				SYM_TAB->val_3.nat = T_DIR;
 			return (1);
-		}
-		printf("LABEL OUT\n");
+	//	}
 	}
 	else if (*arg == '-' || ft_isdigit(*arg))
 	{
-		printf("WAW WAW\n");
 		if (!(ft_isnumber(arg)))
 			return (0);
 		val = ft_atoi(arg);
@@ -253,8 +247,7 @@ int 				ft_isdir(t_env *env, t_element *elm, char *arg,
 	return (1);
 }
 
-int 				ft_isindir(t_env *env, t_element *elm, char *arg,
-		int arg_nb)
+int 				ft_isindir(t_element *elm, char *arg, int arg_nb)
 {
 	int 			i;
 	int 			val;
@@ -263,10 +256,10 @@ int 				ft_isindir(t_env *env, t_element *elm, char *arg,
 	val = 0;
 	if (*arg == LABEL_CHAR)
 	{
-		if (!(ft_check_label(env, arg + 1)))
-			return (0);
-		else
-		{
+//		if (!(ft_check_label(env, arg + 1)))
+//			return (0);
+//		else
+//		{
 			if (arg_nb == 1)
 				SYM_TAB->val_1.nat = T_IND;
 			else if (arg_nb == 2)
@@ -274,7 +267,7 @@ int 				ft_isindir(t_env *env, t_element *elm, char *arg,
 			else if (arg_nb == 3)
 				SYM_TAB->val_3.nat = T_IND;
 			return (1);
-		}
+//		}
 	}
 	else if (*arg == '-' || ft_isdigit(*arg))
 	{
@@ -302,8 +295,7 @@ int 				ft_isindir(t_env *env, t_element *elm, char *arg,
 		return (0);
 	return (1);
 }
-int 				ft_check_args(t_env *env, t_element *elm, char *arg,
-		int arg_nb)
+int 				ft_check_args(t_element *elm, char *arg, int arg_nb)
 {
 	int 			val;
 
@@ -317,13 +309,13 @@ int 				ft_check_args(t_env *env, t_element *elm, char *arg,
 	else if (*arg == DIRECT_CHAR)
 	{
 		printf("here_2\n");
-		if (!(ft_isdir(env, elm, arg + 1, arg_nb)))
+		if (!(ft_isdir(elm, arg + 1, arg_nb)))
 			return (0);
 	}
 	else if (*arg == LABEL_CHAR || *arg == '-' || ft_isdigit(*arg))
 	{
 		printf("here_3\n");
-		if (!(ft_isindir(env, elm, arg, arg_nb)))
+		if (!(ft_isindir(elm, arg, arg_nb)))
 			return (0);
 	}
 	return (1);
@@ -345,19 +337,19 @@ int					ft_argtokenizer(t_env *env, t_element *elm, char *str,
 	if (!SYM_TAB->arg_1)
 	{
 		SYM_TAB->arg_1 = arg;
-		if (!(ft_check_args(env, elm, arg, 1)))
+		if (!(ft_check_args(elm, arg, 1)))
 			return (0);
 	}
 	else if (!SYM_TAB->arg_2)
 	{
 		SYM_TAB->arg_2 = arg;
-		if (!(ft_check_args(env, elm, arg, 2)))
+		if (!(ft_check_args(elm, arg, 2)))
 			return (0);
 	}
 	else if (!SYM_TAB->arg_3)
 	{
 		SYM_TAB->arg_3 = arg;
-		if (!(ft_check_args(env, elm, arg, 3)))
+		if (!(ft_check_args(elm, arg, 3)))
 			return (0);
 	}
 	else
