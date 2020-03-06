@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/06 12:09:52 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/06 16:15:46 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,14 @@ typedef struct 		s_label
 typedef struct 		s_args
 {
 	int 			val;
-	int 			nature;
+	int 			nat;
 }					t_args;
+
+typedef struct 		s_ptrs
+{
+	int 			start;
+	int 			end;
+}					t_ptrs;
 
 typedef struct 		s_symbol_tab
 {
@@ -99,10 +105,10 @@ int				ft_syntax_analys(t_env *env, t_element *elm, char *ptr);
 int				ft_instru_tokenizer(t_env *env, t_element *elm, char *ptr);
 t_env			*ft_getop(t_env *env, t_element *elm, char *ptr);
 t_env			*ft_get_instru(t_env *env, t_element *elm, char *str);
-int				ft_argscanner(t_element *elm, char *str,
+int				ft_argscanner(t_env *env, t_element *elm, char *str,
 		int index);
-int                 ft_argtokenizer(t_element *elm, char *str, int start,
-		int len);
+int                 ft_argtokenizer(t_env *env, t_element *elm, char *str,
+		t_ptrs ptrs);
 int					ft_lbltokenizer(t_env *env, t_element *elm,char *ptr,
 		int len);
 t_label			*ft_labelnew(char *token);
@@ -110,6 +116,11 @@ char			*ft_wsdel(char *str);
 char			*ft_intrucpy(char *ptr, char *dest);
 int				ft_islabel(char c);
 int				ft_isop(char c);
+int				ft_check_args(t_env *env, t_element *elm, char *arg,
+		int arg_nb);
+int				ft_isreg(t_element *elm, char *arg, int arg_nb);
+int				ft_check_args(t_env *env, t_element *elm, char *arg,
+		int arg_nb);
 
 
 #endif

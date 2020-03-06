@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:20:22 by ada               #+#    #+#             */
-/*   Updated: 2020/03/06 12:15:24 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/06 16:32:45 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int 				ft_lbltokenizer(t_env *env, t_element *elm,
 	return (1);
 }
 
-int 				ft_isreg(t_element *elm, char *arg)
+int 				ft_isreg(t_element *elm, char *arg, int arg_nb)
 {
 	int 			i;
 	int 			reg;
@@ -121,61 +121,243 @@ int 				ft_isreg(t_element *elm, char *arg)
 	reg = ft_atoi(arg);
 	if (reg < 1 || reg > 16)
 		return  (0);
-	SYM_TAB->val_1->val = reg;
-	SYM_TAB->val_1->nature = T_REG;
+	if (arg_nb == 1)
+	{
+		SYM_TAB->val_1.val = reg;
+		SYM_TAB->val_1.nat = T_REG;
+	}
+	if (arg_nb == 2)
+	{
+		SYM_TAB->val_2.val = reg;
+		SYM_TAB->val_2.nat = T_REG;
+	}
+	if (arg_nb == 3)
+	{
+		SYM_TAB->val_3.val = reg;
+		SYM_TAB->val_3.nat = T_REG;
+	}
 	return (1);
 }
 
-int 				ft_check_args(t_element *elm, char *arg, int arg_nb)
+
+int 				ft_check_label(t_env *env, char *arg)
+{
+	t_element 		*tmp;
+	int 			len;
+
+	tmp = env->labels->head;
+	len = ft_strlen(arg);
+	while (tmp)
+	{
+		printf("enteered\n");
+		printf("arg->%s\n", arg);
+		printf("lst->%s\n", ((t_label*)(tmp->content))->label);
+		printf("LEN->%d\n", len);
+		if (!(ft_strncmp(arg, ((t_label*)(tmp->content))->label, len)))
+		{
+			printf("**TRUE***\n");
+			return (1);
+		}
+		tmp = tmp->next;
+	}
+	printf("OUT\n");
+	return (0);
+}
+
+int 				ft_isvalid(char *arg)
+{
+	int				i;
+
+	i = 0;
+	while (arg[i])
+	{
+		if (!(ft_isdigit(arg[i])))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int 				ft_isnumber(char *arg)
+{
+	int 			i;
+
+	i  = 0;
+	if (*arg == '-')
+	{
+		if (!(ft_isvalid(arg + 1)))
+			return (0);
+	}
+	else
+	{
+		if (!(ft_isvalid(arg)))
+			return (0);
+	}
+	return (1);
+}
+
+int 				ft_isdir(t_env *env, t_element *elm, char *arg,
+		int arg_nb)
+{
+	int 			i;
+	int 			val;
+
+	i = 0;
+	val = 0;
+	printf("is dir _in\nstr->%s\n", arg);
+	if (*arg == LABEL_CHAR)
+	{
+		printf("WAW\n");
+		if (!(ft_check_label(env, arg + 1)))
+		{
+			printf("%s\nerrrrrrrrrrrrrrror\n", arg + 1);
+			return (0);
+		}
+		else
+		{
+			if (arg_nb == 1)
+				SYM_TAB->val_1.nat = T_DIR;
+			else if (arg_nb == 2)
+				SYM_TAB->val_2.nat = T_DIR;
+			else if (arg_nb == 3)
+				SYM_TAB->val_3.nat = T_DIR;
+			return (1);
+		}
+		printf("LABEL OUT\n");
+	}
+	else if (*arg == '-' || ft_isdigit(*arg))
+	{
+		printf("WAW WAW\n");
+		if (!(ft_isnumber(arg)))
+			return (0);
+		val = ft_atoi(arg);
+		if (arg_nb == 1)
+		{
+			SYM_TAB->val_1.val = val;
+			SYM_TAB->val_1.nat = T_DIR;
+		}
+		if (arg_nb == 2)
+		{
+			SYM_TAB->val_2.val = val;
+			SYM_TAB->val_2.nat = T_DIR;
+		}
+		if (arg_nb == 3)
+		{
+			SYM_TAB->val_3.val = val;
+			SYM_TAB->val_3.nat = T_DIR;
+		}
+
+	}
+	else
+		return (0);
+	return (1);
+}
+
+int 				ft_isindir(t_env *env, t_element *elm, char *arg,
+		int arg_nb)
+{
+	int 			i;
+	int 			val;
+
+	i = 0;
+	val = 0;
+	if (*arg == LABEL_CHAR)
+	{
+		if (!(ft_check_label(env, arg + 1)))
+			return (0);
+		else
+		{
+			if (arg_nb == 1)
+				SYM_TAB->val_1.nat = T_IND;
+			else if (arg_nb == 2)
+				SYM_TAB->val_2.nat = T_IND;
+			else if (arg_nb == 3)
+				SYM_TAB->val_3.nat = T_IND;
+			return (1);
+		}
+	}
+	else if (*arg == '-' || ft_isdigit(*arg))
+	{
+		if (!(ft_isnumber(arg)))
+			return (0);
+		val = ft_atoi(arg);
+		if (arg_nb == 1)
+		{
+			SYM_TAB->val_1.val = val;
+			SYM_TAB->val_1.nat = T_IND;
+		}
+		if (arg_nb == 2)
+		{
+			SYM_TAB->val_2.val = val;
+			SYM_TAB->val_2.nat = T_IND;
+		}
+		if (arg_nb == 3)
+		{
+			SYM_TAB->val_3.val = val;
+			SYM_TAB->val_3.nat = T_IND;
+		}
+
+	}
+	else
+		return (0);
+	return (1);
+}
+int 				ft_check_args(t_env *env, t_element *elm, char *arg,
+		int arg_nb)
 {
 	int 			val;
 
 	val = -1;
 	if (*arg == 'r')
 	{
-		if (!(ft_isreg(elm, arg + 1)))
+		printf("here_1\n");
+		if (!(ft_isreg(elm, arg + 1, arg_nb)))
 			return (0);
 	}
 	else if (*arg == DIRECT_CHAR)
 	{
-		if (!(ft_isdir(elm, arg + 1)))
-			return (0)
+		printf("here_2\n");
+		if (!(ft_isdir(env, elm, arg + 1, arg_nb)))
+			return (0);
 	}
 	else if (*arg == LABEL_CHAR || *arg == '-' || ft_isdigit(*arg))
 	{
-		if (!(ft_isindir(elm, arg)))
+		printf("here_3\n");
+		if (!(ft_isindir(env, elm, arg, arg_nb)))
 			return (0);
 	}
-return (1)
+	return (1);
 }
 
-int					ft_argtokenizer(t_element *elm, char *str, int start,
-		int end)
+int					ft_argtokenizer(t_env *env, t_element *elm, char *str,
+		t_ptrs ptrs)
 {
 	int 			i;
 	int				len;
 	char 			*arg;
 
 	i = 0;
-	len  = end - start;
-	if (!(arg = ft_strsub(str, start, len)))
+	if (!env)
+		return (0);
+	len  = ptrs.end - ptrs.start;
+	if (!(arg = ft_strsub(str, ptrs.start, len)))
 		return (0);
 	if (!SYM_TAB->arg_1)
 	{
 		SYM_TAB->arg_1 = arg;
-		if (!(ft_check_arg(elm, arg, 1)))
+		if (!(ft_check_args(env, elm, arg, 1)))
 			return (0);
 	}
 	else if (!SYM_TAB->arg_2)
 	{
 		SYM_TAB->arg_2 = arg;
-		if (!(ft_check_arg(elm, arg, 2)))
+		if (!(ft_check_args(env, elm, arg, 2)))
 			return (0);
 	}
 	else if (!SYM_TAB->arg_3)
 	{
 		SYM_TAB->arg_3 = arg;
-		if (!(ft_check_arg(elm, arg, 3)))
+		if (!(ft_check_args(env, elm, arg, 3)))
 			return (0);
 	}
 	else
@@ -183,11 +365,13 @@ int					ft_argtokenizer(t_element *elm, char *str, int start,
 	return (1);
 }
 
-int 				ft_argscanner(t_element *elm, char *str, int index)
+int 				ft_argscanner(t_env *env, t_element *elm, char *str,
+		int index)
 {
 	int 			i;
 	int 			j;
 	int 			calls_nb;
+	t_ptrs			ptrs;
 
 	i = 0;
 	j = 0;
@@ -205,7 +389,9 @@ int 				ft_argscanner(t_element *elm, char *str, int index)
 				{
 					if (calls_nb > g_op_tab[index].arg_nb)
 						return (0);
-					if (!ft_argtokenizer(elm, str, j, i))
+					ptrs.start = j;
+					ptrs.end = i;
+					if (!ft_argtokenizer(env, elm, str, ptrs))
 						return (0);
 					calls_nb++;
 					break ;
@@ -238,15 +424,15 @@ t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
 		if ((ft_strstr(ptr, g_op_tab[i].op)))
 		{
 			if (!ft_strncmp(ptr, g_op_tab[i].op, ft_strlen(g_op_tab[i].op)))
-				{
-					len = ft_strlen(g_op_tab[i].op);
-					if (ptr[len] == 'r' || ptr[len] == DIRECT_CHAR ||
-							ptr[len] == LABEL_CHAR ||
+			{
+				len = ft_strlen(g_op_tab[i].op);
+				if (ptr[len] == 'r' || ptr[len] == DIRECT_CHAR ||
+						ptr[len] == LABEL_CHAR ||
 						ft_isdigit(ptr[len]) || ptr[len] == '-')
-					{
-						break ;
-					}
+				{
+					break ;
 				}
+			}
 		}
 		if (i == 15)
 			return (NULL);
@@ -257,7 +443,7 @@ t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
 	index = i;
 	i = ft_strlen(g_op_tab[i].op);
 	((t_instru*)(elm->content))->op_flg = 1;
-	if (!(ft_argscanner(elm, ptr + i, index)))
+	if (!(ft_argscanner(env, elm, ptr + i, index)))
 		return (NULL);
 	return (env);
 }
