@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 21:53:42 by ada               #+#    #+#             */
-/*   Updated: 2020/03/06 20:43:43 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/06 22:08:05 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,9 @@ t_env				*ft_instruparser(t_env *env)
 	{
 		if (!(ptr = ft_first_ws_del(((t_instru*)(elm->content))->buff)))
 			return (NULL);
-	
 		if (*ptr == COMMENT_CHAR ||
 				*ptr == ALT_COMMENT_CHAR || *ptr == '\n')
 		{
-			ft_nodepop(elm);
 			elm = elm->next;
 			continue ;
 		}
@@ -64,19 +62,6 @@ t_env				*ft_instruparser(t_env *env)
 		}
 		elm = elm->next;
 	}
-	elm = env->lines->head;
-	printf("here*****\n");
-	printf("here|%s|\n", ((t_instru*)(elm->content))->buff);
-	printf("AFTER_LOOP:\nlbl:%s\nop:%s\narg1:%s\narg2:%s\narg3:%s\n",
-			((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->label,
-			((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->op,
-			((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->arg_1,
-			((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->arg_2,
-			((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->arg_3);
-//	printf("OUTOUTOUT\n");
-//	printf("env:%p\n", env->lines->head);
-//	printf("sym_tab_cont:%p\n",
-		//	((((t_instru*)(elm->content))->sym_tab)));
 	return (env);
 }
 

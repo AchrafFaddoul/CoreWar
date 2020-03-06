@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:20:22 by ada               #+#    #+#             */
-/*   Updated: 2020/03/06 18:55:09 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/06 22:07:07 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,34 +138,7 @@ int 				ft_isreg(t_element *elm, char *arg, int arg_nb)
 	}
 	return (1);
 }
-/*
 
-   int 				ft_check_label(t_env *env, char *arg)
-   {
-   t_element 		*tmp;
-   int 			len;
-
-   tmp = env->labels->head;
-   len = ft_strlen(arg);
-   while (tmp)
-   {
-   printf("enteered\n");
-   printf("arg->%s\n", arg);
-   printf("lst->%s\n", ((t_label*)(tmp->content))->label);
-   printf("LEN->%d\n", len);
-   if (!(ft_strcmp(arg, ((t_label*)(tmp->content))->label)))
-   {
-   printf("**TRUE***\n");
-   return (1);
-   }
-   printf("NEXT\n");
-   tmp = tmp->next;
-   printf("adr%p\n", tmp);
-   }
-   printf("OUT\n");
-   return (0);
-   }
-   */
 int 				ft_isvalid(char *arg)
 {
 	int				i;
@@ -451,6 +424,8 @@ int 				ft_syntax_analys(t_env *env, t_element *elm, char *ptr)
 	}
 	if (((t_instru*)(elm->content))->lbl_flg == 1)
 	{
+		while (ptr[i] == 9 || ptr[i] == 32)
+			i++;
 		if (ptr[i] == COMMENT_CHAR ||
 				ptr[i] == ALT_COMMENT_CHAR || ptr[i] == '\n')
 			return (1);
