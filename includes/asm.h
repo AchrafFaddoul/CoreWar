@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/06 21:21:39 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/06 23:59:57 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_op
 {
 	char		*op;
 	int			arg_nb;
-	int 		arg[3];
+	int 		arg;
 	int 		op_index;
 	int 		cycle;
 	char 		*op_desc;

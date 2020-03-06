@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:29:21 by ada               #+#    #+#             */
-/*   Updated: 2020/03/06 21:53:49 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/07 00:05:37 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ int 				ft_check_labels(t_env *env)
 	elm = env->lines->head;
 	while (elm)
 	{
-		if (((t_instru*)(elm->content))->op_flg ||
-				((t_instru*)(elm->content))->lbl_flg)
+		if (((t_instru*)(elm->content))->op_flg)
 		{
 			if (SYM_TAB->arg_1)
 			{
@@ -89,10 +88,38 @@ int 				ft_check_labels(t_env *env)
 	}
 	return (1);
 }
+/*
+int 				get_op_index()
+{
+	;
+}
 
+int 				ft_check_args_nb(env)
+{
+	t_element 		*elm;
+	int 			op_index;
+
+	elm = env->lines->head;
+	op_index = 0;
+	while ()
+	{
+		if (((t_instru*)(elm->content))->op_flg)
+		{
+			;
+		}
+		elm = elm->next;
+	}
+}
+*/
 int					ft_semantic_analysis(t_env *env)
 {
 	if (!ft_check_labels(env))
 		return (0);
+//	else
+//		printf("m9awda 3liha\n");
+////	if (!(ft_check_args_nb(env)))
+//		return (0);
+//	if (!(ft_check_args_type(env)))
+//		return (0);
 	return (1);
 }
