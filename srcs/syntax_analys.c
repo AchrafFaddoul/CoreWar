@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:20:22 by ada               #+#    #+#             */
-/*   Updated: 2020/03/06 17:30:19 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/06 18:20:07 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,32 +140,32 @@ int 				ft_isreg(t_element *elm, char *arg, int arg_nb)
 }
 /*
 
-int 				ft_check_label(t_env *env, char *arg)
-{
-	t_element 		*tmp;
-	int 			len;
+   int 				ft_check_label(t_env *env, char *arg)
+   {
+   t_element 		*tmp;
+   int 			len;
 
-	tmp = env->labels->head;
-	len = ft_strlen(arg);
-	while (tmp)
-	{
-		printf("enteered\n");
-		printf("arg->%s\n", arg);
-		printf("lst->%s\n", ((t_label*)(tmp->content))->label);
-		printf("LEN->%d\n", len);
-		if (!(ft_strcmp(arg, ((t_label*)(tmp->content))->label)))
-		{
-			printf("**TRUE***\n");
-			return (1);
-		}
-		printf("NEXT\n");
-		tmp = tmp->next;
-		printf("adr%p\n", tmp);
-	}
-	printf("OUT\n");
-	return (0);
-}
-*/
+   tmp = env->labels->head;
+   len = ft_strlen(arg);
+   while (tmp)
+   {
+   printf("enteered\n");
+   printf("arg->%s\n", arg);
+   printf("lst->%s\n", ((t_label*)(tmp->content))->label);
+   printf("LEN->%d\n", len);
+   if (!(ft_strcmp(arg, ((t_label*)(tmp->content))->label)))
+   {
+   printf("**TRUE***\n");
+   return (1);
+   }
+   printf("NEXT\n");
+   tmp = tmp->next;
+   printf("adr%p\n", tmp);
+   }
+   printf("OUT\n");
+   return (0);
+   }
+   */
 int 				ft_isvalid(char *arg)
 {
 	int				i;
@@ -205,42 +205,25 @@ int 				ft_isdir(t_element *elm, char *arg, int arg_nb)
 
 	i = 0;
 	val = 0;
+	if (arg_nb == 1)
+		SYM_TAB->val_1.nat = T_DIR;
+	else if (arg_nb == 2)
+		SYM_TAB->val_2.nat = T_DIR;
+	else if (arg_nb == 3)
+		SYM_TAB->val_3.nat = T_DIR;
 	if (*arg == LABEL_CHAR)
-	{
-	//	if (!(ft_check_label(env, arg + 1)))
-	//		return (0);
-	//	else
-	//	{
-			if (arg_nb == 1)
-				SYM_TAB->val_1.nat = T_DIR;
-			else if (arg_nb == 2)
-				SYM_TAB->val_2.nat = T_DIR;
-			else if (arg_nb == 3)
-				SYM_TAB->val_3.nat = T_DIR;
-			return (1);
-	//	}
-	}
+		return (1);
 	else if (*arg == '-' || ft_isdigit(*arg))
 	{
 		if (!(ft_isnumber(arg)))
 			return (0);
 		val = ft_atoi(arg);
 		if (arg_nb == 1)
-		{
 			SYM_TAB->val_1.val = val;
-			SYM_TAB->val_1.nat = T_DIR;
-		}
 		if (arg_nb == 2)
-		{
 			SYM_TAB->val_2.val = val;
-			SYM_TAB->val_2.nat = T_DIR;
-		}
 		if (arg_nb == 3)
-		{
 			SYM_TAB->val_3.val = val;
-			SYM_TAB->val_3.nat = T_DIR;
-		}
-
 	}
 	else
 		return (0);
@@ -254,37 +237,25 @@ int 				ft_isindir(t_element *elm, char *arg, int arg_nb)
 
 	i = 0;
 	val = 0;
+	if (arg_nb == 1)
+		SYM_TAB->val_1.nat = T_IND;
+	else if (arg_nb == 2)
+		SYM_TAB->val_2.nat = T_IND;
+	else if (arg_nb == 3)
+		SYM_TAB->val_3.nat = T_IND;
 	if (*arg == LABEL_CHAR)
-	{
-			if (arg_nb == 1)
-				SYM_TAB->val_1.nat = T_IND;
-			else if (arg_nb == 2)
-				SYM_TAB->val_2.nat = T_IND;
-			else if (arg_nb == 3)
-				SYM_TAB->val_3.nat = T_IND;
-			return (1);
-	}
+		return (1);
 	else if (*arg == '-' || ft_isdigit(*arg))
 	{
 		if (!(ft_isnumber(arg)))
 			return (0);
 		val = ft_atoi(arg);
 		if (arg_nb == 1)
-		{
 			SYM_TAB->val_1.val = val;
-			SYM_TAB->val_1.nat = T_IND;
-		}
 		if (arg_nb == 2)
-		{
 			SYM_TAB->val_2.val = val;
-			SYM_TAB->val_2.nat = T_IND;
-		}
 		if (arg_nb == 3)
-		{
 			SYM_TAB->val_3.val = val;
-			SYM_TAB->val_3.nat = T_IND;
-		}
-
 	}
 	else
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 21:53:42 by ada               #+#    #+#             */
-/*   Updated: 2020/03/06 17:24:43 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/06 18:52:10 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_env				*ft_instruparser(t_env *env)
 	t_symbol_tab	*s_tab;
 
 	elm = env->lines->head;
+	printf("env:%p\n", env->lines->head);
 	while (elm)
 	{
 		if (!(ptr = ft_first_ws_del(((t_instru*)(elm->content))->buff)))
@@ -61,8 +62,19 @@ t_env				*ft_instruparser(t_env *env)
 			ft_strdel((char**)&ptr);
 			return (NULL);
 		}
+	//	printf("************************************\n");
+	//	printf("lbl:%s\nop:%s\narg1:%s\narg2:%s\narg3:%s\n",
+	//		((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->label,
+	//		((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->op,
+	///		((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->arg_1,
+	//		((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->arg_2,
+	//		((t_symbol_tab*)((t_instru*)(elm->content))->sym_tab)->arg_3);
+//	printf("op_flg:%d\n", ((t_instru*)(elm->content))->op_flg);
+//	printf("lbl_flg:%d\n", ((t_instru*)(elm->content))->lbl_flg);
 		elm = elm->next;
-	}	
+	}
+	printf("OUTOUTOUT\n");
+	printf("env:%p\n", env->lines->head);
 	return (env);
 }
 
