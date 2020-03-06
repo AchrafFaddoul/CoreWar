@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:29:21 by ada               #+#    #+#             */
-/*   Updated: 2020/03/06 18:52:13 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/06 19:55:30 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int 				ft_check_labels(t_env *env)
 
 	elm = env->lines->head;
 	printf("DAKHLA\n");
+	printf("content:%p\n", ((t_symbol_tab*)(((t_instru*)(elm->content)))));
+	printf("sym_tab:%p\n", SYM_TAB);
 	while (elm)
 	{
 		printf("hahouwa\n");

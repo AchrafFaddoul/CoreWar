@@ -14,6 +14,7 @@ FILES = srcs/main.c \
 	srcs/code_parser.c  \
 	srcs/syntax_analys.c  \
 	srcs/semantic_analys.c  \
+	srcs/ft_nodepop.c  \
 
 OBJ = $(FILES:.c=.o)
 

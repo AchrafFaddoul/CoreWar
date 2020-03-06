@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/06 17:46:25 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/06 20:30:48 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,6 @@ int				ft_isop(char c);
 int				ft_check_args(t_element *elm, char *arg, int arg_nb);
 int				ft_isreg(t_element *elm, char *arg, int arg_nb);
 int				ft_semantic_analysis(t_env *env);
+void			ft_nodepop(t_element *elm);
 
 #endif
