@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 13:58:58 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/07 18:19:16 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/07 20:28:47 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,7 @@ t_env				*ft_backend_analys(t_env *env)
 	int  			fd;
 
 	ft_exec_size_counter(env);
-	if ((fd = open(env->file_name, O_CREAT | O_WRONLY)) == -1)
+	if ((fd = open(env->file_name, O_CREAT | O_WRONLY, S_IRWXU)) == -1)
 		return (NULL);
-
 	return (env);
 }
