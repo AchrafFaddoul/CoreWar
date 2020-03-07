@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:20:22 by ada               #+#    #+#             */
-/*   Updated: 2020/03/07 02:32:21 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/07 17:07:12 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,8 @@ void 		ft_assembler(t_env *env)
 			ft_memdel((void**)&env);
 			ft_error();
 		}
-	//	ft_backend_analys(env);
+		if(!(ft_backend_analys(env)))
+		{
+			ft_error();
+		}
 }

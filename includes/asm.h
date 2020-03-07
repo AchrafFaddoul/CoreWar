@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/07 02:37:46 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/07 17:11:00 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,10 @@ int				ft_get_op_index(char *op);
 int				ft_args_checker(t_env *env);
 int				ft_check_args_type(t_element *elm, int arg_nb, int index);
 int				ft_check_arg_nb(t_element *elm, int arg_nb);
+t_env			*ft_backend_analys(t_env *env);
+void			ft_exec_size_counter(t_env *env);
+int 			ft_pc_counter(t_symbol_tab* sym_tab);
+void			ft_set_label_pc(t_env *env, char *label);
 
 
 #endif

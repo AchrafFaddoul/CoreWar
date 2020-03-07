@@ -6,14 +6,14 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 02:28:36 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/07 02:29:38 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/07 13:56:12 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
 #include <fcntl.h>
-void	swappedbytes(void *src, void *dst, int size)
+void	swap_bytes(void *src, void *dst, int size)
 {
 	int i = 0;
 	int j = size - 1;
@@ -26,9 +26,10 @@ void	swappedbytes(void *src, void *dst, int size)
 }
 int main()
 {
-	char 	c = 0;
-	1reg 2ind
-		c = c << 2;
+	char 	c;
+	c = 0;
+
+	c = c << 2;
 }
 
 int main()
@@ -47,8 +48,8 @@ int main()
 {
 	int nb = 15;
 	int fd;
-	fd = open(“output2", O_CREAT | O_WRONLY);
+	fd = open("output2", O_CREAT | O_WRONLY);
 	int nbswapped = 0;
-	swappedbytes(&nb, &nbswapped, 1);
+	swap_bytes(&nb, &nbswapped, 1);
 	write(fd, &nbswapped, 1);
 }

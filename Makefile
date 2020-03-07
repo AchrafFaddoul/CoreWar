@@ -15,7 +15,7 @@ FILES = srcs/main.c \
 	srcs/syntax_analys.c  \
 	srcs/semantic_analys.c  \
 	srcs/ft_nodepop.c  \
-#	srcs/ft_backend_analys.c  \
+	srcs/ft_backend_analysis.c  \
 
 OBJ = $(FILES:.c=.o)
 
