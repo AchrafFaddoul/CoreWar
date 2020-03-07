@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 17:09:45 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/07 21:41:56 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/07 22:38:16 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef char	t_arg_type;
 
 # define PROG_NAME_LENGTH		(128)
 # define COMMENT_LENGTH			(2048)
+# define CODE_HEAD_SIZE			(2192)
 # define COREWAR_EXEC_MAGIC		0xea83f3
 
 typedef struct		header_s

@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 13:58:58 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/07 21:50:09 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/07 23:17:22 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,61 +118,98 @@ void 				ft_exec_size_counter(t_env *env)
 	}
 }
 
-void 				ft_magic_header(int fd)
+int 				ft_magic_header(char *exec)
 {
 	int 			tmp;
 	int 			magic_header;
+	int 			i;
 
 	tmp = 0;
+	i = 0;
 	magic_header = COREWAR_EXEC_MAGIC;
 	swap_bytes(&magic_header, &tmp, 3);
-	write(fd, &tmp, 3);
+	while (i < 3)
+	{
+		exec[i] = ((char*)(&tmp))[i];
+		i++;
+	}
+	return (i);
 }
 
-int 				ft_name_generator(char *name, int fd)
+int 				ft_name_generator(char *exec, char *name, int i)
 {
 	char			*tmp;
+	int 			j;
 
+	j = 0;
 	if(!(tmp = ft_memalloc(sizeof(char) * PROG_NAME_LENGTH)))
-		return (0);
+		return (-1);
 	ft_strcpy(tmp, name);
-	write(fd, tmp, PROG_NAME_LENGTH);
-	return (1);
+	while(j < PROG_NAME_LENGTH)
+	{
+		exec[i] = tmp[j];
+		i++;
+		j++;
+	}
+	return (i);
 }
 
-int 				ft_comment_generator(char *comment, int fd)
+int 				ft_comment_generator(char *exec, char *cmt, int i)
 {
 	char			*tmp;
+	int 			j;
 
+	j = 0;
 	if(!(tmp = ft_memalloc(sizeof(char) * COMMENT_LENGTH)))
-		return (0);
-	ft_strcpy(tmp, comment);
-	write(fd, tmp, COMMENT_LENGTH);
-	return (1);
+		return (-1);
+	ft_strcpy(tmp, cmt);
+	while(j < COMMENT_LENGTH)
+	{
+		exec[i] = tmp[j];
+		i++;
+		j++;
+	}
+	return (i);
 }
 void 				ft_exec_size_gen(int size, int fd)
 {
 	int 			tmp;
 
-	printf("pc:%d\n", size);
 	swap_bytes(&size, &tmp, 4);
 	write(fd, &tmp, 4);
 }
 
+int 				ft_code_generator(t_env *env, int total_size)
+{
+	char 			exec[total_size];
+	int 			fd;
+	int 			i;
+
+	i = 0;
+	ft_bzero(exec, total_size);
+	i += ft_magic_header(exec);
+	if ((i = ft_name_generator(exec, env->name, i)) == -1)
+		return (0);
+	i += 4;
+	if ((ft_comment_generator(exec, env->comment, i)) == -1)
+		return (0);
+	i += 4;
+	;
+	if ((fd = open(env->file_name, O_CREAT | O_WRONLY, S_IRWXU)) == -1)
+		return (0);
+	write(fd, exec, total_size);
+	//	write(fd, (char[4]){0}, 4);
+	//	ft_exec_size_gen(env->pc, fd);
+	//	if (!(ft_comment_generator(env->comment, fd)))
+	//		return (0);
+	//	write(fd, (char[4]){0}, 4);
+	return (1);
+}
+
 t_env				*ft_backend_analys(t_env *env)
 {
-	int  			fd;
-
 	ft_exec_size_counter(env);
-	if ((fd = open(env->file_name, O_CREAT | O_WRONLY, S_IRWXU)) == -1)
-		return (NULL);
-	ft_magic_header(fd);
-	if (!(ft_name_generator(env->name, fd)))
+	if (!(ft_code_generator(env, (env->pc + CODE_HEAD_SIZE))))
 		return (0);
-	write(fd, (char[4]){0}, 4);
-	ft_exec_size_gen(env->pc, fd);
-	if (!(ft_comment_generator(env->comment, fd)))
-		return (0);
-	write(fd, (char[4]){0}, 4);
 	return (env);
 }
