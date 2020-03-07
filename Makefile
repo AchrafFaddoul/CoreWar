@@ -1,6 +1,6 @@
 NAME = asm
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -g -Wall -Wextra -Werror
 
 FILES = srcs/main.c \
 	srcs/check_fextension.c \
@@ -15,6 +15,7 @@ FILES = srcs/main.c \
 	srcs/syntax_analys.c  \
 	srcs/semantic_analys.c  \
 	srcs/ft_nodepop.c  \
+#	srcs/ft_backend_analys.c  \
 
 OBJ = $(FILES:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/06 23:59:57 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/07 02:37:46 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_op
 {
 	char		*op;
 	int			arg_nb;
-	int 		arg;
+	int 		arg[3];
 	int 		op_index;
 	int 		cycle;
 	char 		*op_desc;
@@ -64,6 +64,7 @@ typedef struct 		s_symbol_tab
 	t_args			val_1;
 	t_args			val_2;
 	t_args			val_3;
+	int 			pc;
 }					t_symbol_tab;
 
 typedef struct 		s_instru
@@ -83,6 +84,7 @@ typedef struct 		s_env
 	char 			*vect;
 	char 			*name;
 	char 			*comment;
+	int 			pc;
 }					t_env;
 
 void			check_fextension(char *str);
@@ -120,5 +122,10 @@ int				ft_check_args(t_element *elm, char *arg, int arg_nb);
 int				ft_isreg(t_element *elm, char *arg, int arg_nb);
 int				ft_semantic_analysis(t_env *env);
 void			ft_nodepop(t_element *elm);
+int				ft_get_op_index(char *op);
+int				ft_args_checker(t_env *env);
+int				ft_check_args_type(t_element *elm, int arg_nb, int index);
+int				ft_check_arg_nb(t_element *elm, int arg_nb);
+
 
 #endif
