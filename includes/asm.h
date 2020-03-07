@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/07 17:11:00 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/07 18:18:49 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct 		s_args
 {
 	int 			val;
 	int 			nat;
+	int 			byte_size;
 }					t_args;
 
 typedef struct 		s_ptrs
@@ -85,6 +86,7 @@ typedef struct 		s_env
 	char 			*name;
 	char 			*comment;
 	int 			pc;
+	char 			*file_name;
 }					t_env;
 
 void			check_fextension(char *str);
@@ -130,6 +132,6 @@ t_env			*ft_backend_analys(t_env *env);
 void			ft_exec_size_counter(t_env *env);
 int 			ft_pc_counter(t_symbol_tab* sym_tab);
 void			ft_set_label_pc(t_env *env, char *label);
-
+char			*ft_fname_extracter(char *f_name);
 
 #endif

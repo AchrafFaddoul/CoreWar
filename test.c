@@ -6,13 +6,14 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 02:28:36 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/07 13:56:12 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/07 18:04:39 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
 #include <fcntl.h>
+# define COREWAR_EXEC_MAGIC     0xea83f3
 void	swap_bytes(void *src, void *dst, int size)
 {
 	int i = 0;
@@ -24,6 +25,7 @@ void	swap_bytes(void *src, void *dst, int size)
 		i++;
 	}
 }
+/*
 int main()
 {
 	char 	c;
@@ -43,13 +45,13 @@ int main()
 	fd = open(“output”, O_CREAT | O_WRONLY);
 	write(fd, &str, 3);
 }
-
+*/
 int main()
 {
-	int nb = 15;
+	int nb = COREWAR_EXEC_MAGIC;
 	int fd;
 	fd = open("output2", O_CREAT | O_WRONLY);
 	int nbswapped = 0;
-	swap_bytes(&nb, &nbswapped, 1);
-	write(fd, &nbswapped, 1);
+	swap_bytes(&nb, &nbswapped, 3);
+	write(fd, &nbswapped, 3);
 }

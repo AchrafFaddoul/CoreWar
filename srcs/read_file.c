@@ -6,11 +6,22 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/02/27 16:18:00 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/07 18:16:56 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+char			*ft_fname_extracter(char *f_name)
+{
+	char 		*str;
+	int 		len;
+
+	len = ft_strlen(f_name);
+	if (!(str = ft_strsub(f_name, 0, len - 2)))
+		return (NULL);
+	return (str);
+}
 
 char			*read_file(int fd)
 {
