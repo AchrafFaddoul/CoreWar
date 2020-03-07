@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/07 18:22:46 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/07 20:34:42 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,5 +133,6 @@ void			ft_exec_size_counter(t_env *env);
 int 			ft_pc_counter(t_symbol_tab* sym_tab);
 void			ft_set_label_pc(t_env *env, char *label);
 char			*ft_fname_extracter(char *f_name);
+void			swap_bytes(void *src, void *dst, int size);
 
 #endif

@@ -6,11 +6,23 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 13:58:58 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/07 20:28:47 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/07 20:34:49 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+void				swap_bytes(void *src, void *dst, int size)
+{
+	int i = 0;
+	int j = size - 1;
+	while (i < size)
+	{
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[j];
+		j--;
+		i++;
+	}
+}
 
 void 				ft_set_label_pc(t_env *env, char *label)
 {
@@ -113,5 +125,6 @@ t_env				*ft_backend_analys(t_env *env)
 	ft_exec_size_counter(env);
 	if ((fd = open(env->file_name, O_CREAT | O_WRONLY, S_IRWXU)) == -1)
 		return (NULL);
+
 	return (env);
 }
