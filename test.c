@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 02:28:36 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/07 18:22:43 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/07 21:19:00 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,19 @@ int main()
 
 	c = c << 2;
 }
-
+*/
 int main()
 {
 	char 	str[4];
 	int fd;
-	str[0] = ‘a’;
-	str[1] = ‘b’;
-	str[2] = ‘c’;
-	str[3] = ‘\0’;
-	fd = open(“output”, O_CREAT | O_WRONLY);
-	write(fd, &str, 3);
+	str[0] = 'a';
+	str[1] = 'b';
+	str[2] = 'c';
+	str[3] = '\0';
+	fd = open("output", O_CREAT | O_WRONLY);
+	write(fd, str, 3);
 }
-*/
+/*
 int main()
 {
 	int nb = COREWAR_EXEC_MAGIC;
@@ -55,3 +55,4 @@ int main()
 	swap_bytes(&nb, &nbswapped, 3);
 	write(fd, &nbswapped, 3);
 }
+*/

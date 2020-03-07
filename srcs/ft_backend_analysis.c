@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 13:58:58 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/07 20:34:49 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/07 21:50:09 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,47 @@ void 				ft_exec_size_counter(t_env *env)
 	}
 }
 
+void 				ft_magic_header(int fd)
+{
+	int 			tmp;
+	int 			magic_header;
+
+	tmp = 0;
+	magic_header = COREWAR_EXEC_MAGIC;
+	swap_bytes(&magic_header, &tmp, 3);
+	write(fd, &tmp, 3);
+}
+
+int 				ft_name_generator(char *name, int fd)
+{
+	char			*tmp;
+
+	if(!(tmp = ft_memalloc(sizeof(char) * PROG_NAME_LENGTH)))
+		return (0);
+	ft_strcpy(tmp, name);
+	write(fd, tmp, PROG_NAME_LENGTH);
+	return (1);
+}
+
+int 				ft_comment_generator(char *comment, int fd)
+{
+	char			*tmp;
+
+	if(!(tmp = ft_memalloc(sizeof(char) * COMMENT_LENGTH)))
+		return (0);
+	ft_strcpy(tmp, comment);
+	write(fd, tmp, COMMENT_LENGTH);
+	return (1);
+}
+void 				ft_exec_size_gen(int size, int fd)
+{
+	int 			tmp;
+
+	printf("pc:%d\n", size);
+	swap_bytes(&size, &tmp, 4);
+	write(fd, &tmp, 4);
+}
+
 t_env				*ft_backend_analys(t_env *env)
 {
 	int  			fd;
@@ -125,6 +166,13 @@ t_env				*ft_backend_analys(t_env *env)
 	ft_exec_size_counter(env);
 	if ((fd = open(env->file_name, O_CREAT | O_WRONLY, S_IRWXU)) == -1)
 		return (NULL);
-
+	ft_magic_header(fd);
+	if (!(ft_name_generator(env->name, fd)))
+		return (0);
+	write(fd, (char[4]){0}, 4);
+	ft_exec_size_gen(env->pc, fd);
+	if (!(ft_comment_generator(env->comment, fd)))
+		return (0);
+	write(fd, (char[4]){0}, 4);
 	return (env);
 }
