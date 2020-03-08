@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 13:58:58 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/07 23:17:22 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/08 06:58:33 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int 				ft_pc_counter(t_symbol_tab* sym_tab)
 				pc += 2;
 		}
 	}
-	return (sym_tab->pc = pc);
+	return (pc);
 }
 
 void 				ft_exec_size_counter(t_env *env)
@@ -99,9 +99,12 @@ void 				ft_exec_size_counter(t_env *env)
 	t_element 		*elm;
 	int 			instru_pc;
 
+	instru_pc = 0;
+	env->pc = 0;
 	elm = env->lines->head;
 	while (elm)
 	{
+		printf("*********************************\n");
 		if (((t_instru*)(elm->content))->op_flg ||
 				((t_instru*)(elm->content))->lbl_flg)
 		{
@@ -113,9 +116,12 @@ void 				ft_exec_size_counter(t_env *env)
 				instru_pc = ft_pc_counter(SYM_TAB);
 				env->pc += instru_pc;
 			}
+				printf("op:%s,pc_instr:%d\n", SYM_TAB->op, env->pc);
+				printf("instr:%d\n", instru_pc);
 		}
 		elm = elm->next;
 	}
+	printf("%d\n", env->pc);
 }
 
 int 				ft_magic_header(char *exec)
@@ -127,8 +133,8 @@ int 				ft_magic_header(char *exec)
 	tmp = 0;
 	i = 0;
 	magic_header = COREWAR_EXEC_MAGIC;
-	swap_bytes(&magic_header, &tmp, 3);
-	while (i < 3)
+	swap_bytes(&magic_header, &tmp, 4);
+	while (i < 4)
 	{
 		exec[i] = ((char*)(&tmp))[i];
 		i++;
@@ -171,45 +177,44 @@ int 				ft_comment_generator(char *exec, char *cmt, int i)
 	}
 	return (i);
 }
-void 				ft_exec_size_gen(int size, int fd)
-{
-	int 			tmp;
-
-	swap_bytes(&size, &tmp, 4);
-	write(fd, &tmp, 4);
-}
 
 int 				ft_code_generator(t_env *env, int total_size)
 {
-	char 			exec[total_size];
+	printf("%d\n", total_size);
 	int 			fd;
 	int 			i;
 
 	i = 0;
-	ft_bzero(exec, total_size);
-	i += ft_magic_header(exec);
-	if ((i = ft_name_generator(exec, env->name, i)) == -1)
+	if (!(env->exec = ft_memalloc(sizeof(char) * total_size)))
+		return (-1);
+	ft_magic_header(env->exec);
+	i = 4;
+	if ((ft_name_generator(env->exec, env->name, i)) == -1)
 		return (0);
-	i += 4;
-	if ((ft_comment_generator(exec, env->comment, i)) == -1)
+	i += 132;
+	if ((ft_comment_generator(env->exec, env->comment, i)) == -1)
 		return (0);
-	i += 4;
-	;
-	if ((fd = open(env->file_name, O_CREAT | O_WRONLY, S_IRWXU)) == -1)
+	i += 2052;
+	//exec size champ
+	if ((ft_champ_exe_code(env, env->exec, i)) == -1)
 		return (0);
-	write(fd, exec, total_size);
-	//	write(fd, (char[4]){0}, 4);
-	//	ft_exec_size_gen(env->pc, fd);
-	//	if (!(ft_comment_generator(env->comment, fd)))
-	//		return (0);
-	//	write(fd, (char[4]){0}, 4);
 	return (1);
 }
 
 t_env				*ft_backend_analys(t_env *env)
 {
+	int 			fd;
+
 	ft_exec_size_counter(env);
 	if (!(ft_code_generator(env, (env->pc + CODE_HEAD_SIZE))))
 		return (0);
+	printf("%s-%s\n", env->name, env->comment);
+	if ((fd = open("tester.cor", O_CREAT | O_WRONLY, S_IRWXU)) == -1)
+	{
+		printf("|%s|\n", env->file_name);
+		printf("TRKILA\n");
+		return (0);
+	}
+	write(fd, env->exec, env->pc + CODE_HEAD_SIZE);
 	return (env);
 }

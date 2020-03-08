@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/07 23:16:34 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/08 06:58:37 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_op
 	char		*op;
 	int			arg_nb;
 	int 		arg[3];
-	int 		op_index;
+	unsigned char op_index;
 	int 		cycle;
 	char 		*op_desc;
 	int			arg_tcode;
@@ -44,7 +44,7 @@ typedef struct 		s_label
 
 typedef struct 		s_args
 {
-	int 			val;
+	unsigned int	val;
 	int 			nat;
 	int 			byte_size;
 }					t_args;
@@ -82,6 +82,7 @@ typedef struct 		s_env
 {
 	t_dlist 		*lines;
 	t_dlist 		*labels;
+	char 			*exec;
 	char 			*vect;
 	char 			*name;
 	char 			*comment;
@@ -138,5 +139,8 @@ int				ft_code_generator(t_env *env, int total_size);
 int				ft_magic_header(char *exec);
 int				ft_name_generator(char *exec, char *name, int i);
 int				ft_comment_generator(char *exec, char *cmt, int i);
+int             ft_generate_instruction(t_symbol_tab *sym_tab, t_env *env,
+		int i);
+int             ft_champ_exe_code(t_env *env, char *exec, int i);
 
 #endif
