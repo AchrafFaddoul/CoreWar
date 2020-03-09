@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 13:58:58 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/08 06:58:33 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/09 11:26:34 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ void 				ft_exec_size_counter(t_env *env)
 	elm = env->lines->head;
 	while (elm)
 	{
-		printf("*********************************\n");
 		if (((t_instru*)(elm->content))->op_flg ||
 				((t_instru*)(elm->content))->lbl_flg)
 		{
@@ -116,12 +115,9 @@ void 				ft_exec_size_counter(t_env *env)
 				instru_pc = ft_pc_counter(SYM_TAB);
 				env->pc += instru_pc;
 			}
-				printf("op:%s,pc_instr:%d\n", SYM_TAB->op, env->pc);
-				printf("instr:%d\n", instru_pc);
 		}
 		elm = elm->next;
 	}
-	printf("%d\n", env->pc);
 }
 
 int 				ft_magic_header(char *exec)
@@ -140,6 +136,23 @@ int 				ft_magic_header(char *exec)
 		i++;
 	}
 	return (i);
+}
+
+void				ft_champ_exec_size(char *exec, int pc, int i)
+{
+	int 			tmp;
+	int				j;
+
+	tmp = 0;
+	j = 0;
+	swap_bytes(&pc, &tmp, 4);
+
+	while (j < 4)
+	{
+		exec[i] = ((char*)(&tmp))[j];
+		i++;
+		j++;
+	}
 }
 
 int 				ft_name_generator(char *exec, char *name, int i)
@@ -180,7 +193,6 @@ int 				ft_comment_generator(char *exec, char *cmt, int i)
 
 int 				ft_code_generator(t_env *env, int total_size)
 {
-	printf("%d\n", total_size);
 	int 			fd;
 	int 			i;
 
@@ -192,6 +204,8 @@ int 				ft_code_generator(t_env *env, int total_size)
 	if ((ft_name_generator(env->exec, env->name, i)) == -1)
 		return (0);
 	i += 132;
+	ft_champ_exec_size(env->exec, env->pc, i);
+	i += 4;
 	if ((ft_comment_generator(env->exec, env->comment, i)) == -1)
 		return (0);
 	i += 2052;
@@ -208,13 +222,8 @@ t_env				*ft_backend_analys(t_env *env)
 	ft_exec_size_counter(env);
 	if (!(ft_code_generator(env, (env->pc + CODE_HEAD_SIZE))))
 		return (0);
-	printf("%s-%s\n", env->name, env->comment);
-	if ((fd = open("tester.cor", O_CREAT | O_WRONLY, S_IRWXU)) == -1)
-	{
-		printf("|%s|\n", env->file_name);
-		printf("TRKILA\n");
+	if ((fd = open(env->file_name, O_CREAT | O_WRONLY, S_IRWXU)) == -1)
 		return (0);
-	}
 	write(fd, env->exec, env->pc + CODE_HEAD_SIZE);
 	return (env);
 }

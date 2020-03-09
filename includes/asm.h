@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/08 06:58:37 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/09 11:22:19 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,5 +142,6 @@ int				ft_comment_generator(char *exec, char *cmt, int i);
 int             ft_generate_instruction(t_symbol_tab *sym_tab, t_env *env,
 		int i);
 int             ft_champ_exe_code(t_env *env, char *exec, int i);
+void			ft_champ_exec_size(char *exec, int pc, int i);
 
 #endif
