@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 00:32:16 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/09 17:48:29 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/09 17:55:00 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void 			ft_generate_reg(t_symbol_tab *sym_tab, char *exec,
 		exec[i] = ((char*)(&sym_tab->val_3.val))[0];
 }
 
-static int 				ft_get_label_pc_dir(t_env *env, char *arg)
+int 				ft_get_label_pc_dir(t_env *env, char *arg)
 {
 	t_element 		*tmp;
 
@@ -81,7 +81,7 @@ static int 				ft_get_label_pc_dir(t_env *env, char *arg)
 	}
 	return ((((t_label*)(tmp->content))->pc));
 }
-static int 				ft_get_label_pc_indir(t_env *env, char *arg)
+int 				ft_get_label_pc_indir(t_env *env, char *arg)
 {
 	t_element 		*tmp;
 
@@ -99,7 +99,6 @@ void			ft_generate_indir(t_symbol_tab *sym_tab, t_env *env, int i,
 {
 	int 		pc;
 
-	printf("3ala barakat lah mftho lmehder\n");
 	if (index == 1)
 	{
 		if (sym_tab->arg_1[0] == LABEL_CHAR)
@@ -110,7 +109,6 @@ void			ft_generate_indir(t_symbol_tab *sym_tab, t_env *env, int i,
 		env->exec[i] = ((char*)(&sym_tab->val_1.val))[1];
 		env->exec[i + 1] = ((char*)(&sym_tab->val_1.val))[0];
 	}
-	printf("maykon ghi jouj\n");
 	if (index == 2)
 	{
 		if (sym_tab->arg_2[0] == LABEL_CHAR)
@@ -219,7 +217,6 @@ int 			ft_generate_instruction(t_symbol_tab *sym_tab, t_env *env,
 	env->exec[i] = ft_get_op_code(sym_tab);
 	i++;
 	index = ft_get_op_index(sym_tab->op);
-	printf("|%s|\n", sym_tab->arg_2);
 	if (g_op_tab[index].arg_tcode)
 	{
 		ft_get_tcode(sym_tab, env->exec, i);
@@ -253,13 +250,11 @@ int 			ft_generate_instruction(t_symbol_tab *sym_tab, t_env *env,
 		ft_generate_reg(sym_tab, env->exec, i, 2);
 		i++;
 	}
-	printf("IND CHECK\n");
 	if (sym_tab->val_2.nat == T_IND)
 	{
 		ft_generate_indir(sym_tab, env, i, 2);
 		i += 2;
 	}
-	printf("catch it\n");
 	if (sym_tab->val_2.nat == T_DIR)
 	{
 		if (g_op_tab[index].dir_size)
@@ -304,10 +299,8 @@ int 			ft_champ_exe_code(t_env *env, char *exec, int i)
 	t_element 	*elm;
 
 	elm = env->lines->head;
-	printf("************champ_GEN***************\n");
 	while (elm)
 	{
-		printf("UNSTRU -> |%s|", ((t_instru*)(elm->content))->buff);
 		if (((t_instru*)(elm->content))->op_flg)
 			i = ft_generate_instruction(SYM_TAB, env, i);
 		elm = elm->next;

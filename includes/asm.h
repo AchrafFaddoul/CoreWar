@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/09 11:22:19 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/09 17:52:50 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,6 @@ int				ft_check_arg_nb(t_element *elm, int arg_nb);
 t_env			*ft_backend_analys(t_env *env);
 void			ft_exec_size_counter(t_env *env);
 int 			ft_pc_counter(t_symbol_tab* sym_tab);
-void			ft_set_label_pc(t_env *env, char *label);
 char			*ft_fname_extracter(char *f_name);
 void			swap_bytes(void *src, void *dst, int size);
 int				ft_code_generator(t_env *env, int total_size);
@@ -143,5 +142,7 @@ int             ft_generate_instruction(t_symbol_tab *sym_tab, t_env *env,
 		int i);
 int             ft_champ_exe_code(t_env *env, char *exec, int i);
 void			ft_champ_exec_size(char *exec, int pc, int i);
+int				ft_get_label_pc_indir(t_env *env, char *arg);
+int				ft_get_label_pc_dir(t_env *env, char *arg);
 
 #endif

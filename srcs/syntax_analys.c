@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:20:22 by ada               #+#    #+#             */
-/*   Updated: 2020/03/06 22:18:44 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/09 23:17:42 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,10 +173,8 @@ int 				ft_isnumber(char *arg)
 
 int 				ft_isdir(t_element *elm, char *arg, int arg_nb)
 {
-	int 			i;
 	int 			val;
 
-	i = 0;
 	val = 0;
 	if (arg_nb == 1)
 		SYM_TAB->val_1.nat = T_DIR;

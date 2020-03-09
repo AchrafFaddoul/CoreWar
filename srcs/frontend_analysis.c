@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:23:34 by ada               #+#    #+#             */
-/*   Updated: 2020/03/09 17:12:56 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/10 00:01:57 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,5 @@ t_env		*ft_frontend_analys(t_env *env)
 	{
 		return (NULL);
 	}
-	printf("OUT FROM SSEMANTIC ANAL\n");
 	return (env);
 }

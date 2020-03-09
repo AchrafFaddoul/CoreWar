@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 13:58:58 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/09 17:35:43 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/09 17:56:04 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,19 +128,13 @@ int 				ft_magic_header(char *exec)
 
 	tmp = 0;
 	i = 0;
-	printf("into MAGIC_HEADER\n");
 	magic_header = COREWAR_EXEC_MAGIC;
 	swap_bytes(&magic_header, &tmp, 4);
-	printf("swap magic head\n");
 	while (i < 4)
 	{
-		printf("swapping\n");
 		exec[i] = ((char*)(&tmp))[i];
-		printf("swaped\n");
 		i++;
 	}
-	write(1, "yow\n", 4);
-	printf("header swaped\n");
 	return (i);
 }
 
@@ -205,26 +199,19 @@ int 				ft_code_generator(t_env *env, int total_size)
 	i = 0;
 	if (!(env->exec = ft_memalloc(sizeof(char) * total_size)))
 		return (-1);
-	printf("EXEC_SIZE|%d|\n", total_size);
-	printf("env->exec allocated\n");
 	ft_magic_header(env->exec);
 	i = 4;
-	printf("magic header writed\n");
 	if ((ft_name_generator(env->exec, env->name, i)) == -1)
 		return (0);
-	printf("Name generated\n");
 	i += 132;
 	ft_champ_exec_size(env->exec, env->pc, i);
-	printf("exec size writed\n");
 	i += 4;
 	if ((ft_comment_generator(env->exec, env->comment, i)) == -1)
 		return (0);
-	printf("comment  generated\n");
 	i += 2052;
 	//exec size champ
 	if ((ft_champ_exe_code(env, env->exec, i)) == -1)
 		return (0);
-	printf("champ +exec+  generated\n");
 	return (1);
 }
 
@@ -232,11 +219,9 @@ t_env				*ft_backend_analys(t_env *env)
 {
 	int 			fd;
 
-	printf("IN BACKEND ANALYSIS FCT\n");
 	ft_exec_size_counter(env);
 	if (!(ft_code_generator(env, (env->pc + CODE_HEAD_SIZE))))
 		return (0);
-	printf("CODE GENERATED\n");
 	if ((fd = open(env->file_name, O_CREAT | O_WRONLY, S_IRWXU)) == -1)
 		return (0);
 	write(fd, env->exec, env->pc + CODE_HEAD_SIZE);

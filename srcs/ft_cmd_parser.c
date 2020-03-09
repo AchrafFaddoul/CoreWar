@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 16:04:23 by ada               #+#    #+#             */
-/*   Updated: 2020/03/08 04:41:59 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/10 00:01:18 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_env			*get_name(t_env *env, const char *ptr, int max_size)
 	i = 0;
 	j = 0;
 	ft_bzero(buff, max_size);
-	while (ptr[i] && ((ptr[i] > 8 && ptr[i] < 14) || ptr[i] == 32))
+	while (ptr[i] && (ptr[i] == 9 || ptr[i] == 32))
 		i++;
 	if (!ptr[i])
 		return (NULL);
@@ -70,9 +70,9 @@ t_env			*get_name(t_env *env, const char *ptr, int max_size)
 		i++;
 		j++;
 	}
-	while (ptr[i] && ((ptr[i] > 8 && ptr[i] < 14) || ptr[i] == 32))
+	while (ptr[i] && (ptr[i] == 9 || ptr[i] == 32))
 		i++;
-	if (ptr[i] == COMMENT_CHAR || ptr[i] == ALT_COMMENT_CHAR || !ptr[i])
+	if (ptr[i] == COMMENT_CHAR || ptr[i] == ALT_COMMENT_CHAR || ptr[i] == '\n')
 		return (ft_cmd_dup(env, buff, max_size));
 	return (NULL);
 }
@@ -105,9 +105,9 @@ t_env			*get_cmt(t_env *env, const char *ptr, int max_size)
 		i++;
 		j++;
 	}
-	while (ptr[i] && ((ptr[i] > 8 && ptr[i] < 14) || ptr[i] == 32))
+	while (ptr[i] && (ptr[i] == 9 || ptr[i] == 32))
 		i++;
-	if (ptr[i] == COMMENT_CHAR || ptr[i] == ALT_COMMENT_CHAR || !ptr[i])
+	if (ptr[i] == COMMENT_CHAR || ptr[i] == ALT_COMMENT_CHAR || ptr[i] == '\n')
 		return (ft_cmd_dup(env, buff, max_size));
 	return (NULL);
 }
