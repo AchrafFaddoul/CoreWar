@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:14:19 by ada               #+#    #+#             */
-/*   Updated: 2020/02/29 04:34:21 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/10 17:07:59 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ t_env		*ft_line_parser(t_env *env)
 		{
 			if (!ft_get_line(env, j, i))
 				return (NULL);
-		//	printf("|%s|", ((t_instru*)(env->lines->tail->content))->buff);
 			j = i + 1;
 		}
 		i++;

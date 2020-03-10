@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 00:32:16 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/09 17:55:00 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/10 16:26:50 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void 			ft_generate_reg(t_symbol_tab *sym_tab, char *exec,
 		exec[i] = ((char*)(&sym_tab->val_3.val))[0];
 }
 
-int 				ft_get_label_pc_dir(t_env *env, char *arg)
+static int 				ft_get_label_pc_dir(t_env *env, char *arg)
 {
 	t_element 		*tmp;
 
@@ -81,7 +81,7 @@ int 				ft_get_label_pc_dir(t_env *env, char *arg)
 	}
 	return ((((t_label*)(tmp->content))->pc));
 }
-int 				ft_get_label_pc_indir(t_env *env, char *arg)
+static int 				ft_get_label_pc_indir(t_env *env, char *arg)
 {
 	t_element 		*tmp;
 

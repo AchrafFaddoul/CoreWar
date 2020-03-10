@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:20:22 by ada               #+#    #+#             */
-/*   Updated: 2020/03/10 11:29:11 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/10 17:04:07 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,8 +173,10 @@ int 				ft_isnumber(char *arg)
 
 int 				ft_isdir(t_element *elm, char *arg, int arg_nb)
 {
+	int 			i;
 	int 			val;
 
+	i = 0;
 	val = 0;
 	if (arg_nb == 1)
 		SYM_TAB->val_1.nat = T_DIR;
@@ -291,7 +293,7 @@ int					ft_argtokenizer(t_env *env, t_element *elm, char *str,
 	return (1);
 }
 
-int 				ft_check_separators(char *str, int index)
+int					ft_check_separators(char *str, int index)
 {
 	int 			sep_nb;
 	int 			i;
@@ -308,18 +310,15 @@ int 				ft_check_separators(char *str, int index)
 		return (0);
 	return (1);
 }
-
 int 				ft_argscanner(t_env *env, t_element *elm, char *str,
 		int index)
 {
 	int 			i;
 	int 			j;
-//	int 			calls_nb;
 	t_ptrs			ptrs;
 
 	i = 0;
 	j = 0;
-//	calls_nb = 1;
 	if (!(ft_check_separators(str, index)))
 		return (0);
 	while (str[i])
@@ -333,13 +332,10 @@ int 				ft_argscanner(t_env *env, t_element *elm, char *str,
 				if (str[i] == SEPARATOR_CHAR || str[i] == '\n' ||
 						str[i] == COMMENT_CHAR || str[i] == ALT_COMMENT_CHAR)
 				{
-				//	if (calls_nb > g_op_tab[index].arg_nb)
-				//		return (0);
 					ptrs.start = j;
 					ptrs.end = i;
 					if (!ft_argtokenizer(env, elm, str, ptrs))
 						return (0);
-					//calls_nb++;
 					break ;
 				}
 				i++;

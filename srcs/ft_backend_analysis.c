@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 13:58:58 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/09 17:56:04 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/10 16:29:25 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,7 +209,6 @@ int 				ft_code_generator(t_env *env, int total_size)
 	if ((ft_comment_generator(env->exec, env->comment, i)) == -1)
 		return (0);
 	i += 2052;
-	//exec size champ
 	if ((ft_champ_exe_code(env, env->exec, i)) == -1)
 		return (0);
 	return (1);
