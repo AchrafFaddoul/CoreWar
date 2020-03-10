@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 16:04:23 by ada               #+#    #+#             */
-/*   Updated: 2020/03/10 17:41:12 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/10 19:33:49 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,46 @@ static t_env	*ft_cmd_dup(t_env *env, char *buff, int flag)
 	return (env);
 }
 
-t_env			*get_name(t_env *env, const char *ptr, int max_size)
+t_element		*get_name(t_env *env, const char *ptr, int max_size,
+		t_element *elm)
+{
+	char 		buff[max_size];
+	int 		i;
+	int 		j;
+
+	i = 0;
+	j = 0;
+	ft_bzero(buff, max_size);
+	while (ptr[i] && (ptr[i] == 9 || ptr[i] == 32))
+		i++;
+	if (!ptr[i])
+		return (NULL);
+	if (ptr[i++] != '"')
+		return (0);
+	while (ptr[i])
+	{
+		if (j == max_size)
+			return (0);
+		if (ptr[i] == '"' && ptr[i - 1] != '\\')
+		{
+			i++;
+			break ;
+		}
+		buff[j] = ptr[i];
+		i++;
+		j++;
+	}
+//	if (!ptr[i])
+//		return (0);
+	while (ptr[i] && (ptr[i] == 9 || ptr[i] == 32))
+		i++;
+	if (ptr[i] == COMMENT_CHAR || ptr[i] == ALT_COMMENT_CHAR || ptr[i] == '\n')
+		ft_cmd_dup(env, buff, max_size);
+	return (elm);
+}
+
+t_element		*get_cmt(t_env *env, const char *ptr, int max_size,
+		t_element *elm)
 {
 	char 		buff[max_size];
 	int 		i;
@@ -73,51 +112,17 @@ t_env			*get_name(t_env *env, const char *ptr, int max_size)
 	while (ptr[i] && (ptr[i] == 9 || ptr[i] == 32))
 		i++;
 	if (ptr[i] == COMMENT_CHAR || ptr[i] == ALT_COMMENT_CHAR || ptr[i] == '\n')
-		return (ft_cmd_dup(env, buff, max_size));
-	return (NULL);
+		ft_cmd_dup(env, buff, max_size);
+	return (elm);
 }
 
-t_env			*get_cmt(t_env *env, const char *ptr, int max_size)
-{
-	char 		buff[max_size];
-	int 		i;
-	int 		j;
-
-	i = 0;
-	j = 0;
-	ft_bzero(buff, max_size);
-	while (ptr[i] && ((ptr[i] > 8 && ptr[i] < 14) || ptr[i] == 32))
-		i++;
-	if (!ptr[i])
-		return (NULL);
-	if (ptr[i++] != '"')
-		return (0);
-	while (ptr[i])
-	{
-		if (j == max_size)
-			return (0);
-		if (ptr[i] == '"' && ptr[i - 1] != '\\')
-		{
-			i++;
-			break ;
-		}
-		buff[j] = ptr[i];
-		i++;
-		j++;
-	}
-	while (ptr[i] && (ptr[i] == 9 || ptr[i] == 32))
-		i++;
-	if (ptr[i] == COMMENT_CHAR || ptr[i] == ALT_COMMENT_CHAR || ptr[i] == '\n')
-		return (ft_cmd_dup(env, buff, max_size));
-	return (NULL);
-}
-
-t_env			*ft_get_cmd_dispatcher(t_env *env, const char *ptr)
+t_element			*ft_get_cmd_dispatcher(t_env *env, const char *ptr,
+		t_element *elm)
 {
 	if (*(ptr + 1) == 'n')
-		return (get_name(env, (ptr + 5), PROG_NAME_LENGTH));
+		return (get_name(env, (ptr + 5), PROG_NAME_LENGTH, elm));
 	else
-		return (get_cmt(env, (ptr + 8), COMMENT_LENGTH));
+		return (get_cmt(env, (ptr + 8), COMMENT_LENGTH, elm));
 }
 
 t_env 			*ft_cmd_parser(t_env *env)
@@ -147,7 +152,7 @@ t_env 			*ft_cmd_parser(t_env *env)
 		if (!ft_strncmp((ptr + i), NAME_CMD_STRING, 5) ||
 				!ft_strncmp((ptr + i), COMMENT_CMD_STRING, 8))
 		{
-			if (!(ft_get_cmd_dispatcher(env, (ptr + i))))
+			if (!(elm = ft_get_cmd_dispatcher(env, (ptr + i), elm)))
 				return (destroy_cmd(env));
 		}
 		else
