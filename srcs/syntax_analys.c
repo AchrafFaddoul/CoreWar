@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:20:22 by ada               #+#    #+#             */
-/*   Updated: 2020/03/10 17:04:07 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/10 18:03:30 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -302,6 +302,9 @@ int					ft_check_separators(char *str, int index)
 	sep_nb = 0;
 	while (str[i])
 	{
+		if (str[i] == SEPARATOR_CHAR || str[i] == COMMENT_CHAR ||
+				str[i] == ALT_COMMENT_CHAR)
+			break ;
 		if (str[i] == SEPARATOR_CHAR)
 			sep_nb++;
 		i++;
