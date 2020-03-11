@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 13:58:58 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/11 18:17:19 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/11 19:11:37 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,7 @@ int 				ft_name_generator(char *exec, char *name, int i)
 	int 			j;
 
 	j = 0;
-	if(!(tmp = ft_memalloc(sizeof(char) * PROG_NAME_LENGTH)))
+	if(!(tmp = ft_memalloc(sizeof(char) * (PROG_NAME_LENGTH + 1))))
 		return (-1);
 	ft_strcpy(tmp, name);
 	while(j < PROG_NAME_LENGTH)
@@ -180,7 +180,7 @@ int 				ft_comment_generator(char *exec, char *cmt, int i)
 	int 			j;
 
 	j = 0;
-	if(!(tmp = ft_memalloc(sizeof(char) * COMMENT_LENGTH)))
+	if(!(tmp = ft_memalloc(sizeof(char) * (COMMENT_LENGTH + 1))))
 		return (-1);
 	ft_strcpy(tmp, cmt);
 	while(j < COMMENT_LENGTH)

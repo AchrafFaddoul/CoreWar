@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/11 18:47:36 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/11 23:33:09 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ int					ft_isop(char c);
 int					ft_check_args(t_element *elm, char *arg, int arg_nb);
 int					ft_isreg(t_element *elm, char *arg, int arg_nb);
 int					ft_semantic_analysis(t_env *env);
-void				ft_nodepop(t_element *elm);
 int					ft_get_op_index(char *op);
 int					ft_args_checker(t_env *env);
 int					ft_check_args_type(t_element *elm, int arg_nb, int index);
@@ -151,5 +150,38 @@ t_element			*ft_get_next_node(t_element *elm, char *buff, int j,
 void				ft_env_destroy(t_env *env);
 void				ft_lines_del(void *content);
 void				ft_label_del(void *content);
+void				ft_gen_ind_arg1(t_symbol_tab *sym_tab, t_env *env,
+		int i, int *pc);
+void				ft_gen_ind_arg2(t_symbol_tab *sym_tab, t_env *env,
+		int i, int *pc);
+void				ft_gen_ind_arg3(t_symbol_tab *sym_tab, t_env *env,
+		int i, int *pc);
+void				ft_gen_sdir_arg1(t_symbol_tab *sym_tab, t_env *env,
+		int i, int *pc);
+void				ft_gen_sdir_arg2(t_symbol_tab *sym_tab, t_env *env,
+		int i, int *pc);
+void				ft_gen_sdir_arg3(t_symbol_tab *sym_tab, t_env *env,
+		int i, int *pc);
+void				ft_gen_ldir_arg1(t_symbol_tab *sym_tab, t_env *env,
+		int i, int *pc);
+void				ft_gen_ldir_arg2(t_symbol_tab *sym_tab, t_env *env,
+		int i, int *pc);
+void				ft_gen_ldir_arg3(t_symbol_tab *sym_tab, t_env *env,
+		int i, int *pc);
+void				ft_gen_arg1_bytecode(t_symbol_tab *sym_tab,
+		t_env *env, int *i, int index);
+void				ft_gen_arg2_bytecode(t_symbol_tab *sym_tab,
+		t_env *env, int *i, int index);
+void				ft_gen_arg3_bytecode(t_symbol_tab *sym_tab,
+		t_env *env, int *i, int index);
+void                        ft_get_tcode(t_symbol_tab *sym_tab, char *exec,
+		int i);
+int					ft_get_label_pc_dir(t_env *env, char *arg);
+int					ft_get_label_pc_indir(t_env *env, char *arg);
+char				ft_get_op_code(t_symbol_tab *sym_tab);
+void				ft_generate_reg(t_symbol_tab *sym_tab, char *exec,
+		int i, int index);
+int					ft_get_label_pc_dir(t_env *env, char *arg);
+int					ft_get_label_pc_indir(t_env *env, char *arg);
 
 #endif

@@ -13,9 +13,11 @@ FILES = srcs/main.c \
 	srcs/code_parser.c  \
 	srcs/syntax_analys.c  \
 	srcs/semantic_analys.c  \
-	srcs/ft_nodepop.c  \
 	srcs/ft_backend_analysis.c  \
 	srcs/champ_exe_code.c  \
+	srcs/ft_get_tcode.c  \
+	srcs/gen_code_tools.c  \
+	srcs/gen_ind_args.c  \
 
 OBJ = $(FILES:.c=.o)
 
