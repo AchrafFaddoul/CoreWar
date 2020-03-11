@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:20:22 by ada               #+#    #+#             */
-/*   Updated: 2020/03/11 18:39:45 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/11 18:42:21 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,9 @@ void 				ft_label_del(void *content)
 	t_label			*lbl;
 
 	lbl = (t_label*)content;
-	if (lbl)
-	{
-		if (lbl->label)
-			ft_strdel((char**)&(lbl->label));
-		ft_memdel((void**)lbl);
-	}
+	if (lbl->label)
+		ft_strdel((char**)&(lbl->label));
+	ft_memdel((void**)&lbl);
 }
 
 void 				ft_env_destroy(t_env *env)
@@ -58,11 +55,11 @@ void 				ft_env_destroy(t_env *env)
 	if (env->file_name)
 		ft_strdel((char**)&(env->file_name));
 	if (env->exec)
-	ft_strdel((char**)&(env->exec));
+		ft_strdel((char**)&(env->exec));
 	if (env->name)
-	ft_strdel((char**)&(env->name));
+		ft_strdel((char**)&(env->name));
 	if (env->comment)
-	ft_strdel((char**)&(env->comment));
+		ft_strdel((char**)&(env->comment));
 	if (env->lines)
 		ft_dlstdel(&env->lines, ft_lines_del);
 	if (env->labels)

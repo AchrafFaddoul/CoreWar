@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/11 18:00:17 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/11 18:47:36 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef struct 		s_env
 
 void				check_fextension(char *str);
 char				*read_file(int fd);
-char 				*ft_vrealloc(char **buff, size_t buff_size);
+char 				*ft_vrealloc(char *buff, size_t buff_size);
 void				ft_assembler(t_env *env);
 t_env				*ft_frontend_analys(t_env *env);
 t_env				*ft_line_parser(t_env *env);

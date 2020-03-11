@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/11 16:19:25 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/11 19:07:30 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ char			*read_file(int fd)
 
 	i = 0;
 	buff_size = BUFF_SIZE;
-	if (!(buff = (char*)ft_memalloc(sizeof(char) * buff_size)))
+	if (!(buff = (char*)ft_memalloc(sizeof(char) * (buff_size + 1))))
 		ft_error();
 	while (i < MAX_SIZE && (ret = read(fd, buff + i, 1) > 0))
 	{
 		if (i == (buff_size - 1))
 		{
 			buff_size *= 2;
-			if (!(buff = ft_vrealloc(&buff, buff_size)))
+			if (!(buff = ft_vrealloc(buff, buff_size)))
 			{
 				ft_strdel((char**)&buff);
 				ft_error();
