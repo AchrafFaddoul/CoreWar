@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 00:32:16 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/11 22:13:22 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/11 22:39:28 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ static int					ft_get_label_pc_indir(t_env *env, char *arg)
 	}
 	return ((((t_label*)(tmp->content))->pc));
 }
+
 void						ft_gen_ind_arg1(t_symbol_tab *sym_tab, t_env *env,
 		int i, int *pc)
 {
@@ -113,124 +114,150 @@ void						ft_gen_ind_arg1(t_symbol_tab *sym_tab, t_env *env,
 	}
 	env->exec[i] = ((char*)(&sym_tab->val_1.val))[1];
 	env->exec[i + 1] = ((char*)(&sym_tab->val_1.val))[0];
-
 }
+
+void						ft_gen_ind_arg2(t_symbol_tab *sym_tab, t_env *env,
+		int i, int *pc)
+{
+	if (sym_tab->arg_2[0] == LABEL_CHAR)
+	{
+		*pc = ft_get_label_pc_indir(env, (sym_tab->arg_2));
+		sym_tab->val_2.val = *pc - sym_tab->pc;
+	}
+	env->exec[i] = ((char*)(&sym_tab->val_2.val))[1];
+	env->exec[i + 1] = ((char*)(&sym_tab->val_2.val))[0];
+}
+
+void						ft_gen_ind_arg3(t_symbol_tab *sym_tab, t_env *env,
+		int i, int *pc)
+{
+	if (sym_tab->arg_3[0] == LABEL_CHAR)
+	{
+		*pc = ft_get_label_pc_indir(env, sym_tab->arg_3);
+		sym_tab->val_3.val = *pc - sym_tab->pc;
+	}
+	env->exec[i] = ((char*)(&sym_tab->val_3.val))[1];
+	env->exec[i + 1] = ((char*)(&sym_tab->val_3.val))[0];
+}
+
 void						ft_generate_indir(t_symbol_tab *sym_tab,
 		t_env *env, int i, int index)
 {
 	int						pc;
 
 	if (index == 1)
-	{
 		ft_gen_ind_arg1(sym_tab, env, i, &pc);
-//		if (sym_tab->arg_1[0] == LABEL_CHAR)
-//		{
-//			pc = ft_get_label_pc_indir(env, sym_tab->arg_1);
-//			sym_tab->val_1.val = pc - sym_tab->pc;
-//		}
-//		env->exec[i] = ((char*)(&sym_tab->val_1.val))[1];
-//		env->exec[i + 1] = ((char*)(&sym_tab->val_1.val))[0];
-	}
 	if (index == 2)
-	{
-		if (sym_tab->arg_2[0] == LABEL_CHAR)
-		{
-			pc = ft_get_label_pc_indir(env, (sym_tab->arg_2));
-			sym_tab->val_2.val = pc - sym_tab->pc;
-		}
-		env->exec[i] = ((char*)(&sym_tab->val_2.val))[1];
-		env->exec[i + 1] = ((char*)(&sym_tab->val_2.val))[0];
-	}
+		ft_gen_ind_arg2(sym_tab, env, i, &pc);
 	if (index == 3)
-	{
-		if (sym_tab->arg_3[0] == LABEL_CHAR)
-		{
-			pc = ft_get_label_pc_indir(env, sym_tab->arg_3);
-			sym_tab->val_3.val = pc - sym_tab->pc;
-		}
-		env->exec[i] = ((char*)(&sym_tab->val_3.val))[1];
-		env->exec[i + 1] = ((char*)(&sym_tab->val_3.val))[0];
-	}
+		ft_gen_ind_arg3(sym_tab, env, i, &pc);
 }
 
+
+void						ft_gen_sdir_arg1(t_symbol_tab *sym_tab, t_env *env,
+		int i, int *pc)
+{
+	if (sym_tab->arg_1[1] == LABEL_CHAR)
+	{
+		*pc = ft_get_label_pc_dir(env, sym_tab->arg_1);
+		sym_tab->val_1.val = *pc - sym_tab->pc;
+	}
+	env->exec[i] = ((char*)(&sym_tab->val_1.val))[1];
+	env->exec[i + 1] = ((char*)(&sym_tab->val_1.val))[0];
+}
+
+void						ft_gen_sdir_arg2(t_symbol_tab *sym_tab, t_env *env,
+		int i, int *pc)
+{
+
+	if (sym_tab->arg_2[1] == LABEL_CHAR)
+	{
+		*pc = ft_get_label_pc_dir(env, sym_tab->arg_2);
+		sym_tab->val_2.val = *pc - sym_tab->pc;
+	}
+	env->exec[i] = ((char*)(&sym_tab->val_2.val))[1];
+	env->exec[i + 1] = ((char*)(&sym_tab->val_2.val))[0];
+}
+void						ft_gen_sdir_arg3(t_symbol_tab *sym_tab, t_env *env,
+		int i, int *pc)
+{
+
+	if (sym_tab->arg_3[1] == LABEL_CHAR)
+	{
+		*pc = ft_get_label_pc_dir(env, sym_tab->arg_3);
+		sym_tab->val_3.val = *pc - sym_tab->pc;
+	}
+	env->exec[i] = ((char*)(&sym_tab->val_3.val))[1];
+	env->exec[i + 1] = ((char*)(&sym_tab->val_3.val))[0];
+}
 void						ft_generate_dir_short(t_symbol_tab *sym_tab,
 		t_env *env, int i, int index)
 {
 	int 				pc;
 
 	if (index == 1)
-	{
-		if (sym_tab->arg_1[1] == LABEL_CHAR)
-		{
-			pc = ft_get_label_pc_dir(env, sym_tab->arg_1);
-			sym_tab->val_1.val = pc - sym_tab->pc;
-		}
-		env->exec[i] = ((char*)(&sym_tab->val_1.val))[1];
-		env->exec[i + 1] = ((char*)(&sym_tab->val_1.val))[0];
-	}
+		ft_gen_sdir_arg1(sym_tab, env, i, &pc);
 	if (index == 2)
-	{
-		if (sym_tab->arg_2[1] == LABEL_CHAR)
-		{
-			pc = ft_get_label_pc_dir(env, sym_tab->arg_2);
-			sym_tab->val_2.val = pc - sym_tab->pc;
-		}
-		env->exec[i] = ((char*)(&sym_tab->val_2.val))[1];
-		env->exec[i + 1] = ((char*)(&sym_tab->val_2.val))[0];
-	}
+		ft_gen_sdir_arg2(sym_tab, env, i, &pc);
 	if (index == 3)
-	{
-		if (sym_tab->arg_3[1] == LABEL_CHAR)
-		{
-			pc = ft_get_label_pc_dir(env, sym_tab->arg_3);
-			sym_tab->val_3.val = pc - sym_tab->pc;
-		}
-		env->exec[i] = ((char*)(&sym_tab->val_3.val))[1];
-		env->exec[i + 1] = ((char*)(&sym_tab->val_3.val))[0];
-	}
+		ft_gen_sdir_arg3(sym_tab, env, i, &pc);
 }
 
+
+void						ft_gen_ldir_arg1(t_symbol_tab *sym_tab, t_env *env,
+		int i, int *pc)
+{
+	if (sym_tab->arg_1[1] == LABEL_CHAR)
+		{
+			*pc = ft_get_label_pc_dir(env, sym_tab->arg_1);
+			sym_tab->val_1.val = *pc - sym_tab->pc;
+		}
+		env->exec[i] = ((char*)(&sym_tab->val_1.val))[3];
+		env->exec[i + 1] = ((char*)(&sym_tab->val_1.val))[2];
+		env->exec[i + 2] = ((char*)(&sym_tab->val_1.val))[1];
+		env->exec[i + 3] = ((char*)(&sym_tab->val_1.val))[0];
+}
+
+void						ft_gen_ldir_arg2(t_symbol_tab *sym_tab, t_env *env,
+		int i, int *pc)
+{
+
+		if (sym_tab->arg_2[1] == LABEL_CHAR)
+		{
+			*pc = ft_get_label_pc_dir(env, sym_tab->arg_2);
+			sym_tab->val_2.val = *pc - sym_tab->pc;
+		}
+		env->exec[i] = ((char*)(&sym_tab->val_2.val))[3];
+		env->exec[i + 1] = ((char*)(&sym_tab->val_2.val))[2];
+		env->exec[i + 2] = ((char*)(&sym_tab->val_2.val))[1];
+		env->exec[i + 3] = ((char*)(&sym_tab->val_2.val))[0];
+}
+
+void						ft_gen_ldir_arg3(t_symbol_tab *sym_tab, t_env *env,
+		int i, int *pc)
+{
+
+		if (sym_tab->arg_3[1] == LABEL_CHAR)
+		{
+			*pc = ft_get_label_pc_dir(env, sym_tab->arg_3);
+			sym_tab->val_3.val = *pc - sym_tab->pc;
+		}
+		env->exec[i] = ((char*)(&sym_tab->val_3.val))[3];
+		env->exec[i + 1] = ((char*)(&sym_tab->val_3.val))[2];
+		env->exec[i + 2] = ((char*)(&sym_tab->val_3.val))[1];
+		env->exec[i + 3] = ((char*)(&sym_tab->val_3.val))[0];
+}
 void 					ft_generate_dir_long(t_symbol_tab *sym_tab,
 		t_env *env, int i, int index)
 {
 	int 				pc;
 
 	if (index == 1)
-	{
-		if (sym_tab->arg_1[1] == LABEL_CHAR)
-		{
-			pc = ft_get_label_pc_dir(env, sym_tab->arg_1);
-			sym_tab->val_1.val = pc - sym_tab->pc;
-		}
-		env->exec[i] = ((char*)(&sym_tab->val_1.val))[3];
-		env->exec[i + 1] = ((char*)(&sym_tab->val_1.val))[2];
-		env->exec[i + 2] = ((char*)(&sym_tab->val_1.val))[1];
-		env->exec[i + 3] = ((char*)(&sym_tab->val_1.val))[0];
-	}
+		ft_gen_ldir_arg1(sym_tab, env, i, &pc);
 	if (index == 2)
-	{
-		if (sym_tab->arg_2[1] == LABEL_CHAR)
-		{
-			pc = ft_get_label_pc_dir(env, sym_tab->arg_2);
-			sym_tab->val_2.val = pc - sym_tab->pc;
-		}
-		env->exec[i] = ((char*)(&sym_tab->val_2.val))[3];
-		env->exec[i + 1] = ((char*)(&sym_tab->val_2.val))[2];
-		env->exec[i + 2] = ((char*)(&sym_tab->val_2.val))[1];
-		env->exec[i + 3] = ((char*)(&sym_tab->val_2.val))[0];
-	}
+		ft_gen_ldir_arg2(sym_tab, env, i, &pc);
 	if (index == 3)
-	{
-		if (sym_tab->arg_3[1] == LABEL_CHAR)
-		{
-			pc = ft_get_label_pc_dir(env, sym_tab->arg_3);
-			sym_tab->val_3.val = pc - sym_tab->pc;
-		}
-		env->exec[i] = ((char*)(&sym_tab->val_3.val))[3];
-		env->exec[i + 1] = ((char*)(&sym_tab->val_3.val))[2];
-		env->exec[i + 2] = ((char*)(&sym_tab->val_3.val))[1];
-		env->exec[i + 3] = ((char*)(&sym_tab->val_3.val))[0];
-	}
+		ft_gen_ldir_arg3(sym_tab, env, i, &pc);
 }
 
 int							ft_generate_instruction(t_symbol_tab *sym_tab,
