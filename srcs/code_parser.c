@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 21:53:42 by ada               #+#    #+#             */
-/*   Updated: 2020/03/10 18:04:01 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/11 18:20:32 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,22 @@ t_env				*ft_instruparser(t_env *env)
 		if (*ptr == COMMENT_CHAR ||
 				*ptr == ALT_COMMENT_CHAR || *ptr == '\n')
 		{
+			ft_strdel((char**)&ptr);
 			elm = elm->next;
 			continue ;
 		}
 		if (!(s_tab = (t_symbol_tab*)ft_memalloc(sizeof(t_symbol_tab))))
+		{
+			ft_strdel((char**)&ptr);
 			return (NULL);
+		}
 		((t_instru*)(elm->content))->sym_tab = s_tab;
 		if (!(ft_scanner(env, elm, ptr)))
 		{
 			ft_strdel((char**)&ptr);
 			return (NULL);
 		}
+		ft_strdel((char**)&ptr);
 		elm = elm->next;
 	}
 	return (env);

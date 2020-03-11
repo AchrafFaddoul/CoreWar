@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:20:22 by ada               #+#    #+#             */
-/*   Updated: 2020/03/11 11:10:55 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/11 18:23:11 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -379,16 +379,26 @@ t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
 			}
 		}
 		if (i == 15)
+		{
+			ft_strdel((char**)&ptr);
 			return (NULL);
+		}
 		i++;
 	}
 	if (!(SYM_TAB->op = ft_strdup(g_op_tab[i].op)))
+	{
+		ft_strdel((char**)&ptr);
 		return (NULL);
+	}
 	index = i;
 	i = ft_strlen(g_op_tab[i].op);
 	((t_instru*)(elm->content))->op_flg = 1;
 	if (!(ft_argscanner(env, elm, ptr + i, index)))
+	{
+		ft_strdel((char**)&ptr);
 		return (NULL);
+	}
+	ft_strdel((char**)&ptr);
 	return (env);
 }
 

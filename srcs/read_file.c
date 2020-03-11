@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/07 20:24:29 by afaddoul         ###   ########.fr       */
+/*   Updated: 2020/03/11 16:19:25 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char			*ft_fname_extracter(char *f_name)
 	if (!(exec = ft_memalloc((sizeof(char) * len + 4))))
 		return (0);
 	ft_strcpy(exec, str);
+	ft_strdel((char**)&str);
 	ft_strcpy(exec + len - 2, ".cor");
 	return (exec);
 }
