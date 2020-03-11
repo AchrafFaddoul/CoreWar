@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 13:58:58 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/10 16:29:25 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/11 08:08:17 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,7 +193,6 @@ int 				ft_comment_generator(char *exec, char *cmt, int i)
 
 int 				ft_code_generator(t_env *env, int total_size)
 {
-	int 			fd;
 	int 			i;
 
 	i = 0;

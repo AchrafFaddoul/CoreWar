@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 16:04:23 by ada               #+#    #+#             */
-/*   Updated: 2020/03/10 19:33:49 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/11 08:07:02 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,38 @@ static t_env	*ft_cmd_dup(t_env *env, char *buff, int flag)
 	return (env);
 }
 
+t_element		*ft_get_next_node(t_element *elm, char *buff, int j, int size)
+{
+	char 		*ptr;
+	char 		*tmp;
+	int 		i;
+
+	tmp = (char*)ft_memalloc(size);
+	ft_strcpy(tmp, buff);
+	while (elm)
+	{
+		i = 0;
+		ptr = ((t_instru*)(elm->content))->buff;
+		while (ptr[i])
+		{
+			if (j >= (size - 1))
+				return (NULL);
+			if (ptr[i] == '"' && ptr[i - 1] != '\\')
+			{
+				printf("ptr->|%s|\n", tmp);
+				//ft_cmd_dup(env, tmp, size);
+				return (elm);
+			}
+			tmp[j] = ptr[i];
+			printf("tmp:%s->new_char|%c|\nptr:%s\n",tmp, tmp[j], ptr+i);
+			j++;
+			i++;
+		}
+		elm = elm->next;
+	}
+	return (NULL);
+}
+
 t_element		*get_name(t_env *env, const char *ptr, int max_size,
 		t_element *elm)
 {
@@ -60,7 +92,7 @@ t_element		*get_name(t_env *env, const char *ptr, int max_size,
 		return (0);
 	while (ptr[i])
 	{
-		if (j == max_size)
+		if (j >= (max_size - 1))
 			return (0);
 		if (ptr[i] == '"' && ptr[i - 1] != '\\')
 		{
@@ -71,8 +103,13 @@ t_element		*get_name(t_env *env, const char *ptr, int max_size,
 		i++;
 		j++;
 	}
-//	if (!ptr[i])
-//		return (0);
+	if (!ptr[i])
+	{
+		elm = elm->next;
+		elm = ft_get_next_node(elm, buff, ++j, max_size);
+		ft_cmd_dup(env, buff, max_size);
+		return (elm);
+	}
 	while (ptr[i] && (ptr[i] == 9 || ptr[i] == 32))
 		i++;
 	if (ptr[i] == COMMENT_CHAR || ptr[i] == ALT_COMMENT_CHAR || ptr[i] == '\n')
@@ -98,7 +135,7 @@ t_element		*get_cmt(t_env *env, const char *ptr, int max_size,
 		return (0);
 	while (ptr[i])
 	{
-		if (j == max_size)
+		if (j >= (max_size - 1))
 			return (0);
 		if (ptr[i] == '"' && ptr[i - 1] != '\\')
 		{
@@ -111,6 +148,16 @@ t_element		*get_cmt(t_env *env, const char *ptr, int max_size,
 	}
 	while (ptr[i] && (ptr[i] == 9 || ptr[i] == 32))
 		i++;
+	if (!ptr[i])
+	{
+		printf("Lets start next node\n");
+		elm = elm->next;
+		printf("elm---->%s", ((t_instru*)(elm->content))->buff);
+		elm = ft_get_next_node(elm, buff, ++j, max_size);
+		ft_cmd_dup(env, buff, max_size);
+		printf("BUFF_AFTERNEXT_NODE|%s|\n", buff);
+		return (elm);
+	}
 	if (ptr[i] == COMMENT_CHAR || ptr[i] == ALT_COMMENT_CHAR || ptr[i] == '\n')
 		ft_cmd_dup(env, buff, max_size);
 	return (elm);

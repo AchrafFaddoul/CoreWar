@@ -1,6 +1,6 @@
 NAME = asm
 
-FLAGS = -g 
+FLAGS = -g -Wall -Wextra -Werror
 FILES = srcs/main.c \
 	srcs/check_fextension.c \
 	srcs/read_file.c \

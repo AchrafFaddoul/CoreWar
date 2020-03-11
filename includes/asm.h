@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/10 19:31:58 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/11 07:58:23 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,5 +147,6 @@ int             ft_generate_instruction(t_symbol_tab *sym_tab, t_env *env,
 int             ft_champ_exe_code(t_env *env, char *exec, int i);
 void			ft_champ_exec_size(char *exec, int pc, int i);
 int				ft_check_separators(char *str, int index);
+t_element		*ft_get_next_node(t_element *elm, char *buff, int j, int size);
 
 #endif
