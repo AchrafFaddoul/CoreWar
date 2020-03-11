@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 16:04:23 by ada               #+#    #+#             */
-/*   Updated: 2020/03/11 09:47:12 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/11 10:07:18 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_element		*ft_get_next_node(t_element *elm, char *buff, int j, int size)
 		ptr = ((t_instru*)(elm->content))->buff;
 		while (ptr[i])
 		{
-			if (j >= (size - 1))
+			if (j > size)
 				return (NULL);
 			if (ptr[i] == '"' && ptr[i - 1] != '\\')
 				return (elm);
@@ -69,13 +69,13 @@ t_element		*ft_get_next_node(t_element *elm, char *buff, int j, int size)
 t_element		*get_name(t_env *env, const char *ptr, int max_size,
 		t_element *elm)
 {
-	char 		buff[max_size];
+	char 		buff[max_size + 1];
 	int 		i;
 	int 		j;
 
 	i = 0;
 	j = 0;
-	ft_bzero(buff, max_size);
+	ft_bzero(buff, max_size + 1);
 	while (ptr[i] && (ptr[i] == 9 || ptr[i] == 32))
 		i++;
 	if (!ptr[i])
@@ -84,7 +84,7 @@ t_element		*get_name(t_env *env, const char *ptr, int max_size,
 		return (0);
 	while (ptr[i])
 	{
-		if (j >= (max_size - 1))
+		if (j > max_size)
 			return (0);
 		if (ptr[i] == '"' && ptr[i - 1] != '\\')
 		{
@@ -112,13 +112,13 @@ t_element		*get_name(t_env *env, const char *ptr, int max_size,
 t_element		*get_cmt(t_env *env, const char *ptr, int max_size,
 		t_element *elm)
 {
-	char 		buff[max_size];
+	char 		buff[max_size + 1];
 	int 		i;
 	int 		j;
 
 	i = 0;
 	j = 0;
-	ft_bzero(buff, max_size);
+	ft_bzero(buff, max_size + 1);
 	while (ptr[i] && (ptr[i] == 9 || ptr[i] == 32))
 		i++;
 	if (!ptr[i])
@@ -127,7 +127,7 @@ t_element		*get_cmt(t_env *env, const char *ptr, int max_size,
 		return (0);
 	while (ptr[i])
 	{
-		if (j >= (max_size - 1))
+		if (j > max_size)
 			return (0);
 		if (ptr[i] == '"' && ptr[i - 1] != '\\')
 		{
