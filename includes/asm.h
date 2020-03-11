@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/11 23:33:09 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/11 23:45:34 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,5 +183,12 @@ void				ft_generate_reg(t_symbol_tab *sym_tab, char *exec,
 		int i, int index);
 int					ft_get_label_pc_dir(t_env *env, char *arg);
 int					ft_get_label_pc_indir(t_env *env, char *arg);
+void                        ft_generate_indir(t_symbol_tab *sym_tab,
+		t_env *env, int i, int index);
+void				ft_generate_dir_short(t_symbol_tab *sym_tab,
+		t_env *env, int i, int index);
+void				ft_generate_dir_long(t_symbol_tab *sym_tab,
+		t_env *env, int i, int index);
+
 
 #endif

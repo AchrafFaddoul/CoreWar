@@ -18,6 +18,9 @@ FILES = srcs/main.c \
 	srcs/ft_get_tcode.c  \
 	srcs/gen_code_tools.c  \
 	srcs/gen_ind_args.c  \
+	srcs/gen_sdir_args.c  \
+	srcs/gen_ldir_args.c  \
+	srcs/gen_args_bytecode.c  \
 
 OBJ = $(FILES:.c=.o)
 
