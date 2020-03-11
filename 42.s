@@ -1,6 +1,10 @@
-.name           "42"
+.name           "
+4
+2
+"
 .comment        "Just a 
-basic Winner Program"
+basic Winner 
+Program"
 
 entree:	live	%42		# entree
 	ld	%0,r5
