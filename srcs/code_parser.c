@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 21:53:42 by ada               #+#    #+#             */
-/*   Updated: 2020/03/11 23:58:44 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/11 18:20:32 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 t_env				*ft_scanner(t_env *env, t_element *elm, char *ptr)
 {
 	if (!(ft_syntax_analys(env, elm, ptr)))
+	{
 		return (NULL);
+	}
 	return (env);
 }
 
-char				*ft_first_ws_del(char *ptr)
+char 				*ft_first_ws_del(char *ptr)
 {
-	char			*dest;
-	int				i;
+	char 			*dest;
+	int 			i;
 
 	i = 0;
 	while (ptr[i] && (ptr[i] == 9 || ptr[i] == 32))
@@ -33,31 +35,12 @@ char				*ft_first_ws_del(char *ptr)
 	return (dest);
 }
 
-t_env				*ft_sym_tab_filler(t_env *env, t_element *elm, char *ptr,
-		t_symbol_tab *s_tab)
-{
-	if (!(s_tab = (t_symbol_tab*)ft_memalloc(sizeof(t_symbol_tab))))
-	{
-		ft_strdel((char**)&ptr);
-		return (NULL);
-	}
-	((t_instru*)(elm->content))->sym_tab = s_tab;
-	if (!(ft_scanner(env, elm, ptr)))
-	{
-		ft_strdel((char**)&ptr);
-		return (NULL);
-	}
-	ft_strdel((char**)&ptr);
-	return (env);
-}
-
 t_env				*ft_instruparser(t_env *env)
 {
 	t_element		*elm;
-	char			*ptr;
+	char 			*ptr;
 	t_symbol_tab	*s_tab;
 
-	s_tab = NULL;
 	elm = env->lines->head;
 	while (elm)
 	{
@@ -70,8 +53,18 @@ t_env				*ft_instruparser(t_env *env)
 			elm = elm->next;
 			continue ;
 		}
-		if (!(ft_sym_tab_filler(env, elm, ptr, s_tab)))
+		if (!(s_tab = (t_symbol_tab*)ft_memalloc(sizeof(t_symbol_tab))))
+		{
+			ft_strdel((char**)&ptr);
 			return (NULL);
+		}
+		((t_instru*)(elm->content))->sym_tab = s_tab;
+		if (!(ft_scanner(env, elm, ptr)))
+		{
+			ft_strdel((char**)&ptr);
+			return (NULL);
+		}
+		ft_strdel((char**)&ptr);
 		elm = elm->next;
 	}
 	return (env);
