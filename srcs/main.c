@@ -6,13 +6,13 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/11 18:24:28 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/12 01:47:35 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void 		ft_error(void)
+void		ft_error(void)
 {
 	write(1, "Error\n", 6);
 	exit(1);
@@ -43,6 +43,5 @@ int			main(int argc, char *argv[])
 	}
 	env->vect = file;
 	ft_assembler(env);
-	printf("Done\n");
 	return (0);
 }

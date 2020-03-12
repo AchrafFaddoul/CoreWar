@@ -6,15 +6,15 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:29:21 by ada               #+#    #+#             */
-/*   Updated: 2020/03/09 17:13:06 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/12 01:58:00 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int 				ft_check_label(t_env *env, char *arg)
+int					ft_check_label(t_env *env, char *arg)
 {
-	t_element 		*tmp;
+	t_element		*tmp;
 
 	tmp = env->labels->head;
 	while (tmp)
@@ -26,7 +26,7 @@ int 				ft_check_label(t_env *env, char *arg)
 	return (0);
 }
 
-int 				ft_check_labels(t_env *env)
+int					ft_check_labels(t_env *env)
 {
 	t_element		*elm;
 
@@ -64,7 +64,6 @@ int 				ft_check_labels(t_env *env)
 						if (!(ft_check_label(env, (SYM_TAB->arg_2 + 1))))
 							return (0);
 				}
-
 			}
 			if (SYM_TAB->arg_3)
 			{
@@ -87,10 +86,9 @@ int 				ft_check_labels(t_env *env)
 	return (1);
 }
 
-
-int 				ft_get_op_index(char *op)
+int					ft_get_op_index(char *op)
 {
-	int 			i;
+	int				i;
 
 	i = 0;
 	while (i < 16)
@@ -102,7 +100,7 @@ int 				ft_get_op_index(char *op)
 	return (i);
 }
 
-int 				ft_check_arg_nb(t_element *elm, int arg_nb)
+int					ft_check_arg_nb(t_element *elm, int arg_nb)
 {
 	if (arg_nb == 1)
 	{
@@ -122,9 +120,9 @@ int 				ft_check_arg_nb(t_element *elm, int arg_nb)
 	return (1);
 }
 
-int 				ft_check_args_type(t_element *elm, int arg_nb, int index)
+int					ft_check_args_type(t_element *elm, int arg_nb, int index)
 {
-	int 			i;
+	int				i;
 
 	i = arg_nb;
 	if (!(SYM_TAB->val_1.nat & g_op_tab[index].arg[0]))
@@ -144,11 +142,12 @@ int 				ft_check_args_type(t_element *elm, int arg_nb, int index)
 		return (1);
 	return (1);
 }
-int 				ft_args_checker(t_env *env)
+
+int					ft_args_checker(t_env *env)
 {
-	t_element 		*elm;
-	int 			index;
-	int 			arg_nb;
+	t_element		*elm;
+	int				index;
+	int				arg_nb;
 
 	elm = env->lines->head;
 	while (elm)
@@ -166,7 +165,6 @@ int 				ft_args_checker(t_env *env)
 	}
 	return (1);
 }
-
 
 int					ft_semantic_analysis(t_env *env)
 {
