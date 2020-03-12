@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/12 01:47:35 by ada              ###   ########.fr       */
+/*   Created: 2020/03/12 21:08:54 by afaddoul          #+#    #+#             */
+/*   Updated: 2020/03/12 22:15:43 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		ft_error(void)
 {
-	write(1, "Error\n", 6);
+	write(2, "Error\n", 6);
 	exit(1);
 }
 
@@ -30,6 +30,7 @@ int			main(int argc, char *argv[])
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		ft_error();
 	file = read_file(fd);
+	close(fd);
 	if (!(env = (t_env*)ft_memalloc(sizeof(t_env))))
 	{
 		ft_strdel((char**)&file);

@@ -1,6 +1,19 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/03/12 21:17:18 by afaddoul          #+#    #+#              #
+#    Updated: 2020/03/12 21:58:24 by afaddoul         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = asm
 
-FLAGS = -g -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
+
 FILES = srcs/main.c \
 	srcs/check_fextension.c \
 	srcs/read_file.c \
@@ -31,7 +44,7 @@ FILES = srcs/main.c \
 	srcs/syntax_checker_utils.c \
 	srcs/ft_cmd_parser_manager.c  \
 	srcs/ft_get_name.c  \
-	srcs/ft_get_comment.c  \
+	srcs/ft_get_comment.c
 
 OBJ = $(FILES:.c=.o)
 
@@ -41,11 +54,11 @@ INCLUDES = includes/
 
 all: $(NAME)
 
-$(NAME) : $(LIBFT) $(OBJ) $(HEADER_FILES)
+$(NAME) : $(OBJ) | $(LIBFT)
 	gcc $(FLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
-$(OBJ) : %.o : %.c
-	gcc $(FLAGS)  $< -o $@ -c -I $(INCLUDES) -I $(INCLUDES)
+%.o : %.c $(includes)
+	gcc $(FLAGS)  $< -o $@ -c -I $(INCLUDES)
 
 $(LIBFT) :
 	make -C ./libft/

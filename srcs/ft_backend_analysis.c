@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   backend_analysis.c                                 :+:      :+:    :+:   */
+/*   ft_backend_analysis.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/07 13:58:58 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/12 01:34:09 by ada              ###   ########.fr       */
+/*   Created: 2020/03/12 21:08:46 by afaddoul          #+#    #+#             */
+/*   Updated: 2020/03/12 22:15:19 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,6 @@ t_env					*ft_backend_analys(t_env *env)
 	if ((fd = open(env->file_name, O_CREAT | O_WRONLY, S_IRWXU)) == -1)
 		return (0);
 	write(fd, env->exec, env->pc + CODE_HEAD_SIZE);
+	close(fd);
 	return (env);
 }

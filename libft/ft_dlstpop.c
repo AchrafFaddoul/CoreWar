@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-t_element 		*ft_dlstpop(t_dlist **lst, void (*del)(void*), t_element *rear)
+t_element		*ft_dlstpop(t_dlist **lst, void (*del)(void*), t_element *rear)
 {
 	t_element	*current;
 	t_element	*to_del;

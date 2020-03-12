@@ -6,7 +6,7 @@
 #    By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/08 09:09:52 by afaddoul          #+#    #+#              #
-#    Updated: 2020/02/27 19:04:37 by ada              ###   ########.fr        #
+#    Updated: 2020/03/12 21:15:49 by afaddoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	ar rc $(NAME) $(OBJ)
 
-%.o : %.c
+%.o : %.c $(includes)
 	gcc $(FLAGS)  $< -o $@ -c  -I $(INCLUDES)
 
 clean :

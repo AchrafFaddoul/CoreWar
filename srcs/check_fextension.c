@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/02/29 21:50:17 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/12 22:11:59 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		check_fextension(char *str)
 		return ;
 	else
 	{
-		ft_putstr("not a valid file");
+		ft_putstr_fd("not a valid file", 2);
 		exit(1);
 	}
 }
