@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/12 02:19:16 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/12 11:31:51 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,16 @@ int					check_arg1(t_env *env, t_element *elm);
 int					check_arg2(t_env *env, t_element *elm);
 int					check_arg3(t_env *env, t_element *elm);
 int					ft_check_labels(t_env *env);
+int					ft_isdir(t_element *elm, char *arg, int arg_nb);
+int					ft_isindir(t_element *elm, char *arg, int arg_nb);
+int					ft_isvalid(char *arg);
+int					ft_reg_checker(char *arg);
+int					ft_dirchecker(t_element *elm, char *arg, int arg_nb);
+int					ft_indirchecker(t_element *elm, char *arg, int arg_nb);
+int					check_label_instru(t_env *env, t_element *elm, char *ptr,
+		int *i);
+
+
 
 
 #endif

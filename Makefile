@@ -24,6 +24,8 @@ FILES = srcs/main.c \
 	srcs/ft_pc_counter.c  \
 	srcs/code_gen_utils.c  \
 	srcs/ft_labels_checker.c  \
+	srcs/syntax_analysis_utils.c  \
+	srcs/args_checker_utils.c  \
 
 OBJ = $(FILES:.c=.o)
 
