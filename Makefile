@@ -23,6 +23,7 @@ FILES = srcs/main.c \
 	srcs/gen_args_bytecode.c  \
 	srcs/ft_pc_counter.c  \
 	srcs/code_gen_utils.c  \
+	srcs/ft_labels_checker.c  \
 
 OBJ = $(FILES:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/12 02:07:12 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/12 02:19:16 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,6 +199,7 @@ t_env				*destroy_cmd(t_env *env);
 int					check_arg1(t_env *env, t_element *elm);
 int					check_arg2(t_env *env, t_element *elm);
 int					check_arg3(t_env *env, t_element *elm);
+int					ft_check_labels(t_env *env);
 
 
 #endif
