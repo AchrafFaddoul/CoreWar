@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:20:22 by ada               #+#    #+#             */
-/*   Updated: 2020/03/12 11:31:43 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/12 12:14:17 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,19 +128,8 @@ int					ft_check_args(t_element *elm, char *arg, int arg_nb)
 	return (1);
 }
 
-int					ft_argtokenizer(t_env *env, t_element *elm, char *str,
-		t_ptrs ptrs)
+int					ft_arg_filler(t_element *elm, char *arg)
 {
-	int				i;
-	int				len;
-	char			*arg;
-
-	i = 0;
-	if (!env)
-		return (0);
-	len  = ptrs.end - ptrs.start;
-	if (!(arg = ft_strsub(str, ptrs.start, len)))
-		return (0);
 	if (!SYM_TAB->arg_1)
 	{
 		SYM_TAB->arg_1 = arg;
@@ -160,6 +149,21 @@ int					ft_argtokenizer(t_env *env, t_element *elm, char *str,
 			return (0);
 	}
 	else
+		return (0);
+	return (1);
+}
+
+int					ft_argtokenizer(t_element *elm, char *str, t_ptrs ptrs)
+{
+	int				i;
+	int				len;
+	char			*arg;
+
+	i = 0;
+	len = ptrs.end - ptrs.start;
+	if (!(arg = ft_strsub(str, ptrs.start, len)))
+		return (0);
+	if (!ft_arg_filler(elm, arg))
 		return (0);
 	return (1);
 }
@@ -184,64 +188,64 @@ int					ft_check_separators(char *str, int index)
 	return (1);
 }
 
-int					ft_argscanner(t_env *env, t_element *elm, char *str,
-		int index)
+int 				ft_tokenize_arg(t_ptrs *ptrs, t_element *elm, char *str,
+		int *i)
+{
+	while (str[*i])
+	{
+		if (str[*i] == SEPARATOR_CHAR || str[*i] == '\n' ||
+				str[*i] == COMMENT_CHAR || str[*i] == ALT_COMMENT_CHAR)
+		{
+			ptrs->end = *i;
+			if (!ft_argtokenizer(elm, str, *ptrs))
+				return (0);
+			break ;
+		}
+		(*i)++;
+	}
+	return (1);
+}
+
+int					ft_argscanner(t_element *elm, char *str, int index)
 {
 	int				i;
 	int				j;
 	t_ptrs			ptrs;
 
-	i = 0;
+	i = -1;
 	j = 0;
 	if (!(ft_check_separators(str, index)))
 		return (0);
-	while (str[i])
+	while (str[++i])
 	{
 		if (str[i] == 'r' || str[i] == DIRECT_CHAR || str[i] == LABEL_CHAR ||
 				ft_isdigit(str[i]) || str[i] == '-')
 		{
 			j = i;
-			while (str[i])
-			{
-				if (str[i] == SEPARATOR_CHAR || str[i] == '\n' ||
-						str[i] == COMMENT_CHAR || str[i] == ALT_COMMENT_CHAR)
-				{
-					ptrs.start = j;
-					ptrs.end = i;
-					if (!ft_argtokenizer(env, elm, str, ptrs))
-						return (0);
-					break ;
-				}
-				i++;
-			}
+			ptrs.start = j;
+			if (!(ft_tokenize_arg(&ptrs, elm, str, &i)))
+				return (0);
 		}
 		if (str[i] == '\n' || str[i] == COMMENT_CHAR ||
 				str[i] == ALT_COMMENT_CHAR)
 			break ;
-		i++;
 	}
 	if (!SYM_TAB->arg_1)
 		return (0);
 	return (1);
 }
 
-t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
+t_env				*ft_get_label(t_env *env, char *ptr, int *i)
 {
-	int				i;
 	int				len;
-	int				index;
-	char			*ptr;
 
-	i = 0;
-	if (!(ptr = ft_wsdel(str)))
-		return (NULL);
-	while (i < 16)
+	while (*i < 16)
 	{
-		if ((ft_strstr(ptr, g_op_tab[i].op)))
+		if ((ft_strstr(ptr, g_op_tab[*i].op)))
 		{
-			if (!ft_strncmp(ptr, g_op_tab[i].op, ft_strlen(g_op_tab[i].op)))
+			if (!ft_strncmp(ptr, g_op_tab[*i].op, ft_strlen(g_op_tab[*i].op)))
 			{
-				len = ft_strlen(g_op_tab[i].op);
+				len = ft_strlen(g_op_tab[*i].op);
 				if (ptr[len] == 'r' || ptr[len] == DIRECT_CHAR ||
 						ptr[len] == LABEL_CHAR ||
 						ft_isdigit(ptr[len]) || ptr[len] == '-')
@@ -250,13 +254,27 @@ t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
 				}
 			}
 		}
-		if (i == 15)
+		if (*i == 15)
 		{
 			ft_strdel((char**)&ptr);
 			return (NULL);
 		}
-		i++;
+		(*i)++;
 	}
+	return (env);
+}
+
+t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
+{
+	int				i;
+	int				index;
+	char			*ptr;
+
+	i = 0;
+	if (!(ptr = ft_wsdel(str)))
+		return (NULL);
+	if (!(ft_get_label(env, ptr, &i)))
+		return (0);
 	if (!(SYM_TAB->op = ft_strdup(g_op_tab[i].op)))
 	{
 		ft_strdel((char**)&ptr);
@@ -265,7 +283,7 @@ t_env				*ft_get_instru(t_env *env, t_element *elm, char *str)
 	index = i;
 	i = ft_strlen(g_op_tab[i].op);
 	((t_instru*)(elm->content))->op_flg = 1;
-	if (!(ft_argscanner(env, elm, ptr + i, index)))
+	if (!(ft_argscanner(elm, ptr + i, index)))
 	{
 		ft_strdel((char**)&ptr);
 		return (NULL);
@@ -300,7 +318,7 @@ int					ft_instru_tokenizer(t_env *env, t_element *elm, char *ptr)
 	return (1);
 }
 
-int 				check_label_instru(t_env *env, t_element *elm, char *ptr,
+int					check_label_instru(t_env *env, t_element *elm, char *ptr,
 		int *i)
 {
 	while (ptr[*i])
@@ -329,22 +347,6 @@ int					ft_syntax_analys(t_env *env, t_element *elm, char *ptr)
 	i = 0;
 	if (!(check_label_instru(env, elm, ptr, &i)))
 		return (0);
-/*	while (ptr[i])
-	{
-		if (!ft_islabel(ptr[i]))
-		{
-			if (ptr[i] == LABEL_CHAR)
-			{
-				if (!(ft_lbltokenizer(env, elm, ptr, i)))
-					return (0);
-				i++;
-				break ;
-			}
-			else
-				break ;
-		}
-		i++;
-	}*/
 	if (((t_instru*)(elm->content))->lbl_flg == 1)
 	{
 		while (ptr[i] == 9 || ptr[i] == 32)

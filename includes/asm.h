@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/12 11:31:51 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/12 12:12:16 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,9 @@ int					ft_syntax_analys(t_env *env, t_element *elm, char *ptr);
 int					ft_instru_tokenizer(t_env *env, t_element *elm, char *ptr);
 t_env				*ft_getop(t_env *env, t_element *elm, char *ptr);
 t_env				*ft_get_instru(t_env *env, t_element *elm, char *str);
-int					ft_argscanner(t_env *env, t_element *elm, char *str,
+int					ft_argscanner(t_element *elm, char *str,
 		int index);
-int                 ft_argtokenizer(t_env *env, t_element *elm, char *str,
-		t_ptrs ptrs);
+int                 ft_argtokenizer(t_element *elm, char *str, t_ptrs ptrs);
 int					ft_lbltokenizer(t_env *env, t_element *elm,char *ptr,
 		int len);
 t_label				*ft_labelnew(char *token);
@@ -208,8 +207,10 @@ int					ft_dirchecker(t_element *elm, char *arg, int arg_nb);
 int					ft_indirchecker(t_element *elm, char *arg, int arg_nb);
 int					check_label_instru(t_env *env, t_element *elm, char *ptr,
 		int *i);
-
-
+int					ft_arg_filler(t_element *elm, char *arg);
+t_env				*ft_get_label(t_env *env, char *ptr, int *i);
+int					ft_tokenize_arg(t_ptrs *ptrs, t_element *elm, char *str,
+		int *i);
 
 
 #endif
