@@ -21,6 +21,8 @@ FILES = srcs/main.c \
 	srcs/gen_sdir_args.c  \
 	srcs/gen_ldir_args.c  \
 	srcs/gen_args_bytecode.c  \
+	srcs/ft_pc_counter.c  \
+	srcs/code_gen_utils.c  \
 
 OBJ = $(FILES:.c=.o)
 
