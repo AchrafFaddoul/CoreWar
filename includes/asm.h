@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/11 23:45:34 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/12 01:14:48 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,11 @@ void				ft_generate_dir_short(t_symbol_tab *sym_tab,
 		t_env *env, int i, int index);
 void				ft_generate_dir_long(t_symbol_tab *sym_tab,
 		t_env *env, int i, int index);
+t_env				*ft_sym_tab_filler(t_env *env, t_element *elm, char *ptr,
+		t_symbol_tab *s_tab);
+void				ft_arg1_pc_counter(t_symbol_tab *sym_tab, int *pc, int i);
+void				ft_arg2_pc_counter(t_symbol_tab *sym_tab, int *pc, int i);
+void				ft_arg3_pc_counter(t_symbol_tab *sym_tab, int *pc, int i);
 
 
 #endif
