@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/12 12:12:16 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/12 16:49:10 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,12 @@ int					ft_arg_filler(t_element *elm, char *arg);
 t_env				*ft_get_label(t_env *env, char *ptr, int *i);
 int					ft_tokenize_arg(t_ptrs *ptrs, t_element *elm, char *str,
 		int *i);
-
+int					ft_get_cmd(t_env *env, t_element *elm, char *ptr,
+		int i);
+t_env				*ft_parsing_done(t_env *env, t_element *elm);
+int					get_first_name_line(char *buff, const char *ptr, int *i,
+		int *j);
+int					get_first_comment_line(char *buff, const char *ptr, int *i,
+		int *j);
 
 #endif

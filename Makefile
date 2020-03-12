@@ -26,6 +26,12 @@ FILES = srcs/main.c \
 	srcs/ft_labels_checker.c  \
 	srcs/syntax_analysis_utils.c  \
 	srcs/args_checker_utils.c  \
+	srcs/syntax_utils.c  \
+	srcs/label_tokenizer_utils.c  \
+	srcs/syntax_checker_utils.c \
+	srcs/ft_cmd_parser_manager.c  \
+	srcs/ft_get_name.c  \
+	srcs/ft_get_comment.c  \
 
 OBJ = $(FILES:.c=.o)
 
