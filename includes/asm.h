@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 09:41:11 by afaddoul          #+#    #+#             */
-/*   Updated: 2020/03/12 01:33:27 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/12 01:40:33 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,8 @@ t_env				*ft_sym_tab_filler(t_env *env, t_element *elm, char *ptr,
 void				ft_arg1_pc_counter(t_symbol_tab *sym_tab, int *pc, int i);
 void				ft_arg2_pc_counter(t_symbol_tab *sym_tab, int *pc, int i);
 void				ft_arg3_pc_counter(t_symbol_tab *sym_tab, int *pc, int i);
+t_env				*ft_cmd_dup(t_env *env, char *buff, int flag);
+t_env				*destroy_cmd(t_env *env);
 
 
 #endif

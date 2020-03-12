@@ -6,13 +6,13 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 16:04:23 by ada               #+#    #+#             */
-/*   Updated: 2020/03/11 10:07:18 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/12 01:44:14 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static t_env	*destroy_cmd(t_env *env)
+t_env				*destroy_cmd(t_env *env)
 {
 	if (env->name)
 		ft_strdel((char**)&(env->name));
@@ -21,9 +21,9 @@ static t_env	*destroy_cmd(t_env *env)
 	return (NULL);
 }
 
-static t_env	*ft_cmd_dup(t_env *env, char *buff, int flag)
+t_env				*ft_cmd_dup(t_env *env, char *buff, int flag)
 {
-	char 		*cmd;
+	char			*cmd;
 
 	if (!(cmd = ft_strdup(buff)))
 		return (NULL);
@@ -41,10 +41,12 @@ static t_env	*ft_cmd_dup(t_env *env, char *buff, int flag)
 	}
 	return (env);
 }
-t_element		*ft_get_next_node(t_element *elm, char *buff, int j, int size)
+
+t_element			*ft_get_next_node(t_element *elm, char *buff, int j,
+		int size)
 {
-	char 		*ptr;
-	int 		i;
+	char			*ptr;
+	int				i;
 
 	while (elm)
 	{
@@ -65,13 +67,12 @@ t_element		*ft_get_next_node(t_element *elm, char *buff, int j, int size)
 	return (NULL);
 }
 
-
-t_element		*get_name(t_env *env, const char *ptr, int max_size,
+t_element			*get_name(t_env *env, const char *ptr, int max_size,
 		t_element *elm)
 {
-	char 		buff[max_size + 1];
-	int 		i;
-	int 		j;
+	char			buff[max_size + 1];
+	int				i;
+	int				j;
 
 	i = 0;
 	j = 0;
@@ -109,12 +110,12 @@ t_element		*get_name(t_env *env, const char *ptr, int max_size,
 	return (elm);
 }
 
-t_element		*get_cmt(t_env *env, const char *ptr, int max_size,
+t_element			*get_cmt(t_env *env, const char *ptr, int max_size,
 		t_element *elm)
 {
-	char 		buff[max_size + 1];
-	int 		i;
-	int 		j;
+	char			buff[max_size + 1];
+	int				i;
+	int				j;
 
 	i = 0;
 	j = 0;
@@ -161,11 +162,11 @@ t_element			*ft_get_cmd_dispatcher(t_env *env, const char *ptr,
 		return (get_cmt(env, (ptr + 8), COMMENT_LENGTH, elm));
 }
 
-t_env 			*ft_cmd_parser(t_env *env)
+t_env				*ft_cmd_parser(t_env *env)
 {
-	t_element	*elm;
-	char 		*ptr;
-	int 		i;
+	t_element		*elm;
+	char			*ptr;
+	int				i;
 
 	elm = env->lines->head;
 	while (elm)

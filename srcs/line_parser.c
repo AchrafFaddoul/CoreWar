@@ -6,7 +6,7 @@
 /*   By: ada <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 02:14:19 by ada               #+#    #+#             */
-/*   Updated: 2020/03/10 17:07:59 by ada              ###   ########.fr       */
+/*   Updated: 2020/03/12 01:46:09 by ada              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_instru		*ft_instru_new(char *line)
 {
-	t_instru 	*elm;
+	t_instru	*elm;
 
 	if (!(elm = (t_instru*)ft_memalloc(sizeof(t_instru))))
 		return (NULL);
@@ -22,12 +22,12 @@ t_instru		*ft_instru_new(char *line)
 	return (elm);
 }
 
-char 			*ft_get_line(t_env *env, int start, int end)
+char			*ft_get_line(t_env *env, int start, int end)
 {
-	t_instru 	*instru;
-	t_element 	*elm;
+	t_instru	*instru;
+	t_element	*elm;
 	char		*buff;
-	int 		len;
+	int			len;
 
 	len = end - start + 1;
 	if (!(buff = ft_strsub(env->vect, start, len)))
@@ -47,10 +47,10 @@ char 			*ft_get_line(t_env *env, int start, int end)
 	return (buff);
 }
 
-t_env		*ft_line_parser(t_env *env)
+t_env			*ft_line_parser(t_env *env)
 {
-	int 	i;
-	int		j;
+	int			i;
+	int			j;
 
 	i = 0;
 	j = 0;
